@@ -42,17 +42,18 @@ class LegacyManager {
 Makes new API implementations available on older OS versions.
 
 ```swift
+// @backDeployed is for library/framework authors who need to backport
+// new API implementations to older OS versions.
+// App code targeting iOS 26+ does not need @backDeployed.
 extension String {
-    // Available on iOS 13+, but implemented on iOS 17+
-    @backDeployed(before: iOS 17)
-    @available(iOS 13, *)
+    @backDeployed(before: iOS 27)
     func trimmed() -> String {
         trimmingCharacters(in: .whitespaces)
     }
 }
 
-// iOS 13-16: Uses the provided implementation
-// iOS 17+: Uses system implementation (if different)
+// iOS 26: Uses the provided implementation
+// iOS 27+: Uses system implementation (if system provides one)
 ```
 
 ### When to Use
@@ -159,8 +160,7 @@ func blockingWork() { }
 
 ### Library Evolution
 ```swift
-// Backport new features
-@backDeployed(before: iOS 18)
-@available(iOS 15, *)
+// Backport new features (library authors only; iOS 26+ apps don't need this)
+@backDeployed(before: iOS 27)
 func modernFeature() { }
 ```

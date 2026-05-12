@@ -43,7 +43,6 @@ When writing async Swift code:
 | **[Strict Concurrency](references/strict-concurrency.md)** | Enabling Swift 6 strict mode or fixing Sendable errors |
 | **[Macros](references/macros.md)** | Using or understanding Swift macros like `@Observable` |
 | **[Modern Attributes](references/modern-attributes.md)** | Migrating legacy code or using `@preconcurrency`, `@backDeployed` |
-| **[Migration Patterns](references/migration-patterns.md)** | Modernizing delegate patterns or UIKit views |
 
 ## Common Mistakes
 
@@ -58,3 +57,5 @@ When writing async Swift code:
 5. **Forgetting `@MainActor` on UI code and test suites** — Main test struct and view models that update `@Published` properties need `@MainActor`. Forgetting it silently allows cross-thread mutations. Apply `@MainActor` to: view models, view structs, main test structs, and any type that touches UI.
 
 6. **Actor re-entrancy surprises** — `await` inside an actor method can release the lock temporarily. Another task may modify actor state. Design actor methods assuming state can change between `await` points.
+
+7. **Adding `@available(iOS X, *)` guards for X < 26** — This plugin targets iOS 26+ exclusively. Never wrap code in availability checks for older iOS. Write iOS 26 APIs directly; if the user asks for backward compat, explain that this plugin's scope is iOS 26+ only.

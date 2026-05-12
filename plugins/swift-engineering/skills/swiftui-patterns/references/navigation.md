@@ -1,4 +1,4 @@
-# NavigationStack Patterns (iOS 16+)
+# NavigationStack Patterns (iOS 26+)
 
 **Use for:** Type-safe programmatic navigation
 

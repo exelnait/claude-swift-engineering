@@ -108,7 +108,7 @@ List { ... }
     }
 ```
 
-### Prevent Title Hiding (iOS 17.1+)
+### Prevent Title Hiding
 ```swift
 .searchable(text: $searchText)
 .searchPresentationToolbarBehavior(.avoidHidingContent)

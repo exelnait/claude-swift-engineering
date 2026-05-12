@@ -20,7 +20,7 @@ let dateString = formatter.string(from: Date())
 // Germany: "15. Januar 2024 um 15:30"
 ```
 
-### FormatStyle (iOS 15+)
+### FormatStyle
 
 Modern, type-safe formatting:
 
@@ -77,7 +77,7 @@ formatter.string(from: NSNumber(value: number))
 // France: "1 234 567,89"
 ```
 
-### FormatStyle (iOS 15+)
+### FormatStyle
 
 ```swift
 let value = 1234567.89
@@ -113,7 +113,7 @@ formatter.string(from: NSNumber(value: price))
 // France: "29,99 EUR" (comma decimal, space before symbol)
 ```
 
-### FormatStyle (iOS 15+)
+### FormatStyle
 
 ```swift
 let price = 29.99
@@ -158,7 +158,7 @@ formatter.string(from: distance)
 // Metric countries: "100 m"
 ```
 
-### FormatStyle (iOS 15+)
+### FormatStyle
 
 ```swift
 let distance = Measurement(value: 5, unit: UnitLength.kilometers)
@@ -189,7 +189,7 @@ formatter.string(from: items)
 // Chinese: "apples, oranges and bananas"
 ```
 
-### FormatStyle (iOS 15+)
+### FormatStyle
 
 ```swift
 let names = ["Alice", "Bob", "Charlie"]

@@ -1,18 +1,20 @@
 ---
 name: swiftui-patterns
 description: >-
-  Use when implementing iOS 17+ SwiftUI patterns: @Observable/@Bindable, MVVM architecture, NavigationStack, lazy loading, UIKit interop, accessibility (VoiceOver/Dynamic Type), async operations (.task/.refreshable), or migrating from ObservableObject/@StateObject.
+  Use when implementing iOS 26+ SwiftUI patterns: @Observable/@Bindable, feature-folder architecture, MVVM, NavigationStack, lazy loading, UIKit interop, accessibility (VoiceOver/Dynamic Type), async operations (.task/.refreshable), or migrating from ObservableObject/@StateObject within an iOS 26+ codebase.
 ---
 
-# SwiftUI Patterns (iOS 17+)
+# SwiftUI Patterns (iOS 26+)
 
-SwiftUI 17+ removes ObservableObject boilerplate with @Observable, simplifies environment injection with @Environment, and introduces task-based async patterns. The core principle: use Apple's modern APIs instead of reactive libraries.
+SwiftUI with @Observable removes ObservableObject boilerplate, simplifies environment injection with @Environment, and enables task-based async patterns. The core principle: use Apple's modern APIs — no reactive libraries, no backward compat shims.
 
 ## Overview
 
+This skill covers the default architecture stack: `@Observable` + SwiftData + feature folders + async/await. For TCA patterns, see `composable-architecture`. For TCA-inspired patterns without the framework, see `tca-inspired-patterns`.
+
 ## Quick Reference
 
-| Need | Use (iOS 17+) | NOT |
+| Need | Use (iOS 26+) | NOT |
 |------|---------------|-----|
 | Observable model | `@Observable` | `ObservableObject` |
 | Published property | Regular property | `@Published` |
@@ -22,6 +24,7 @@ SwiftUI 17+ removes ObservableObject boilerplate with @Observable, simplifies en
 | Environment access | `@Environment(Type.self)` | `@EnvironmentObject` |
 | Async on appear | `.task { }` | `.onAppear { Task {} }` |
 | Value change | `onChange(of:initial:_:)` | `onChange(of:perform:)` |
+| Persistent entities | `@Model` + SwiftData | Core Data, `ObservableObject` |
 
 ## Core Workflow
 
@@ -30,6 +33,7 @@ SwiftUI 17+ removes ObservableObject boilerplate with @Observable, simplifies en
 3. Use `.task { }` for async work (auto-cancels on disappear)
 4. Use `NavigationStack` with `NavigationPath` for programmatic navigation
 5. Apply `.accessibilityLabel()` and `.accessibilityHint()` to interactive elements
+6. Organize code by feature folder, not by type layer
 
 ## Reference Loading Guide
 
@@ -40,8 +44,8 @@ SwiftUI 17+ removes ObservableObject boilerplate with @Observable, simplifies en
 | **[Observable](references/observable.md)** | Creating new `@Observable` model classes |
 | **[State Management](references/state-management.md)** | Deciding between `@State`, `@Bindable`, `@Environment` |
 | **[Environment](references/environment.md)** | Injecting dependencies into view hierarchy |
-| **[View Modifiers](references/view-modifiers.md)** | Using `onChange`, `task`, or iOS 17+ modifiers |
-| **[Migration Guide](references/migration-guide.md)** | Updating iOS 16 code to iOS 17+ |
+| **[View Modifiers](references/view-modifiers.md)** | Using `onChange`, `task`, or iOS 26+ modifiers |
+| **[Feature Architecture](references/feature-architecture.md)** | Setting up a feature folder with @Observable model + SwiftUI view |
 | **[MVVM Observable](references/mvvm-observable.md)** | Setting up view model architecture |
 | **[Navigation](references/navigation.md)** | Programmatic or deep-link navigation |
 | **[Performance](references/performance.md)** | Lists with 100+ items or excessive re-renders |
@@ -63,3 +67,5 @@ SwiftUI 17+ removes ObservableObject boilerplate with @Observable, simplifies en
 5. **Ignoring environment invalidation** — Changing environment values at parent doesn't invalidate child views automatically. Use `@Environment` consistently and understand when re-renders happen based on observation.
 
 6. **UIKit interop memory leaks** — `UIViewRepresentable` and `UIViewControllerRepresentable` can leak if delegate cycles aren't broken. Weak references and explicit cleanup are required.
+
+7. **Organizing by type layer instead of feature folder** — Putting all models in `Models/`, all views in `Views/` etc. is the old pattern. Organize by feature: `Features/Profile/ProfileModel.swift`, `Features/Profile/ProfileView.swift`. See `Feature Architecture` reference.

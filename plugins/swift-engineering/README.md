@@ -1,22 +1,33 @@
 # Swift Engineering Plugin
 
-**Version:** 0.1.28
+**Version:** 0.2.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
-Modern Swift/SwiftUI development toolkit with TCA support for Claude Code. Provides 12 specialized agents and 18 comprehensive skills for planning, implementing, testing, and shipping production iOS/macOS applications.
+Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized agents and comprehensive skills for planning, implementing, testing, and shipping production iOS apps using Apple's modern stack: `@Observable` + SwiftData + feature folders + async/await.
+
+## Architectural Stance
+
+**Default stack:** `@Observable` + SwiftData + feature folders + async/await. This is what `@swift-architect` recommends unless you hit genuine complexity thresholds.
+
+**TCA is opt-in.** The `@tca-architect` and `@tca-engineer` agents exist for complex state management scenarios — not as the default path. `@swift-architect` decides when TCA is appropriate based on four explicit criteria.
+
+**SwiftData is the default.** Not forbidden, not discouraged — it's the primary entity store. SQLite/GRDB is added only when SwiftData is the wrong tool (search indexes, AI cache, analytics, large generated collections).
+
+**iOS 26+ only.** This plugin does not support iOS versions earlier than 26.0. All examples, agents, and skills assume APIs introduced in iOS 26 are available. There are no backward compatibility shims, no `@available` guards for older iOS, no migration guides from iOS 17/18.
 
 ## Features at a Glance
 
-- **12 specialized agents** — Planning, architecture, implementation, testing, and documentation
-- **18 comprehensive skills** — Architecture patterns, frameworks, design guidelines, and development tools
+- **13 specialized agents** — Planning, architecture, implementation, testing, documentation, and architecture knowledge preservation
+- **21 comprehensive skills** — Architecture patterns, persistence decisions, design guidelines, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
-- **TCA-first architecture** — Separate architect and engineer agents with coordinated handoffs
+- **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
 - **Coordination via plans** — All agents share state through plan files, no manual coordination needed
 
 ## Table of Contents
 
+- [Architectural Stance](#architectural-stance)
 - [Core Capabilities](#core-capabilities)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
@@ -39,30 +50,32 @@ Modern Swift/SwiftUI development toolkit with TCA support for Claude Code. Provi
 
 ### Planning & Architecture
 - Design features with UI mockups or descriptions
-- Architecture decisions (TCA vs vanilla Swift)
-- TCA-specific design (state, actions, effects, dependencies)
+- Architecture decisions across 4 axes: state management, persistence, DI, documentation
+- TCA-specific design (state, actions, effects, dependencies) — opt-in
 
 ### Implementation
-- Reducers and effects (TCA)
-- Business logic and models (vanilla Swift)
+- @Observable models + SwiftData entities (default path)
+- Reducers and effects (TCA, when chosen)
 - SwiftUI views with accessibility
 - Modern async/await patterns
-- Database operations (SQLite, CloudKit sync)
+- Database operations (SwiftData primary; SQLite/GRDB side stores when needed)
 
 ### Quality Assurance
 - Comprehensive testing with Swift Testing
 - Code review (security, performance, HIG compliance)
-- Modernization (legacy to modern Swift conversion)
-- Documentation generation
+- Modernization (legacy to modern Swift conversion — one-way, iOS 26+ only)
+- Architecture knowledge preservation (docs, diagrams, decision rationale)
 
 ### Coordination
 - Shared plan files for agent handoffs
-- Automatic status tracking
+- 4-axis architecture decisions recorded in plan
 - Clear ownership and next steps
 
 ## Prerequisites
 
 **Sosumi MCP Server** — Required for Apple documentation lookup. Agents use this to verify modern API usage (2025). Configure in your Claude Code settings before using this plugin.
+
+**Deployment target: iOS 26+.** This plugin does not produce code for older iOS versions.
 
 ## Getting Started
 
@@ -77,92 +90,88 @@ For detailed workflows and examples, see [Using Agents](#using-agents) section b
 
 This plugin provides ultra-specialized agents that you invoke directly to build features. Each agent has a specific role and understands when to hand off to the next agent in the workflow.
 
-### Basic Workflow: Building a TCA Feature
+### Basic Workflow: Building a Feature (Default @Observable Path)
 
-For a typical feature using The Composable Architecture:
+For a typical feature using @Observable + SwiftData:
 
 **Step 1: Plan the architecture**
 ```
-@swift-architect Design a counter feature with increment/decrement buttons using TCA
+@swift-architect Design a notes feature with search
 ```
-This creates a plan file at `docs/plans/counter.md` with architecture decisions.
+This creates a plan file at `docs/plans/notes.md` with 4-axis architecture decisions.
 
-**Step 2: Design TCA architecture**
+**Step 2: Implement the feature**
 ```
-@tca-architect Design the state, actions, and effects for the counter based on the plan
+@feature-engineer Implement the notes model and SwiftData persistence following the plan
 ```
-Updates the plan with TCA-specific design details.
+Creates @Observable model, @Model entities, and services.
 
-**Step 3: Implement the reducer**
+**Step 3: Create SwiftUI views**
 ```
-@tca-engineer Implement the counter reducer and effects following the TCA design
-```
-Creates the actual Reducer implementation.
-
-**Step 4: Create SwiftUI views**
-```
-@swiftui-specialist Create the counter view that displays the state and handles actions
+@swiftui-specialist Create the notes list view and note editor
 ```
 Implements the UI without mixing in business logic.
 
-**Step 5: Write tests**
+**Step 4: Write tests**
 ```
-@swift-test-creator Write comprehensive tests for the counter using Swift Testing
+@swift-test-creator Write comprehensive tests for the notes model using Swift Testing
 ```
-Creates test files with test cases.
+Creates test files using Swift Testing framework.
 
-**Step 6: Code review and verification**
+**Step 5: Code review**
 ```
 @swift-code-reviewer Review the implementation for quality, security, and performance
 ```
 Verifies code meets project standards before shipping.
 
-### Alternative Workflow: Vanilla Swift Feature (No TCA)
+**Step 6: Architecture docs**
+```
+@architecture-keeper Create/update architecture docs for the notes feature
+```
+Produces flow docs with Mermaid diagrams, performance ledger, and decision rationale.
 
-For simpler features without complex state management:
+### Alternative Workflow: TCA Feature (When @swift-architect Chooses TCA)
 
-**Step 1: Plan architecture**
-```
-@swift-architect Design a calculator utility (vanilla Swift, no UI)
-```
+Only use this path when `@swift-architect` has explicitly decided TCA is needed:
 
-**Step 2: Implement core logic**
+**Step 1: Plan the architecture**
 ```
-@swift-engineer Implement the calculator logic following the plan
-```
-
-**Step 3: Write tests**
-```
-@swift-test-creator Write tests for the calculator using Swift Testing
+@swift-architect Design a complex multi-feature sync coordinator
 ```
 
-**Step 4: Code review**
+**Step 2: Design TCA architecture**
 ```
-@swift-code-reviewer Review the implementation for quality and performance
+@tca-architect Design the state, actions, and effects for the sync coordinator
 ```
+
+**Step 3: Implement the reducer**
+```
+@tca-engineer Implement the sync coordinator reducer and effects
+```
+
+**Step 4-6: Same as default path** (swiftui-specialist → swift-test-creator → swift-code-reviewer → architecture-keeper)
 
 ### Common Tasks by Agent
 
 | Task | Agent | Example |
 |------|-------|---------|
 | Analyze UI mockups/screenshots | `@swift-ui-design` | Analyze this design mockup and create UI specifications |
-| Plan new features | `@swift-architect` | Plan a user authentication system |
+| Plan new features (4-axis decision) | `@swift-architect` | Plan a user authentication system |
 | Design TCA architecture | `@tca-architect` | Design state/actions/effects for authentication |
 | Implement TCA features | `@tca-engineer` | Implement the authentication reducer |
-| Implement vanilla Swift | `@swift-engineer` | Implement the Settings model and persistence |
+| Implement @Observable features | `@feature-engineer` | Implement the Settings model and SwiftData persistence |
 | Build SwiftUI views | `@swiftui-specialist` | Create the authentication UI following the design |
 | Create tests | `@swift-test-creator` | Write tests for the authentication flow |
 | Code review | `@swift-code-reviewer` | Review the authentication module for security and quality |
-| Modernize code | `@swift-modernizer` | Migrate this legacy code to async/await |
-| Documentation | `@swift-documenter` | Document the public API surface |
-| Project docs | `@documentation-generator` | Create comprehensive project documentation |
+| Modernize code (iOS 26+ only) | `@swift-modernizer` | Migrate this ObservableObject to @Observable |
+| Inline DocC comments | `@swift-documenter` | Document the public API surface of this library |
+| Architecture docs + diagrams | `@architecture-keeper` | Create architecture docs for the auth flow |
 | Fast code search | `@search` | Find all UserDefaults usage in the codebase |
-| Code review | `@swift-code-reviewer` | Review the implementation for quality and security |
 
 ### Plan File Coordination
 
 All agents coordinate through a shared plan file at `docs/plans/<feature-name>.md`. This file:
-- Records architecture decisions (created by `@swift-architect`)
+- Records 4-axis architecture decisions (created by `@swift-architect`)
 - Tracks implementation status
 - Contains handoff notes from each agent to the next
 - Ensures continuity across agent handoffs
@@ -171,11 +180,11 @@ Each agent will automatically read the plan, update it with their work, and add 
 
 ### Key Principles
 
-- **Start with `@swift-architect`** for new features to get architecture decisions
+- **Start with `@swift-architect`** for new features to get 4-axis architecture decisions
 - **Use `@swift-ui-design`** if you have mockups or screenshots to analyze
-- **Choose your path** — TCA for complex state, vanilla Swift for simpler features
+- **Default path is @Observable** — TCA only when architect explicitly chooses it
 - **Always end with `@swift-code-reviewer`** to verify quality before shipping
-- **Agents coordinate via plan files** — No manual handoff needed, just invoke the next agent
+- **Create architecture docs** with `@architecture-keeper` for non-trivial features
 
 ## Agents
 
@@ -184,21 +193,26 @@ Each agent will automatically read the plan, update it with their work, and add 
 | Agent | Purpose | Model |
 |-------|---------|-------|
 | `@swift-ui-design` | Analyze mockups OR descriptions into UI specifications | Opus |
-| `@swift-architect` | Architecture decisions (TCA vs vanilla, persistence) | Opus |
-| `@tca-architect` | TCA-specific design (state, actions, dependencies) | Opus |
+| `@swift-architect` | Architecture decisions (4-axis: state, persistence, DI, docs) | Opus |
+| `@tca-architect` | TCA-specific design (state, actions, dependencies) — opt-in only | Opus |
 
 ### Implementation Agents (Inherit)
 
 | Agent | Purpose | Model |
 |-------|---------|-------|
-| `@tca-engineer` | TCA implementation (reducers, effects) | Inherit |
-| `@swift-engineer` | Vanilla Swift implementation (models, services) | Inherit |
+| `@feature-engineer` | @Observable + SwiftData implementation (default path) | Inherit |
+| `@tca-engineer` | TCA implementation (reducers, effects) — opt-in only | Inherit |
 | `@swiftui-specialist` | SwiftUI views (declarative only, no business logic) | Inherit |
 | `@swift-test-creator` | Create tests using Swift Testing | Inherit |
-| `@swift-documenter` | Generate API documentation and comments | Haiku |
-| `@documentation-generator` | Generate comprehensive, LLM-optimized project documentation | Inherit |
+| `@architecture-keeper` | Create/update architecture docs with Mermaid diagrams | Inherit |
 | `@swift-code-reviewer` | Review code quality, security, performance | Inherit |
-| `@swift-modernizer` | Migrate legacy patterns to modern Swift | Inherit |
+| `@swift-modernizer` | Modernize legacy patterns to @Observable/async/await (iOS 26+ only, one-way) | Inherit |
+
+### Documentation Agents
+
+| Agent | Purpose | Model |
+|-------|---------|-------|
+| `@swift-documenter` | Inline DocC comments for complex/non-obvious code | Haiku |
 
 ### Utility Agents (Haiku)
 
@@ -211,16 +225,23 @@ Each agent will automatically read the plan, update it with their work, and add 
 ### Architecture & Patterns
 | Skill | Purpose |
 |-------|---------|
-| `composable-architecture` | TCA patterns, reducers, effects, testing, performance |
-| `swiftui-patterns` | iOS 17+ SwiftUI (@Observable, @Bindable, navigation, accessibility) |
+| `swiftui-patterns` | iOS 26+ SwiftUI (@Observable, @Bindable, feature folders, navigation, accessibility) |
+| `tca-inspired-patterns` | TCA patterns (reducer thinking, explicit actions, cancellation) without the framework |
+| `composable-architecture` | TCA framework — opt-in for complex state |
 | `swiftui-advanced` | Advanced gestures, adaptive layout, architecture decisions |
 | `modern-swift` | Swift 6.2 concurrency (async/await, actors, @MainActor, Sendable) |
+| `architecture-documentation` | "Trace + why" architecture docs with Mermaid diagrams |
+
+### Persistence
+| Skill | Purpose |
+|-------|---------|
+| `data-layer-decisions` | When to use SwiftData vs GRDB, hybrid patterns, decision trees |
+| `sqlite-data` | SQLiteData library (@Table, migrations, CloudKit sync) |
+| `grdb` | GRDB direct SQLite access (complex queries, FTS5, performance) |
 
 ### Frameworks & Libraries
 | Skill | Purpose |
 |-------|---------|
-| `sqlite-data` | SQLiteData library (@Table, migrations, CloudKit sync) |
-| `grdb` | GRDB direct SQLite access (complex queries, performance) |
 | `storekit` | StoreKit 2 in-app purchases and subscriptions |
 | `foundation-models` | Apple on-device AI (iOS 26+, summarization, extraction) |
 | `swift-networking` | Network.framework (TCP/UDP, custom protocols) |
@@ -229,7 +250,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | Skill | Purpose |
 |-------|---------|
 | `ios-hig` | Apple Human Interface Guidelines (accessibility, dark mode, haptics) |
-| `ios-26-platform` | iOS 26 features (Liquid Glass, new APIs, backward compatibility) |
+| `ios-26-platform` | iOS 26 features (Liquid Glass, new APIs) |
 | `haptics` | Haptic feedback (UIFeedbackGenerator, Core Haptics, AHAP patterns) |
 | `localization` | Internationalization (String Catalogs, pluralization, RTL) |
 
@@ -254,8 +275,6 @@ Usage:
 bash scripts/get-recent-simulator.sh
 ```
 
-Used by build automation to select the correct simulator for testing.
-
 **bump-plugin-version.sh**
 
 Automates version bumping across plugin metadata files.
@@ -265,22 +284,11 @@ Usage:
 bash scripts/bump-plugin-version.sh <new-version>
 ```
 
-This script updates version numbers in:
-- `.claude-plugin/plugin.json`
-- Any other version-managed files
-
 ### Development Rules
 
-**five-whys.md**
+**five-whys.md** — Root cause analysis for debugging complex issues.
 
-Root cause analysis technique for debugging complex issues:
-- Structured approach to dig deeper into problems
-- Leads to systemic improvements rather than symptoms
-- Useful for understanding agent failures and design decisions
-
-**thinking-partner.md**
-
-Collaborative problem-solving approach for design decisions and complex architecture questions.
+**thinking-partner.md** — Collaborative problem-solving for design decisions.
 
 ## Installation
 
@@ -317,9 +325,15 @@ UI description/mockup? ──yes──► @swift-ui-design (Opus)
         ▼
    @swift-architect (Opus)  →  docs/plans/<feature>.md
         │
+        │ Decisions on 4 axes:
+        │   - State: @Observable (default) vs TCA (escalation)
+        │   - Persistence: SwiftData (default) vs +SQLite (hybrid)
+        │   - DI: constructor (default) vs @Dependency (when justified)
+        │   - Docs: which architecture docs to create/update
+        │
         ├── TCA chosen ──► @tca-architect (Opus) ──► @tca-engineer (Inherit)
         │                                                    │
-        └── Vanilla chosen ───────────────► @swift-engineer (Inherit)
+        └── @Observable chosen ──────────────► @feature-engineer (Inherit)
                                                     │
                                                     ▼
                                           @swiftui-specialist (Inherit)
@@ -331,24 +345,28 @@ UI description/mockup? ──yes──► @swift-ui-design (Opus)
                                        @swift-code-reviewer (Inherit)
                                                     │
                                                     ▼
-                                        @swift-documenter (optional)
+                                       @architecture-keeper (Inherit)
+                                       (creates/updates docs/architecture/)
+                                                    │
+                                                    ▼
+                                       @swift-documenter (optional, Haiku)
+                                       (inline DocC for complex code only)
 ```
 
 ## Agent Handoff Model
 
-Each agent knows exactly when to hand off:
-
 | From | To | Condition |
 |------|----|-----------|
 | @swift-ui-design | @swift-architect | UI analysis complete |
-| @swift-architect | @tca-architect | TCA architecture chosen |
-| @swift-architect | @swift-engineer | Vanilla architecture chosen |
+| @swift-architect | @tca-architect | TCA chosen (all 4 criteria met) |
+| @swift-architect | @feature-engineer | Default @Observable path |
 | @tca-architect | @tca-engineer | TCA design complete |
 | @tca-engineer | @swiftui-specialist | Implementation complete |
-| @swift-engineer | @swiftui-specialist | Implementation complete |
+| @feature-engineer | @swiftui-specialist | Implementation complete |
 | @swiftui-specialist | @swift-test-creator | Views complete |
 | @swift-test-creator | @swift-code-reviewer | Tests written |
-| @swift-code-reviewer | @swift-documenter | Code review complete |
+| @swift-code-reviewer | @architecture-keeper | Code review passed |
+| @architecture-keeper | @swift-documenter | Architecture docs done, optional inline DocC |
 
 ## Plan File Format
 
@@ -360,12 +378,31 @@ All agents share state via a plan file at `docs/plans/<feature-name>.md`:
 ## Status
 - [ ] UI design (@swift-ui-design)
 - [ ] Architecture (@swift-architect)
-- [ ] TCA design (@tca-architect) — if TCA
-- [ ] Implementation (@tca-engineer or @swift-engineer)
+- [ ] TCA design (@tca-architect) — only if TCA chosen
+- [ ] Implementation (@feature-engineer or @tca-engineer)
 - [ ] Views (@swiftui-specialist)
 - [ ] Tests (@swift-test-creator)
 - [ ] Code review (@swift-code-reviewer)
-- [ ] Documentation (@swift-documenter)
+- [ ] Architecture docs (@architecture-keeper)
+- [ ] Inline DocC if needed (@swift-documenter)
+
+## Architecture Decisions
+
+### Axis 1: State Management
+**Choice:** [ @Observable (default) | TCA (escalation) ]
+**Rationale:** [If TCA: which of the 4 criteria are met]
+
+### Axis 2: Persistence
+**Choice:** [ SwiftData only | SwiftData + GRDB | UserDefaults only ]
+**Rationale:** [Why this combination]
+
+### Axis 3: Dependency Strategy
+**Choice:** [ Constructor injection | swift-dependencies library | @Dependency (TCA only) ]
+**Rationale:** [Why]
+
+### Axis 4: Documentation Plan
+**New docs:** [List]
+**Updated docs:** [List]
 
 ## MCP Servers
 - **sosumi** — Apple documentation lookup (2025 APIs)
@@ -381,11 +418,11 @@ All agents share state via a plan file at `docs/plans/<feature-name>.md`:
 
 ## Architecture Conventions
 
-- **iOS 26.0+** minimum deployment target
+- **iOS 26.0+** minimum deployment target. This plugin does not support iOS versions earlier than 26.0. All examples, agents, and skills assume APIs introduced in iOS 26 are available.
 - **Swift 6.2** with strict concurrency checking
-- **SwiftUI only** (no UIKit unless explicitly requested)
-- **TCA** for complex state management, vanilla Swift for simpler features
-- **SQLite** for persistence (never SwiftData)
+- **SwiftUI** for UI (UIKit only when explicitly requested or for UIKit interop)
+- **`@Observable` + SwiftData** is the default architecture; TCA is opt-in for complex state
+- **SwiftData** primary for persistent entities; **GRDB/SQLite** for search indexes, AI cache, embeddings, analytics
 - **Swift Testing** framework (no XCTest)
 - **async/await** exclusively (no completion handlers)
 
@@ -394,7 +431,7 @@ All agents share state via a plan file at `docs/plans/<feature-name>.md`:
 | Model | Agents | Rationale |
 |-------|--------|-----------|
 | Opus | @swift-architect, @swift-ui-design, @tca-architect | Best reasoning for architecture decisions |
-| Inherit | Implementation agents (engineer, test, review, modernizer, docs) | Balanced quality and cost (uses parent session model) |
+| Inherit | Implementation agents (feature-engineer, tca-engineer, swiftui-specialist, test, review, modernizer, architecture-keeper) | Balanced quality and cost (uses parent session model) |
 | Haiku | @search, @swift-documenter | Fast, efficient for mechanical tasks |
 
 ## Quality Assurance
@@ -410,6 +447,9 @@ When modifying agents or skills:
 - [ ] Planning agents have explicit no-modify constraints
 - [ ] All handoffs are documented in Agent Handoff Model
 - [ ] All skill references exist in `skills/` directory
+- [ ] No agent or skill says "Never SwiftData"
+- [ ] TCA agents have explicit opt-in framing
+- [ ] No `@available(iOS X, *)` guards for X < 26 anywhere in the plugin
 
 ## Contributing
 

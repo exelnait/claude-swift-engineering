@@ -43,7 +43,7 @@ product.type          // .nonConsumable
 
 ## Purchasing
 
-### Purchase with UI Context (iOS 18.2+)
+### Purchase with UI Context
 
 ```swift
 let result = try await product.purchase(confirmIn: scene)

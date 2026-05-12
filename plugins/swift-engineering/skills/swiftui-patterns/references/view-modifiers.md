@@ -1,4 +1,4 @@
-# Modern View Modifiers (iOS 17+)
+# Modern View Modifiers (iOS 26+)
 
 ## onChange(of:initial:_:) — New Signature
 

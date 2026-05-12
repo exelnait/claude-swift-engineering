@@ -1,4 +1,4 @@
-# State Management (iOS 17+)
+# State Management (iOS 26+)
 
 ## @State — NOT @StateObject
 

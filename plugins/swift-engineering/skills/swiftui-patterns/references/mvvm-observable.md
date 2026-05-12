@@ -1,4 +1,4 @@
-# MVVM with @Observable (iOS 17+)
+# MVVM with @Observable (iOS 26+)
 
 **Use for:** View models with reactive state
 

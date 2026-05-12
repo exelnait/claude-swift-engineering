@@ -5,6 +5,12 @@ description: Use when working with SQLiteData library (@Table, @FetchAll, @Fetch
 
 # SQLite Data
 
+## When To Use This Skill vs `data-layer-decisions`
+
+This skill covers the SQLiteData library specifically. For *deciding* whether SwiftData or SQLite is right for your use case, use `data-layer-decisions` first. Then come here for SQLiteData library details if SQLite is chosen.
+
+This skill is NOT a recommendation to use SQLiteData by default. SwiftData is the default for entities.
+
 SQLiteData provides type-safe SQLite access through Swift macros, simplifying database modeling and queries while handling CloudKit sync, migrations, and async patterns automatically.
 
 ## Reference Loading Guide

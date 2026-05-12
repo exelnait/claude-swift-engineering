@@ -30,7 +30,7 @@ func decodeImage(_ data: Data) async -> Image {
 let image = await decodeImage(data)
 ```
 
-**Requirements:** Swift 6.2, Xcode 16.2+, iOS 18.2+
+**Requirements:** Swift 6.2, Xcode 26+, iOS 26+
 
 ### Breaking Main Actor Ties
 

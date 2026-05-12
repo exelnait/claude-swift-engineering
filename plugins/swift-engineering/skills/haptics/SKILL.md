@@ -32,10 +32,8 @@ Haptics should enhance interactions, not dominate them. The core principle: hapt
 
 ## System Requirements
 
-- **iOS 10+** for UIFeedbackGenerator
-- **iOS 13+** for Core Haptics (CHHapticEngine)
-- **iPhone 8+** for Core Haptics hardware support
-- **Physical device required** - haptics cannot be tested in Simulator
+- **iPhone 8+** required for Core Haptics hardware support
+- **Physical device required** — haptics cannot be tested in Simulator
 
 ## Common Mistakes
 

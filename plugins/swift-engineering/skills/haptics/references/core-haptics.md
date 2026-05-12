@@ -1,6 +1,6 @@
 # Core Haptics
 
-Advanced haptic API for custom patterns. Available iOS 13+, requires iPhone 8+.
+Advanced haptic API for custom patterns. Requires iPhone 8+ hardware.
 
 ## Four Fundamental Elements
 

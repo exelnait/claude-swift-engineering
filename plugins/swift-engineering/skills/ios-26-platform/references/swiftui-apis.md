@@ -44,30 +44,6 @@ struct BrowserView: View {
 
 ## @Animatable Macro
 
-### Before (Manual animatableData)
-```swift
-struct HikingRouteShape: Shape {
-    var startPoint: CGPoint
-    var endPoint: CGPoint
-    var elevation: Double
-
-    // Tedious manual declaration
-    var animatableData: AnimatablePair<CGPoint.AnimatableData,
-                        AnimatablePair<Double, CGPoint.AnimatableData>> {
-        get {
-            AnimatablePair(startPoint.animatableData,
-                          AnimatablePair(elevation, endPoint.animatableData))
-        }
-        set {
-            startPoint.animatableData = newValue.first
-            elevation = newValue.second.first
-            endPoint.animatableData = newValue.second.second
-        }
-    }
-}
-```
-
-### After (@Animatable Macro)
 ```swift
 @Animatable
 struct HikingRouteShape: Shape {
@@ -78,7 +54,7 @@ struct HikingRouteShape: Shape {
     @AnimatableIgnored
     var fillColor: Color // Excluded from animation
 
-    // animatableData automatically synthesized!
+    // animatableData automatically synthesized
 }
 ```
 

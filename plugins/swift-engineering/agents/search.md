@@ -257,7 +257,7 @@ If query could mean multiple things:
 - `class`, `struct`, `enum`, `actor` - Type definitions
 - `extension` - Type extensions
 - `@MainActor` - Main thread isolated code
-- `@Observable` - Observable classes (iOS 17+)
+- `@Observable` - Observable classes (iOS 26+)
 - `@Published` - Combine published properties
 - `struct.*:\s+View` - SwiftUI views
 - `init` - Initializers

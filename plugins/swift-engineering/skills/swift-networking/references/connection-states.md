@@ -14,7 +14,7 @@ setup -> preparing -> waiting <-> ready -> failed/cancelled
 | `.failed(error)` | Unrecoverable | Show error, offer retry |
 | `.cancelled` | `cancel()` called | Clean up |
 
-## State Handling (iOS 12+)
+## State Handling
 
 ```swift
 connection.stateUpdateHandler = { [weak self] state in

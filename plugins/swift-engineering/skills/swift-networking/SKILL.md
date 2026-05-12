@@ -22,7 +22,7 @@ Network.framework is Apple's modern networking API for TCP/UDP connections, repl
 ## Core Workflow
 
 1. Choose transport (TCP/UDP/QUIC) based on use case
-2. Create NWConnection (iOS 12+) or NetworkConnection (iOS 26+)
+2. Create NWConnection (legacy) or NetworkConnection (iOS 26+, preferred)
 3. Set up state handler for connection lifecycle
 4. Start connection on appropriate queue
 5. Send/receive data with proper error handling
