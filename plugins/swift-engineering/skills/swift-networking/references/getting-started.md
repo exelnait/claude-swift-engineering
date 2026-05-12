@@ -2,12 +2,12 @@
 
 ## API Selection
 
-| iOS Version | API | Async Model |
-|-------------|-----|-------------|
-| iOS 12-25 | NWConnection | Completion handlers |
-| iOS 26+ | NetworkConnection | async/await |
+| API | Async Model | Notes |
+|-----|-------------|-------|
+| `NWConnection` | Completion handlers | Legacy; still usable |
+| `NetworkConnection` | async/await | Preferred on iOS 26+ |
 
-## Basic TLS Connection (iOS 12+)
+## Basic TLS Connection
 
 ```swift
 import Network
@@ -53,10 +53,10 @@ func communicate() async throws {
 ## UDP Connection
 
 ```swift
-// iOS 12+
+// Legacy NWConnection
 let udp = NWConnection(host: "game.example.com", port: 9000, using: .udp)
 
-// iOS 26+
+// Preferred (iOS 26+)
 let udp = NetworkConnection(to: .hostPort(host: "game.example.com", port: 9000)) { UDP() }
 ```
 

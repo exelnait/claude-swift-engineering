@@ -2,7 +2,7 @@
 
 SwiftUI components for displaying products and subscriptions.
 
-## ProductView (iOS 17+)
+## ProductView
 
 ```swift
 import StoreKit
@@ -24,7 +24,7 @@ ProductView(id: productID).productViewStyle(.compact)   // Smaller
 ProductView(id: productID).productViewStyle(.large)     // Prominent
 ```
 
-## StoreView (iOS 17+)
+## StoreView
 
 Display multiple products:
 
@@ -35,7 +35,7 @@ StoreView(ids: ["com.app.coins_100", "com.app.coins_500"])
 StoreView(products: products)
 ```
 
-## SubscriptionStoreView (iOS 17+)
+## SubscriptionStoreView
 
 ```swift
 SubscriptionStoreView(groupID: "pro_tier") {
@@ -49,10 +49,10 @@ SubscriptionStoreView(groupID: "pro_tier") {
 .subscriptionStoreControlStyle(.automatic)       // Default
 .subscriptionStoreControlStyle(.picker)          // Horizontal
 .subscriptionStoreControlStyle(.buttons)         // Stacked
-.subscriptionStoreControlStyle(.prominentPicker) // Large (iOS 18.4+)
+.subscriptionStoreControlStyle(.prominentPicker) // Large
 ```
 
-## SubscriptionOfferView (iOS 18.4+)
+## SubscriptionOfferView
 
 ```swift
 SubscriptionOfferView(id: "com.app.pro_monthly")

@@ -47,7 +47,7 @@ transaction.productType, transaction.purchaseDate, transaction.appAccountToken
 transaction.expirationDate, transaction.isUpgraded
 transaction.revocationDate, transaction.revocationReason
 
-// Offer (iOS 18.4+)
+// Offer
 transaction.offer?.type, transaction.offer?.id, transaction.offer?.paymentMode
 ```
 
@@ -88,14 +88,14 @@ for await result in Transaction.currentEntitlements {
     purchased.insert(transaction.productID)
 }
 
-// Check specific product (iOS 18.4+)
+// Check specific product
 for await result in Transaction.currentEntitlements(for: productID) {
     if let transaction = try? result.payloadValue,
        transaction.revocationDate == nil { return true }
 }
 ```
 
-**Note**: `currentEntitlement(for:)` (singular) deprecated in iOS 18.4. Use `currentEntitlements(for:)`.
+**Note**: `currentEntitlement(for:)` (singular) is deprecated. Use `currentEntitlements(for:)`.
 
 ## Restore Purchases (REQUIRED)
 

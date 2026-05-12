@@ -1,6 +1,6 @@
 # @Observable — NOT ObservableObject
 
-**iOS 17+ Pattern**
+**iOS 26+**
 
 ## ✅ Modern Pattern
 ```swift
@@ -46,4 +46,4 @@ class UserProfileModel: ObservableObject {
 - **Type-safe environment** — `@Environment(Type.self)` instead of `@EnvironmentObject`
 - **Simpler bindings** — `@Bindable` instead of `@ObservedObject`
 
-**Requirement:** iOS 17.0+ / macOS 14.0+
+**Requirement:** iOS 26.0+

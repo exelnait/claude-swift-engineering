@@ -1,4 +1,4 @@
-# Environment (iOS 17+)
+# Environment (iOS 26+)
 
 ## environment(_:) — NOT environmentObject(_:)
 

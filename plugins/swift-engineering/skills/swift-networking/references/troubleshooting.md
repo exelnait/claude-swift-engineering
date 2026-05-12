@@ -114,7 +114,7 @@ receive() -> "ABC"  // All at once
 NetworkConnection(to: endpoint) { TLV { TLS() } }
 ```
 
-**Fix (iOS 12+)**: Length prefix
+**Fix (NWConnection legacy)**: Length prefix
 ```swift
 var length = UInt32(data.count).bigEndian
 connection.send(content: Data(bytes: &length, count: 4) + data, ...)

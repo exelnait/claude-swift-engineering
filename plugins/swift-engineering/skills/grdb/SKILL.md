@@ -5,6 +5,12 @@ description: Use when writing raw SQL with GRDB, complex joins across 4+ tables,
 
 # GRDB
 
+## When To Use This Skill vs `data-layer-decisions`
+
+This skill covers the GRDB library specifically. For *deciding* whether SwiftData or GRDB/SQLite is right for your use case, use `data-layer-decisions` first. Then come here for GRDB library details if direct SQLite access is chosen.
+
+This skill is NOT a recommendation to use GRDB by default. SwiftData is the default for entities.
+
 Direct SQLite access using [GRDB.swift](https://github.com/groue/GRDB.swift) - type-safe Swift wrapper with full SQLite power when you need it.
 
 ## Reference Loading Guide
@@ -40,8 +46,8 @@ Direct SQLite access using [GRDB.swift](https://github.com/groue/GRDB.swift) - t
 
 ## Requirements
 
-- iOS 13+, macOS 10.15+
-- Swift 5.7+
+- iOS 26+, macOS Tahoe+
+- Swift 6.2+
 - GRDB.swift 6.0+
 
 ## Common Mistakes

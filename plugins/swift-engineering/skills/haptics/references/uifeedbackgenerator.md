@@ -1,6 +1,6 @@
 # UIFeedbackGenerator
 
-Simple haptic feedback API for most common use cases. Available iOS 10+.
+Simple haptic feedback API for most common use cases.
 
 ## Three Generator Types
 
@@ -24,7 +24,7 @@ class MyViewController: UIViewController {
     }
 }
 
-// Intensity variation (iOS 13+): 0.0 to 1.0
+// Intensity variation: 0.0 to 1.0
 impactGenerator.impactOccurred(intensity: 0.5)
 ```
 

@@ -12,7 +12,7 @@ Respond to your container, not assumptions about the device. Your layout should 
 TO AVAILABLE SPACE:
 - Pick best-fitting variant? -> ViewThatFits
 - Animated H/V switch? -> AnyLayout + condition
-- Read size for calculations? -> onGeometryChange (iOS 16+)
+- Read size for calculations? -> onGeometryChange
 
 TO PLATFORM TRAITS:
 - Compact vs Regular width? -> horizontalSizeClass

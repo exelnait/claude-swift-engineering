@@ -5,6 +5,19 @@ description: Use when building features with TCA (The Composable Architecture), 
 
 # The Composable Architecture (TCA)
 
+## When To Use This Skill
+
+TCA is now opt-in in this plugin; the default architecture is `@Observable` + SwiftData (see `swiftui-patterns` skill).
+
+Use this skill when:
+- `swift-architect` has explicitly chosen TCA based on Axis 1 criteria (state shared across 3+ features, 5+ concurrent side effects, race conditions already hit)
+- The user has explicitly requested TCA
+- You are working in an existing TCA codebase
+
+Do NOT default to TCA patterns when working in plain `@Observable` code. For TCA-inspired patterns (reducer thinking, cancellation IDs, DI) without the framework, see `tca-inspired-patterns` skill.
+
+All TCA examples in this skill assume iOS 26+ deployment target. Earlier TCA patterns (NavigationView, ObservableObject reducers) are not covered.
+
 TCA provides architecture for building complex, testable features through composable reducers, centralized state management, and side effect handling. The core principle: predictable state evolution with clear dependencies and testable effects.
 
 ## Reference Loading Guide
