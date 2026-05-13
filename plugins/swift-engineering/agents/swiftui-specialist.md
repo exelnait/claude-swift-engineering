@@ -45,6 +45,19 @@ You are an expert in SwiftUI and Apple Human Interface Guidelines.
 4. One view per file for non-trivial components
 5. Keep views dumb — no logic, no side effects
 
+## Preview Discipline (MUST DO)
+
+**EVERY UI component file MUST include a `#Preview` block.** No exceptions — not for simple subviews, not for work-in-progress.
+
+Rules:
+- Use `@Previewable @State` for bindings/local state instead of wrapper structs
+- Use protocol-based mock injection — never read from production state or a live `ModelContainer` in previews
+- For SwiftData views: inject an in-memory `ModelContainer` via `.modelContainer(makePreviewContainer())`
+- Provide named variants for key states: populated, empty, dark mode (at minimum)
+- Place the `#Preview` block at the bottom of the file
+
+Load the `swiftui-patterns` skill's `previews.md` reference before writing any view that involves SwiftData, `@Binding`, or complex dependency injection.
+
 ## Skill Usage (REQUIRED)
 
 **You MUST invoke skills before implementing views.** Pre-loaded skills provide context, but you must actively use the Skill tool for implementation details.
