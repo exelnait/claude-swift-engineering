@@ -34,6 +34,7 @@ This skill covers the default architecture stack: `@Observable` + SwiftData + fe
 4. Use `NavigationStack` with `NavigationPath` for programmatic navigation
 5. Apply `.accessibilityLabel()` and `.accessibilityHint()` to interactive elements
 6. Organize code by feature folder, not by type layer
+7. Write a `#Preview` for every UI component — use mock injection or an in-memory `ModelContainer`
 
 ## Reference Loading Guide
 
@@ -52,6 +53,7 @@ This skill covers the default architecture stack: `@Observable` + SwiftData + fe
 | **[UIKit Interop](references/uikit-interop.md)** | Wrapping UIKit components (WKWebView, PHPicker) |
 | **[Accessibility](references/accessibility.md)** | VoiceOver, Dynamic Type, accessibility actions |
 | **[Async Patterns](references/async-patterns.md)** | Loading states, refresh, background tasks |
+| **[Previews](references/previews.md)** | Writing `#Preview` blocks, mock injection, SwiftData in-memory container |
 | **[Composition](references/composition.md)** | Reusable view modifiers or complex conditional UI |
 
 ## Common Mistakes
@@ -69,3 +71,5 @@ This skill covers the default architecture stack: `@Observable` + SwiftData + fe
 6. **UIKit interop memory leaks** — `UIViewRepresentable` and `UIViewControllerRepresentable` can leak if delegate cycles aren't broken. Weak references and explicit cleanup are required.
 
 7. **Organizing by type layer instead of feature folder** — Putting all models in `Models/`, all views in `Views/` etc. is the old pattern. Organize by feature: `Features/Profile/ProfileModel.swift`, `Features/Profile/ProfileView.swift`. See `Feature Architecture` reference.
+
+8. **Missing or empty `#Preview`** — Every component file must have a real `#Preview` with populated state. Placeholder `#Preview { EmptyView() }` previews provide no value and hide integration failures.
