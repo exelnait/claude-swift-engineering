@@ -97,7 +97,15 @@ Every entry names: the constant, where to find it, why it's that value, and what
 
 Docs without diagrams force readers to construct mental models from prose. For non-trivial flows, **diagrams are not optional** — they're the primary mechanism for making the doc readable in 60 seconds rather than 20 minutes.
 
-Use Mermaid for all diagrams. Mermaid renders natively in DocC catalogs (Xcode 26), in GitHub, in most markdown viewers, and degrades gracefully to source-readable text. Do NOT use ASCII art — it's unreadable on mobile, doesn't render in DocC, and ages poorly.
+Use Mermaid as the **source format** for all diagrams. DocC does not render inline Mermaid — it renders images. The workflow is:
+
+1. **Write** `Documentation.docc/Resources/<feature>-<diagram>.mmd` — the Mermaid source (checked in, human-readable)
+2. **Generate** the SVG in parallel: `mmdc -i Documentation.docc/Resources/<feature>-<diagram>.mmd -o Documentation.docc/Resources/<feature>-<diagram>.svg`
+3. **Reference** the SVG inside the DocC article: `![Alt text](<feature>-<diagram>)` (DocC resolves the name to the `.svg` in Resources/)
+
+For non-DocC markdown (GitHub READMEs, plain `.md` docs, `docs/architecture/*.md`), inline Mermaid fenced blocks are fine and preferred — they render in GitHub and VS Code without an extra build step.
+
+Do NOT use ASCII art — it's unreadable on mobile and ages poorly. Do NOT embed inline Mermaid blocks inside `.docc` articles — they will not render.
 
 #### Diagram Type Decision Tree
 
@@ -212,7 +220,8 @@ flowchart TD
 
 #### Diagram Discipline
 
-- **Keep them current.** A wrong diagram is worse than no diagram. If you change the flow, update the diagram in the same commit.
+- **Keep them current.** A wrong diagram is worse than no diagram. If you change the flow, update the `.mmd` source, regenerate the `.svg`, and commit both in the same commit.
+- **`.mmd` is the source of truth.** The `.svg` is a build artifact — but check both into git so DocC can serve the SVG without a build step.
 - **One diagram per concept.** Multiple focused diagrams beat one overloaded one.
 - **Label every arrow when meaning isn't obvious.** "yes/no", "on success/on error", "if cached/if cold", etc.
 - **Include nodes for non-obvious actors.** The gate primitive, the actor that coordinates work — these should appear in diagrams.
@@ -276,7 +285,8 @@ Every flow doc ends with cross-doc links:
 3. **Aspirational documentation** — Don't document what should be true. Document what IS true. If it changes, update the doc.
 4. **Missing rationale** — A doc that says "we use SwiftData here" without saying *why* provides nothing.
 5. **No non-goals section** — Future sessions will rebuild the thing you removed. Document removals explicitly.
-6. **ASCII art diagrams** — Never. Use Mermaid always.
+6. **ASCII art diagrams** — Never. Use Mermaid source (`.mmd`) always, rendered to SVG for DocC.
+7. **Inline Mermaid in `.docc` articles** — DocC does not render Mermaid fenced blocks. Always use `![Alt](name)` referencing a `.svg` in `Resources/`. Inline Mermaid is only valid in non-DocC plain markdown files.
 
 ## Update Discipline
 
