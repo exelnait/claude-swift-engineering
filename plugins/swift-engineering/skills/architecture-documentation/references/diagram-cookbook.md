@@ -4,6 +4,74 @@ Copy-pasteable Mermaid templates for architecture documentation. Each section na
 
 ---
 
+## Workflow: `.mmd` → `.svg` → DocC
+
+DocC does not render inline Mermaid. The correct pattern for any diagram that lives inside a `.docc` catalog:
+
+### Step 1 — Write the Mermaid source
+
+Create a `.mmd` file in `Documentation.docc/Resources/`. Name it `<feature>-<concept>.mmd`:
+
+```
+Documentation.docc/
+└── Resources/
+    ├── notes-load-flow.mmd       ← source (check in)
+    ├── notes-load-flow.svg       ← generated (also check in)
+    ├── sync-state-machine.mmd
+    └── sync-state-machine.svg
+```
+
+The `.mmd` file contains only the Mermaid diagram — no fences, no markdown:
+
+```
+flowchart TD
+    A([User taps Notes]) --> B[load NotesModel]
+    B --> C{SwiftData cache?}
+    C -->|hit| D[render immediately]
+    C -->|miss| E[fetch + persist + render]
+```
+
+### Step 2 — Generate the SVG (in parallel with writing the doc)
+
+```bash
+# Install once
+npm install -g @mermaid-js/mermaid-cli
+
+# Generate — run this every time the .mmd changes
+mmdc -i Documentation.docc/Resources/notes-load-flow.mmd \
+     -o Documentation.docc/Resources/notes-load-flow.svg
+
+# Or generate all at once
+for f in Documentation.docc/Resources/*.mmd; do
+  mmdc -i "$f" -o "${f%.mmd}.svg"
+done
+```
+
+### Step 3 — Reference in the DocC article
+
+Inside a `.md` article within the `.docc` bundle, use the image directive. DocC resolves the bare name to the matching `.svg` in `Resources/`:
+
+```markdown
+## Note load flow
+
+The cold-start path fetches from the network then persists to SwiftData.
+The warm path skips the fetch entirely.
+
+![Note load flow](notes-load-flow)
+```
+
+### Rules
+
+| Context | How to embed a diagram |
+|---|---|
+| `.docc` article (`.md` inside `.docc` bundle) | `![Alt text](filename-no-extension)` → resolves to `.svg` in Resources/ |
+| Non-DocC markdown (`docs/architecture/*.md`, GitHub README) | Inline Mermaid fenced block (` ```mermaid ... ``` `) |
+| Both contexts for same diagram | Write `.mmd` + generate `.svg`; use image ref in DocC, fenced block in plain `.md` |
+
+**Always commit both** `.mmd` (source) and `.svg` (rendered). The `.svg` is checked in so DocC can serve it without a CI build step.
+
+---
+
 ## 1. Sequence Diagram — Multi-Component Interaction
 
 **When to use:** Multiple components (View, Model, Service, Database) interacting where time order matters. The canonical "what calls what, and in what order" diagram.
