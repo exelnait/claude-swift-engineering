@@ -48,6 +48,10 @@ Foundation Models enable intelligent text processing directly on device without 
 - Apple Intelligence-enabled device (iPhone 15 Pro+, M1+ iPad/Mac)
 - User opted into Apple Intelligence
 
+## Measuring Quality (Evaluations)
+
+Foundation Models are probabilistic: the same input can produce different output, so unit tests cannot verify behavior. **Every FM feature must ship with an evaluation** that measures its quality across many samples and every supported language. After building a feature here, use the **`evaluations`** skill (and the `@evaluation-engineer` agent) to define a dataset, quantitative metrics, model judges, and an optimization target — then hill-climb. Treat "works in my Playground" as unverified until an evaluation says otherwise.
+
 ## Common Mistakes
 
 1. **Using Foundation Models for world knowledge** — The 3B model is trained for on-device tasks only. It won't know current events, specific facts, or "who is X". Use ChatGPT/Claude for that. Keep prompts to: summarizing user's own content, extracting info, classifying text.
