@@ -11,16 +11,22 @@ Apple's on-device AI framework providing access to a 3B parameter language model
 
 Foundation Models enable intelligent text processing directly on device without server round-trips, user data sharing, or network dependencies. The core principle: leverage on-device AI for specific, contained tasks (not for general knowledge).
 
+**2026 expansion (later OS releases — verify availability against current docs):** the framework opens up beyond a single on-device model. A `LanguageModelSession` can now be backed by **any** `LanguageModel` — the rebuilt on-device model (now with **vision**), **Private Cloud Compute** (bigger, 32K context, reasoning, still private), or third-party/local models (CoreAI, MLX, Anthropic, Google). It adds **dynamic profiles** for agentic, multi-model sessions; **system tools** (OCR, barcode, Spotlight RAG); and tighter **Evaluations** integration. See `model-selection.md`, `agentic-profiles.md`, and `vision-and-system-tools.md`.
+
 ## Reference Loading Guide
 
 **ALWAYS load reference files if there is even a small chance the content may be required.** It's better to have the context than to miss a pattern or make a mistake.
 
 | Reference | Load When |
 |-----------|-----------|
+| **[Best Practices](references/best-practices.md)** | Any FM work — consolidated do/don't checklist (model fit, latency, safety, context, KV cache, evaluation) |
 | **[Getting Started](references/getting-started.md)** | Setting up LanguageModelSession, checking availability, basic prompts |
 | **[Structured Output](references/structured-output.md)** | Using `@Generable` for type-safe responses, `@Guide` constraints |
 | **[Tool Calling](references/tool-calling.md)** | Integrating external data (weather, contacts, MapKit) via Tool protocol |
 | **[Streaming](references/streaming.md)** | AsyncSequence for progressive UI updates, PartiallyGenerated types |
+| **[Model Selection](references/model-selection.md)** | Choosing on-device vs Private Cloud Compute vs third-party (`LanguageModel` protocol), reasoning levels, usage/cost, key security |
+| **[Agentic Profiles](references/agentic-profiles.md)** | Multi-model/agentic sessions — `DynamicProfile`, `DynamicInstructions`, transcript management, orchestration (baton-pass / phone-a-friend), tool calling mode |
+| **[Vision & System Tools](references/vision-and-system-tools.md)** | Image attachments (on-device vision), `OCRTool`, `BarcodeReaderTool`, Spotlight local RAG |
 | **[Troubleshooting](references/troubleshooting.md)** | Context overflow, guardrails, errors, anti-patterns |
 
 ## Core Workflow
@@ -33,20 +39,28 @@ Foundation Models enable intelligent text processing directly on device without 
 
 ## Model Capabilities
 
-| Use Case | Foundation Models? | Alternative |
-|----------|-------------------|-------------|
+| Use Case | On-device | Alternative within the framework |
+|----------|-----------|----------------------------------|
 | Summarization | Yes | - |
 | Extraction (key info) | Yes | - |
 | Classification | Yes | - |
 | Content tagging | Yes (built-in adapter) | - |
-| World knowledge | No | ChatGPT, Claude, Gemini |
-| Complex reasoning | No | Server LLMs |
+| Image understanding (vision) | Yes (2026 model) | - |
+| Local RAG over user content | Via Spotlight search tool | - |
+| Complex reasoning | No | **Private Cloud Compute** (`reasoningLevel: .deep`) |
+| World knowledge | Limited | Private Cloud Compute, or third-party server models |
+
+See `model-selection.md` to choose between on-device, Private Cloud Compute, and third-party models.
 
 ## Platform Requirements
 
 - iOS 26+, macOS 26+, iPadOS 26+, visionOS 26+
 - Apple Intelligence-enabled device (iPhone 15 Pro+, M1+ iPad/Mac)
 - User opted into Apple Intelligence
+
+## Measuring Quality (Evaluations)
+
+Foundation Models are probabilistic: the same input can produce different output, so unit tests cannot verify behavior. **Every FM feature must ship with an evaluation** that measures its quality across many samples and every supported language. After building **or changing** a feature here, **create or update** its evaluation using the **`evaluations`** skill (and the `@evaluation-engineer` agent): define a dataset, quantitative metrics, model judges, and an optimization target — then hill-climb. Any change to the prompt, the `@Generable` schema, the model, or the set of supported languages means the evaluation must be revisited and re-run. Treat "works in my Playground" as unverified until an evaluation says otherwise.
 
 ## Common Mistakes
 

@@ -59,6 +59,13 @@ Running tests is a separate concern.
 - SwiftUI view layout (use previews)
 - Apple framework internals
 - Trivial getters/setters
+- **Probabilistic AI/Foundation Models output** — see below
+
+## Intelligent Features Need Evaluations, Not Unit Tests
+
+Generative AI breaks the contract unit tests rely on: the same input can produce different output. A deterministic `#expect` cannot verify a Foundation Models / language-model / classifier feature. Do NOT try to pin its output with a unit test.
+
+You may still unit-test the *deterministic* scaffolding around an AI feature (input trimming, availability gating, error handling, parsing of a `@Generable` type into your domain model). But the **quality of the model's output** is measured with an Evaluation, not a unit test. Hand that off to the `evaluations` skill / `@evaluation-engineer` agent, which measures quality across many samples and every supported language with an optimization target.
 
 ---
 

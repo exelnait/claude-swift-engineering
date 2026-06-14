@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.2.0
+**Version:** 0.5.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -18,8 +18,8 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 
 ## Features at a Glance
 
-- **14 specialized agents** — Planning, architecture, implementation, accessibility, testing, documentation, and architecture knowledge preservation
-- **22 comprehensive skills** — Architecture patterns, persistence decisions, design guidelines, accessibility, and development tools
+- **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
+- **23 comprehensive skills** — Architecture patterns, persistence decisions, design principles & naming, accessibility, AI-feature evaluation, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -162,6 +162,7 @@ Only use this path when `@swift-architect` has explicitly decided TCA is needed:
 | Implement @Observable features | `@feature-engineer` | Implement the Settings model and SwiftData persistence |
 | Build SwiftUI views | `@swiftui-specialist` | Create the authentication UI following the design |
 | Create tests | `@swift-test-creator` | Write tests for the authentication flow |
+| Evaluate an AI/FM feature | `@evaluation-engineer` | Measure tag-generation quality across all supported languages |
 | Code review | `@swift-code-reviewer` | Review the authentication module for security and quality |
 | Modernize code (iOS 26+ only) | `@swift-modernizer` | Migrate this ObservableObject to @Observable |
 | Inline DocC comments | `@swift-documenter` | Document the public API surface of this library |
@@ -205,6 +206,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `@swiftui-specialist` | SwiftUI views (declarative only, no business logic) | Inherit |
 | `@accessibility-specialist` | Make UI accessible & audit it (VoiceOver, Dynamic Type, custom controls, reading, captions, inclusive design) | Inherit |
 | `@swift-test-creator` | Create tests using Swift Testing | Inherit |
+| `@evaluation-engineer` | Measure AI/Foundation Models feature quality with the Evaluations framework (datasets, metrics, model judges) — every supported language | Inherit |
 | `@architecture-keeper` | Create/update architecture docs with Mermaid diagrams | Inherit |
 | `@swift-code-reviewer` | Review code quality, security, performance | Inherit |
 | `@swift-modernizer` | Modernize legacy patterns to @Observable/async/await (iOS 26+ only, one-way) | Inherit |
@@ -244,12 +246,14 @@ Each agent will automatically read the plan, update it with their work, and add 
 | Skill | Purpose |
 |-------|---------|
 | `storekit` | StoreKit 2 in-app purchases and subscriptions |
-| `foundation-models` | Apple on-device AI (iOS 26+, summarization, extraction) |
+| `foundation-models` | Apple AI: on-device + Private Cloud Compute, vision, agentic dynamic profiles, system tools, best practices |
+| `evaluations` | Measure quality of AI/Foundation Models features (datasets, metrics, model judges, evaluation-driven development) — every supported language |
 | `swift-networking` | Network.framework (TCP/UDP, custom protocols) |
 
 ### Platform & Design
 | Skill | Purpose |
 |-------|---------|
+| `design-principles` | Apple's eight design principles, naming/UX-writing criteria, and responsible-AI design (the *why* behind the HIG) |
 | `ios-hig` | Apple Human Interface Guidelines (accessibility, dark mode, haptics) |
 | `ios-26-platform` | iOS 26 features (Liquid Glass, new APIs) |
 | `haptics` | Haptic feedback (UIFeedbackGenerator, Core Haptics, AHAP patterns) |
@@ -347,6 +351,13 @@ UI description/mockup? ──yes──► @swift-ui-design (Opus)
                                                     ▼
                                          @swift-test-creator (Inherit)
                                                     │
+                                  AI/Foundation Models feature?
+                                                    │
+                                       ┌── yes ──► @evaluation-engineer (Inherit)
+                                       │           (datasets + metrics + model judges,
+                                       │            every supported language; hill-climb)
+                                       │                    │
+                                       └── no ──────────────┤
                                                     ▼
                                        @swift-code-reviewer (Inherit)
                                                     │
@@ -370,7 +381,9 @@ UI description/mockup? ──yes──► @swift-ui-design (Opus)
 | @tca-engineer | @swiftui-specialist | Implementation complete |
 | @feature-engineer | @swiftui-specialist | Implementation complete |
 | @swiftui-specialist | @swift-test-creator | Views complete |
-| @swift-test-creator | @swift-code-reviewer | Tests written |
+| @swift-test-creator | @evaluation-engineer | Feature uses Foundation Models / AI (probabilistic output) |
+| @swift-test-creator | @swift-code-reviewer | Tests written (no AI/FM feature) |
+| @evaluation-engineer | @swift-code-reviewer | Evaluations pass optimization target in every supported language |
 | @swift-code-reviewer | @architecture-keeper | Code review passed |
 | @architecture-keeper | @swift-documenter | Architecture docs done, optional inline DocC |
 

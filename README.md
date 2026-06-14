@@ -10,11 +10,12 @@ A specialized AI toolkit for building professional iOS/macOS features with moder
 
 The **swift-engineering plugin** is a production-ready toolkit for professional Swift development:
 
-- **12 Ultra-Specialized Agents** — Planning (Opus), implementation (Inherit), utilities (Haiku) with clear handoffs
+- **15 Ultra-Specialized Agents** — Planning (Opus), implementation (Inherit), utilities (Haiku) with clear handoffs
 - **TCA Support** — Full workflow from architecture design to testing for The Composable Architecture
 - **Modern Swift 6.2** — iOS 26+ with strict concurrency, async/await, actors, Sendable
 - **Code Quality** — Integrated code review, accessibility compliance, and performance checks
-- **Knowledge Skills** — 18 specialized knowledge bases covering architecture patterns, frameworks, design, and development tools
+- **AI Feature Quality** — Measure Foundation Models / language-model features with the Evaluations framework, across every supported language
+- **Knowledge Skills** — 23 specialized knowledge bases covering architecture patterns, frameworks, AI-feature evaluation, design principles, accessibility, and development tools
 
 ## Quick Start
 
@@ -59,23 +60,25 @@ ln -s /path/to/claude-swift-engineering/plugins/swift-engineering/hooks-scripts 
 }
 ```
 
+Optional **evaluation enforcement hooks** are also available — a `PostToolUse` nudge and a `Stop` gate that ensure any edit to an AI/Foundation Models feature is matched by a created/updated Evaluation (covering every supported language). See the hooks documentation below.
+
 See [plugins/swift-engineering/hooks-scripts/README.md](plugins/swift-engineering/hooks-scripts/README.md) for complete hook documentation.
 
 See [plugins/swift-engineering/README.md](plugins/swift-engineering/README.md) for complete documentation on using agents and available workflows.
 
 ## What's Included
 
-### 12 Specialized Agents
+### 15 Specialized Agents
 
 | Type | Agents | Responsibility |
 |------|--------|-----------------|
 | **Planning** | @swift-ui-design, @swift-architect, @tca-architect | Architecture decisions (Opus, read-only) |
-| **Implementation** | @tca-engineer, @swift-engineer, @swiftui-specialist, @swift-test-creator, @documentation-generator, @swift-code-reviewer, @swift-modernizer | Code creation and review (Inherit) |
+| **Implementation** | @feature-engineer, @tca-engineer, @swiftui-specialist, @accessibility-specialist, @swift-test-creator, @evaluation-engineer, @architecture-keeper, @swift-code-reviewer, @swift-modernizer | Code creation, accessibility, AI-feature evaluation, and review (Inherit) |
 | **Utilities** | @swift-documenter, @search | API documentation and code search (Haiku) |
 
-### 18 Knowledge Skills
+### 23 Knowledge Skills
 
-Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), frameworks (SQLite, GRDB, StoreKit, networking), platform design (iOS 26, HIG, localization, haptics), and development tools (testing, style, diagnostics). Each skill provides deep guidance on modern patterns and best practices.
+Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), frameworks (SQLite, GRDB, StoreKit, networking, Foundation Models — on-device + Private Cloud Compute, vision, agentic dynamic profiles), AI-feature evaluation (the Evaluations framework — datasets, metrics, model judges, judge alignment, evaluation-driven development, every supported language), design (eight design principles, naming/UX writing, responsible AI), accessibility (VoiceOver, Dynamic Type, reading, captions, Nutrition Labels readiness), platform design (iOS 26, HIG, localization, haptics), and development tools (testing, style, diagnostics). Each skill provides deep guidance on modern patterns and best practices.
 
 ## For Contributors
 
@@ -88,8 +91,8 @@ claude-swift-engineering/
 ├── .github/workflows/                      # CI/CD pipelines
 ├── plugins/
 │   └── swift-engineering/                  # Main plugin
-│       ├── agents/                         # 14 specialized agents
-│       ├── skills/                         # 22 comprehensive skills
+│       ├── agents/                         # 15 specialized agents
+│       ├── skills/                         # 23 comprehensive skills
 │       ├── hooks-scripts/                  # Hooks system
 │       ├── scripts/                        # Helper utilities
 │       ├── rules/                          # Development rules

@@ -4,7 +4,7 @@ description: Analyze UI mockups, screenshots, or descriptions to plan SwiftUI im
 tools: Read, Glob, Grep, Skill
 model: opus
 color: cyan
-skills: modern-swift, swiftui-patterns, swiftui-advanced, ios-hig, haptics, ios-26-platform, localization
+skills: modern-swift, swiftui-patterns, swiftui-advanced, ios-hig, design-principles, haptics, ios-26-platform, localization
 ---
 
 # UI Design Analysis
@@ -93,6 +93,14 @@ For each screen or component, evaluate:
 - [ ] Reduce Motion alternatives
 - [ ] Color contrast concerns
 - [ ] Dynamic Type scaling
+
+## Design Principles & Naming (REQUIRED)
+
+Before specifying UI, invoke the **`design-principles`** skill and apply Apple's eight principles (purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, delight) as a decision framework — `ios-hig` gives the concrete rules, `design-principles` gives the *why* and the trade-offs.
+
+- **Purpose first:** flag UI that doesn't earn a person's time/attention/trust; recommend cutting it.
+- **Name things deliberately:** for any feature/tab/setting/label, run the naming criteria (belongs, sets expectations, works everywhere) and the audience → think/feel/do exercise. Name the experience, not the technology.
+- **Responsible AI:** for any intelligence-powered UI, specify safeguards (previews/confirmations/disclaimers) and the privacy boundary, and note that quality must be measured with the `evaluations` skill across every supported language.
 
 ## MCP Servers
 
