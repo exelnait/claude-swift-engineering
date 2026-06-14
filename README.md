@@ -60,6 +60,8 @@ ln -s /path/to/claude-swift-engineering/plugins/swift-engineering/hooks-scripts 
 }
 ```
 
+Optional **evaluation enforcement hooks** are also available — a `PostToolUse` nudge and a `Stop` gate that ensure any edit to an AI/Foundation Models feature is matched by a created/updated Evaluation (covering every supported language). See the hooks documentation below.
+
 See [plugins/swift-engineering/hooks-scripts/README.md](plugins/swift-engineering/hooks-scripts/README.md) for complete hook documentation.
 
 See [plugins/swift-engineering/README.md](plugins/swift-engineering/README.md) for complete documentation on using agents and available workflows.

@@ -56,6 +56,61 @@ If you already have other hooks defined, just add the `UserPromptSubmit` entry a
 2. **ACTIVATE** — Use `Skill(skill-name)` for each YES
 3. **IMPLEMENT** — Only after activation is complete
 
+### PostToolUse: evaluation-sync-hook.sh
+
+**Purpose:** Reminds you to create or update a feature's Evaluation the moment you edit an AI/Foundation Models feature file.
+
+**What it does:**
+- Fires after `Edit` / `Write` / `MultiEdit`.
+- Inspects the edited Swift file; if it uses Foundation Models (`import FoundationModels`, `LanguageModelSession`, `SystemLanguageModel`, `@Generable`) and is *not* itself a test/evaluation file, it injects a reminder to create/update the Evaluation, cover every supported language, and re-run it.
+- This is a **nudge** (injected context), not a block. Fail-open: if `jq` is missing or the payload is unexpected, it does nothing.
+
+### Stop: evaluation-gate-hook.sh
+
+**Purpose:** Hard end-of-turn gate — the guarantee that complements the nudge. Prevents finishing a turn that changed an AI/FM feature without touching its Evaluation.
+
+**What it does:**
+- Runs when Claude tries to stop.
+- Scans the git working tree (changed vs `HEAD` + untracked). If an AI/FM feature file changed but **no** Evaluation file changed (`import Evaluations`, a type conforming to `Evaluation`, `.evaluates(`, `ModelJudgeEvaluator`, `ScoreDimension`), it **blocks once** with instructions to update + re-run the evaluation, or to explain why no change is needed.
+- **Loop-guarded:** honours `stop_hook_active`, so it blocks at most once per stop sequence and can never trap the session.
+- **Conservative & fail-open:** only blocks when confident; if `git`/`jq` are absent or it isn't a repo, it does nothing.
+
+> **Important:** Unlike the `UserPromptSubmit` hook (which is `cat`-ed so its text is injected verbatim), the `PostToolUse` and `Stop` hooks are **executed scripts** that read a JSON payload on stdin — wire them with `bash <script>`, not `cat <script>`.
+
+### settings.json wiring for the evaluation hooks
+
+Add alongside any existing hooks:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks-scripts/PostToolUse/evaluation-sync-hook.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks-scripts/Stop/evaluation-gate-hook.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Both hooks are **opt-in** and **language-agnostic to your project** — they only react to Swift files that use Foundation Models, so they stay silent on non-AI work.
+
 ## How Hooks Work
 
 When a hook is configured:
