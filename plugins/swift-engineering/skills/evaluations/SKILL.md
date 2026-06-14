@@ -59,6 +59,8 @@ These two rules are non-negotiable for this plugin. See `evaluation-driven-devel
 1. **Every intelligent feature ships with an Evaluation.** Any feature that calls a Foundation Models / language model or any other stochastic system (classifier, ranker, regression) must have an evaluation with an optimization target. A deterministic unit test alone is not sufficient coverage for AI/FM behavior.
 2. **Every supported language is evaluated.** Foundation Models behave differently per language. The dataset must include samples for **each localization the app ships** (see the app's String Catalogs / `localization` skill), and quality must be aggregated and asserted **per language** — not just in the development language. A feature that passes in English can silently fail in German, Japanese, or Arabic. See `datasets.md` → "Per-Language Coverage".
 
+3. **Keep evaluations in sync with the feature.** An evaluation is not write-once. Whenever the prompt, the `@Generable` schema, the model, the set of supported languages, or your expectations change, **update the existing evaluation and re-run it** before shipping — don't leave it stale. A green evaluation against an outdated dataset is a false signal. (Skills are passive: this only happens when the work re-activates the skill/`@evaluation-engineer`, so treat any change to an AI/FM feature as a trigger to revisit its evaluation.)
+
 ## Core Workflow
 
 1. Spec the feature: list the behaviors you expect (the human evaluation you already do by eye).

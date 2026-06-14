@@ -50,7 +50,7 @@ Foundation Models enable intelligent text processing directly on device without 
 
 ## Measuring Quality (Evaluations)
 
-Foundation Models are probabilistic: the same input can produce different output, so unit tests cannot verify behavior. **Every FM feature must ship with an evaluation** that measures its quality across many samples and every supported language. After building a feature here, use the **`evaluations`** skill (and the `@evaluation-engineer` agent) to define a dataset, quantitative metrics, model judges, and an optimization target — then hill-climb. Treat "works in my Playground" as unverified until an evaluation says otherwise.
+Foundation Models are probabilistic: the same input can produce different output, so unit tests cannot verify behavior. **Every FM feature must ship with an evaluation** that measures its quality across many samples and every supported language. After building **or changing** a feature here, **create or update** its evaluation using the **`evaluations`** skill (and the `@evaluation-engineer` agent): define a dataset, quantitative metrics, model judges, and an optimization target — then hill-climb. Any change to the prompt, the `@Generable` schema, the model, or the set of supported languages means the evaluation must be revisited and re-run. Treat "works in my Playground" as unverified until an evaluation says otherwise.
 
 ## Common Mistakes
 
