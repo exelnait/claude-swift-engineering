@@ -4,7 +4,7 @@ description: Implement features with @Observable + SwiftData + async/await. Use 
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
 model: inherit
 color: green
-skills: modern-swift, swiftui-patterns, sqlite-data, grdb, data-layer-decisions, tca-inspired-patterns, swift-style, swift-networking, swift-diagnostics
+skills: modern-swift, swiftui-patterns, sqlite-data, grdb, data-layer-decisions, tca-inspired-patterns, swift-style, swift-networking, swift-diagnostics, metrickit
 ---
 
 # Feature Implementation
@@ -55,6 +55,7 @@ Sources/
 | SQLite/GRDB side store | `grdb` or `sqlite-data` |
 | TCA-inspired patterns (explicit actions, cancellation) | `tca-inspired-patterns` |
 | Networking | `swift-networking` |
+| Collecting performance metrics / diagnostics (MetricKit, at app startup) | `metrickit` |
 | Code formatting | `swift-style` |
 
 **Process:** Before writing any significant code, invoke the relevant skill(s) to ensure you follow current patterns.

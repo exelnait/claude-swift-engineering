@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.5.0
+**Version:** 0.6.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **23 comprehensive skills** — Architecture patterns, persistence decisions, design principles & naming, accessibility, AI-feature evaluation, and development tools
+- **24 comprehensive skills** — Architecture patterns, persistence decisions, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -270,6 +270,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `swift-testing` | Swift Testing framework (@Test, parameterized tests, async) |
 | `swift-style` | Code style conventions (naming, golden path, organization) |
 | `swift-diagnostics` | Systematic debugging (navigation, build issues, memory) |
+| `metrickit` | Collect real-world performance metrics & diagnostics (MetricKit `MetricManager`, state reporting, crash/hang/memory) |
 | `generating-swift-package-docs` | Generate API docs for Swift package dependencies |
 
 ## Advanced Features

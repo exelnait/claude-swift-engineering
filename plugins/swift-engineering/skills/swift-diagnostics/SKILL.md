@@ -7,6 +7,8 @@ description: Use when debugging NavigationStack issues (not responding, unexpect
 
 Systematic debugging workflows for iOS/macOS development. These patterns help identify root causes in minutes rather than hours by following structured diagnostic approaches.
 
+> **Development vs production:** this skill is for diagnosing issues *while you build*. To monitor performance and capture crash/hang/memory diagnostics from *real users in the field*, use the **`metrickit`** skill (collect → analyze → triage → fix → monitor).
+
 ## Reference Loading Guide
 
 **ALWAYS load reference files if there is even a small chance the content may be required.** It's better to have the context than to miss a pattern or make a mistake.
