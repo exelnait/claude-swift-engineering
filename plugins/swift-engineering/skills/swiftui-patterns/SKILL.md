@@ -51,7 +51,7 @@ This skill covers the default architecture stack: `@Observable` + SwiftData + fe
 | **[Navigation](references/navigation.md)** | Programmatic or deep-link navigation |
 | **[Performance](references/performance.md)** | Lists with 100+ items or excessive re-renders |
 | **[UIKit Interop](references/uikit-interop.md)** | Wrapping UIKit components (WKWebView, PHPicker) |
-| **[Accessibility](references/accessibility.md)** | VoiceOver, Dynamic Type, accessibility actions |
+| **[Accessibility](references/accessibility.md)** | VoiceOver, Dynamic Type, accessibility actions, reading / long-form text (`accessibilityLinkedGroup`, `causesPageTurn`) |
 | **[Async Patterns](references/async-patterns.md)** | Loading states, refresh, background tasks |
 | **[Previews](references/previews.md)** | Writing `#Preview` blocks, mock injection, SwiftData in-memory container |
 | **[Composition](references/composition.md)** | Reusable view modifiers or complex conditional UI |

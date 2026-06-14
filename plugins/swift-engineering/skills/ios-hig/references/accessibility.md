@@ -9,6 +9,7 @@ Apple Human Interface Guidelines for accessible iOS app design.
 - Maintain readable contrast and avoid conveying meaning by color alone
 - Respect platform accessibility settings (Reduce Motion/Transparency) when relevant
 - Prefer system controls that come with good accessibility defaults
+- For long-form / reading content (paginated articles, books, scanned text), see [Reading Accessibility](reading-accessibility.md) — cross-element line navigation, continuous read-all, edit-rotor selection, and `UITextInput` for custom text
 
 ## Examples
 
@@ -79,3 +80,4 @@ var body: some View {
 3. Maintain sufficient color contrast
 4. Respect accessibility settings like Reduce Motion
 5. Prefer system controls with built-in accessibility
+6. For reading / long-form text, follow [Reading Accessibility](reading-accessibility.md)

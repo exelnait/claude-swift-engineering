@@ -17,6 +17,7 @@ Apple's Human Interface Guidelines define the visual language, interaction patte
 | **[Content](references/content.md)** | Empty states, writing copy, typography, or placeholder text |
 | **[Visual Design](references/visual-design.md)** | Colors, materials, contrast, dark mode, or SF Symbols |
 | **[Accessibility](references/accessibility.md)** | VoiceOver, Dynamic Type, Reduce Motion, or accessibility labels |
+| **[Reading Accessibility](references/reading-accessibility.md)** | Long-form / reading content: cross-element line navigation, continuous read-all across pages, edit-rotor text selection, custom text via `UITextInput`, Accessibility Reader |
 | **[Feedback](references/feedback.md)** | Animations, haptics, loading states, or error messages |
 | **[Performance](references/performance-platform.md)** | Responsiveness, system components, or app launch |
 | **[Privacy](references/privacy-permissions.md)** | Permission requests, data handling, or privacy-sensitive APIs |

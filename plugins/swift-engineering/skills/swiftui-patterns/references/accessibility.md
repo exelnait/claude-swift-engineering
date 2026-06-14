@@ -91,3 +91,49 @@ struct ArticleCard: View {
     }
 }
 ```
+
+## Reading / Long-Form Text
+
+**Use for:** Articles, books, or any multi-paragraph reading content where
+VoiceOver and Speak Screen should move fluidly by line, sentence, word, and
+character — and read continuously across pages.
+
+```swift
+struct ReadingPage: View {
+    @Namespace private var readingNamespace
+    let paragraphs: [String]
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                ForEach(paragraphs.indices, id: \.self) { index in
+                    paragraph(paragraphs[index], isLast: index == paragraphs.count - 1)
+                }
+            }
+        }
+        // Continuous read-all turns the page when reaching the end.
+        .accessibilityScrollAction { _ in advanceToNextPage() }
+    }
+
+    @ViewBuilder
+    private func paragraph(_ text: String, isLast: Bool) -> some View {
+        let content = Text(text)
+            .font(.body)                 // Dynamic Type
+            .textSelection(.enabled)     // accessible selection for free
+            .accessibilityAddTraits(isLast ? [.causesPageTurn] : [])
+
+        // iOS 27+: link elements so line navigation flows across paragraphs.
+        if #available(iOS 27, *) {
+            content.accessibilityLinkedGroup(id: "page", in: readingNamespace)
+        } else {
+            content
+        }
+    }
+}
+```
+
+> Prefer `Text` with selection / `TextEditor` over custom rendering — they adopt
+> `UITextInput` and give granular navigation and selection for free. For custom
+> or image-backed text, adopt `UITextInput` fully (UIKit). See the iOS HIG
+> [Reading Accessibility](../../ios-hig/references/reading-accessibility.md)
+> reference for the complete checklist.
