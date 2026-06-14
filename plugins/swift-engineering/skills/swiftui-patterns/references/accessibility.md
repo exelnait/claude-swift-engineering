@@ -134,6 +134,7 @@ struct ReadingPage: View {
 
 > Prefer `Text` with selection / `TextEditor` over custom rendering — they adopt
 > `UITextInput` and give granular navigation and selection for free. For custom
-> or image-backed text, adopt `UITextInput` fully (UIKit). See the iOS HIG
-> [Reading Accessibility](../../ios-hig/references/reading-accessibility.md)
+> or image-backed text, adopt `UITextInput` fully (UIKit). See the `accessibility`
+> skill's
+> [Reading & Long-Form Text](../../accessibility/references/reading-long-form.md)
 > reference for the complete checklist.

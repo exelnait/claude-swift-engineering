@@ -4,7 +4,7 @@ description: Implement SwiftUI views following Apple HIG guidelines. Use after c
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
 model: inherit
 color: yellow
-skills: modern-swift, swiftui-patterns, swiftui-advanced, ios-hig, swift-style, haptics, ios-26-platform, localization
+skills: modern-swift, swiftui-patterns, swiftui-advanced, ios-hig, accessibility, swift-style, haptics, ios-26-platform, localization
 ---
 
 # SwiftUI View Implementation
@@ -66,7 +66,8 @@ Load the `swiftui-patterns` skill's `previews.md` reference before writing any v
 |---------------------|--------------|
 | View patterns, @Observable | `swiftui-patterns` |
 | Advanced gestures, layout | `swiftui-advanced` |
-| Accessibility, navigation | `ios-hig` |
+| Navigation, HIG conventions | `ios-hig` |
+| Accessibility (VoiceOver, Dynamic Type, custom controls, reading, captions) | `accessibility` |
 | Concurrency in views | `modern-swift` |
 
 **Process:** Before writing any view code, invoke relevant skills to ensure HIG compliance and modern patterns.

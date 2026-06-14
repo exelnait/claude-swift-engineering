@@ -4,7 +4,7 @@ description: Review Swift/iOS code for quality, security, performance, and HIG c
 tools: Read, Glob, Grep, Bash, Skill
 model: inherit
 color: orange
-skills: modern-swift, swiftui-patterns, swiftui-advanced, ios-hig, swift-style, swift-diagnostics, swift-testing, composable-architecture
+skills: modern-swift, swiftui-patterns, swiftui-advanced, ios-hig, accessibility, swift-style, swift-diagnostics, swift-testing, composable-architecture
 ---
 
 # Swift Code Reviewer

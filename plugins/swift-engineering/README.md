@@ -18,8 +18,8 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 
 ## Features at a Glance
 
-- **13 specialized agents** — Planning, architecture, implementation, testing, documentation, and architecture knowledge preservation
-- **21 comprehensive skills** — Architecture patterns, persistence decisions, design guidelines, and development tools
+- **14 specialized agents** — Planning, architecture, implementation, accessibility, testing, documentation, and architecture knowledge preservation
+- **22 comprehensive skills** — Architecture patterns, persistence decisions, design guidelines, accessibility, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -203,6 +203,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `@feature-engineer` | @Observable + SwiftData implementation (default path) | Inherit |
 | `@tca-engineer` | TCA implementation (reducers, effects) — opt-in only | Inherit |
 | `@swiftui-specialist` | SwiftUI views (declarative only, no business logic) | Inherit |
+| `@accessibility-specialist` | Make UI accessible & audit it (VoiceOver, Dynamic Type, custom controls, reading, captions, inclusive design) | Inherit |
 | `@swift-test-creator` | Create tests using Swift Testing | Inherit |
 | `@architecture-keeper` | Create/update architecture docs with Mermaid diagrams | Inherit |
 | `@swift-code-reviewer` | Review code quality, security, performance | Inherit |
@@ -253,6 +254,11 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `ios-26-platform` | iOS 26 features (Liquid Glass, new APIs) |
 | `haptics` | Haptic feedback (UIFeedbackGenerator, Core Haptics, AHAP patterns) |
 | `localization` | Internationalization (String Catalogs, pluralization, RTL) |
+
+### Accessibility
+| Skill | Purpose |
+|-------|---------|
+| `accessibility` | Accessibility depth — VoiceOver/Switch/Voice Control, Dynamic Type, custom-control accessibility, reading/long-form text, media captions, inclusive design, Accessibility Nutrition Labels, and auditing |
 
 ### Development Tools
 | Skill | Purpose |

@@ -2,6 +2,12 @@
 
 Apple Human Interface Guidelines for accessible iOS app design.
 
+> **For depth, use the dedicated `accessibility` skill.** This page is a quick
+> HIG-level summary. Custom-control accessibility, Dynamic Type, reading /
+> long-form text, media captions, inclusive-design principles, and
+> testing/audits live in the [`accessibility`](../../accessibility/SKILL.md)
+> skill.
+
 ## Critical Rules
 
 - Provide meaningful accessibility labels/hints for icon-only controls and custom components
@@ -9,7 +15,7 @@ Apple Human Interface Guidelines for accessible iOS app design.
 - Maintain readable contrast and avoid conveying meaning by color alone
 - Respect platform accessibility settings (Reduce Motion/Transparency) when relevant
 - Prefer system controls that come with good accessibility defaults
-- For long-form / reading content (paginated articles, books, scanned text), see [Reading Accessibility](reading-accessibility.md) — cross-element line navigation, continuous read-all, edit-rotor selection, and `UITextInput` for custom text
+- For long-form / reading content (paginated articles, books, scanned text), custom controls, Dynamic Type, and media captions, see the [`accessibility`](../../accessibility/SKILL.md) skill
 
 ## Examples
 
@@ -80,4 +86,4 @@ var body: some View {
 3. Maintain sufficient color contrast
 4. Respect accessibility settings like Reduce Motion
 5. Prefer system controls with built-in accessibility
-6. For reading / long-form text, follow [Reading Accessibility](reading-accessibility.md)
+6. For anything deeper, use the [`accessibility`](../../accessibility/SKILL.md) skill

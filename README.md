@@ -88,8 +88,8 @@ claude-swift-engineering/
 ├── .github/workflows/                      # CI/CD pipelines
 ├── plugins/
 │   └── swift-engineering/                  # Main plugin
-│       ├── agents/                         # 12 specialized agents
-│       ├── skills/                         # 18 comprehensive skills
+│       ├── agents/                         # 14 specialized agents
+│       ├── skills/                         # 22 comprehensive skills
 │       ├── hooks-scripts/                  # Hooks system
 │       ├── scripts/                        # Helper utilities
 │       ├── rules/                          # Development rules
