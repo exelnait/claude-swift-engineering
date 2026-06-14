@@ -141,3 +141,5 @@ The goal of a judge is to stand in for *you* across the whole dataset. When the 
 3. **Judge misunderstands your app?** Add context via `ModelJudgePrompt`.
 
 Iterate until the judge reliably reproduces your judgement; then it can scale to thousands of samples in your place. From there it feeds the same hill-climbing loop as quantitative metrics (see `evaluation-driven-development.md`), now powered by qualitative signal.
+
+To *measure* (not just eyeball) how aligned the judge is with your expert ratings — and to hill-climb that alignment with **Cohen's kappa** and comparative evaluations — see `judge-alignment.md`. Alignment matters increasingly as the dataset grows: an unaligned judge **drifts** further from your judgement the more samples you add.

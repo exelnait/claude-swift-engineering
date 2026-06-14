@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.4.0
+**Version:** 0.5.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **14 specialized agents** — Planning, architecture, implementation, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **22 comprehensive skills** — Architecture patterns, persistence decisions, design guidelines, AI-feature evaluation, and development tools
+- **22 comprehensive skills** — Architecture patterns, persistence decisions, design principles & naming, AI-feature evaluation, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -245,13 +245,14 @@ Each agent will automatically read the plan, update it with their work, and add 
 | Skill | Purpose |
 |-------|---------|
 | `storekit` | StoreKit 2 in-app purchases and subscriptions |
-| `foundation-models` | Apple on-device AI (iOS 26+, summarization, extraction) |
+| `foundation-models` | Apple AI: on-device + Private Cloud Compute, vision, agentic dynamic profiles, system tools, best practices |
 | `evaluations` | Measure quality of AI/Foundation Models features (datasets, metrics, model judges, evaluation-driven development) — every supported language |
 | `swift-networking` | Network.framework (TCP/UDP, custom protocols) |
 
 ### Platform & Design
 | Skill | Purpose |
 |-------|---------|
+| `design-principles` | Apple's eight design principles, naming/UX-writing criteria, and responsible-AI design (the *why* behind the HIG) |
 | `ios-hig` | Apple Human Interface Guidelines (accessibility, dark mode, haptics) |
 | `ios-26-platform` | iOS 26 features (Liquid Glass, new APIs) |
 | `haptics` | Haptic feedback (UIFeedbackGenerator, Core Haptics, AHAP patterns) |

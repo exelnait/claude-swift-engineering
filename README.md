@@ -15,7 +15,7 @@ The **swift-engineering plugin** is a production-ready toolkit for professional 
 - **Modern Swift 6.2** — iOS 26+ with strict concurrency, async/await, actors, Sendable
 - **Code Quality** — Integrated code review, accessibility compliance, and performance checks
 - **AI Feature Quality** — Measure Foundation Models / language-model features with the Evaluations framework, across every supported language
-- **Knowledge Skills** — 22 specialized knowledge bases covering architecture patterns, frameworks, AI-feature evaluation, design, and development tools
+- **Knowledge Skills** — 22 specialized knowledge bases covering architecture patterns, frameworks, AI-feature evaluation, design principles, and development tools
 
 ## Quick Start
 
@@ -78,7 +78,7 @@ See [plugins/swift-engineering/README.md](plugins/swift-engineering/README.md) f
 
 ### 22 Knowledge Skills
 
-Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), frameworks (SQLite, GRDB, StoreKit, networking, Foundation Models), AI-feature evaluation (the Evaluations framework — datasets, metrics, model judges, evaluation-driven development, every supported language), platform design (iOS 26, HIG, localization, haptics), and development tools (testing, style, diagnostics). Each skill provides deep guidance on modern patterns and best practices.
+Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), frameworks (SQLite, GRDB, StoreKit, networking, Foundation Models — on-device + Private Cloud Compute, vision, agentic dynamic profiles), AI-feature evaluation (the Evaluations framework — datasets, metrics, model judges, judge alignment, evaluation-driven development, every supported language), design (eight design principles, naming/UX writing, responsible AI), platform design (iOS 26, HIG, localization, haptics), and development tools (testing, style, diagnostics). Each skill provides deep guidance on modern patterns and best practices.
 
 ## For Contributors
 

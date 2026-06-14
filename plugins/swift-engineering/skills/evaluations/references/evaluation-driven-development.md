@@ -90,6 +90,19 @@ From Apple's guidance, plus this plugin's policy:
 
 9. **Cover every language and every AI/FM feature.** (See Coverage Policy.)
 
+10. **Treat each change as a controlled experiment.** Compare the change (experimental) against the unchanged version (control) with one variable different, using comparative evaluations and Xcode's comparison view. Failed experiments are informative — they tell you what doesn't move the metric. See `judge-alignment.md`.
+
+11. **Watch for judge drift; align your judges.** A model judge is only trustworthy if it scores the way you would. Measure alignment with Cohen's kappa (target ≥ 0.6) and hill-climb the judge itself until it stands in for your expert opinion — drift only widens as the dataset grows. See `judge-alignment.md`.
+
+## Hill-Climb the Whole Feature, Not Just Prompts
+
+Prompts are one lever. When hill-climbing, everything is fair game:
+
+- **Feature side:** instructions, tools (e.g., adding a lookup tool to ground output), and the model(s) used.
+- **Evaluation side:** the dataset (size and variety), aggregation methods, and the evaluators themselves.
+
+Adding a tool, swapping a model, or enriching context are all valid hill-climbing moves — compare each against the baseline the same way you compare a prompt change.
+
 ## Related Apple Sessions
 
 - "Improve your prompts by hill climbing with Evaluations" — deeper on the prompt-refinement loop.

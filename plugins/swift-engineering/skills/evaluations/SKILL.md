@@ -33,6 +33,7 @@ The Evaluations framework was introduced at WWDC (2026) and is newer than your t
 | **[Datasets](references/datasets.md)** | Building `ModelSample` datasets, expected values, dataset variety, `SampleGenerator`, and per-language / multilingual coverage |
 | **[Quantitative Metrics](references/quantitative-metrics.md)** | `Metric`, `Evaluator`, pass/fail vs scoring metrics, `aggregateMetrics(using:)`, heuristic (code-measurable) checks |
 | **[Model Judges](references/model-judges.md)** | `ModelJudgeEvaluator`, scoring guides, `ScoreDimension`, `ModelJudgePrompt`, rationales, choosing a judge model, refining a judge |
+| **[Judge Alignment & Comparative Evals](references/judge-alignment.md)** | Drift, measuring alignment with Cohen's kappa, aligning a judge to your expert ratings, comparing two evaluations (control vs experimental), tool-call evaluators |
 | **[Evaluation-Driven Development](references/evaluation-driven-development.md)** | Hill-climbing loop, optimization targets, best practices, and the coverage policy (every language, every AI/FM feature) |
 
 ## The Five Steps of an Evaluation
