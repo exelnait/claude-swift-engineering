@@ -100,6 +100,7 @@ Before specifying UI, invoke the **`design-principles`** skill and apply Apple's
 
 - **Purpose first:** flag UI that doesn't earn a person's time/attention/trust; recommend cutting it.
 - **Name things deliberately:** for any feature/tab/setting/label, run the naming criteria (belongs, sets expectations, works everywhere) and the audience → think/feel/do exercise. Name the experience, not the technology.
+- **Brand in the content layer:** when a design carries brand identity, load `branding.md`. Keep the UI/navigation layer native (tab bars, toolbars, standard components) and express brand in the content layer (imagery, motion, color, typography). Reserve custom components for high-impact areas; flag custom fonts that lack Dynamic Type support and brand color applied to toolbars instead of the scroll area.
 - **Responsible AI:** for any intelligence-powered UI, specify safeguards (previews/confirmations/disclaimers) and the privacy boundary, and note that quality must be measured with the `evaluations` skill across every supported language.
 
 ## MCP Servers

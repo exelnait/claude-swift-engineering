@@ -1,6 +1,6 @@
 ---
 name: design-principles
-description: Use when making product/UX decisions for an Apple-platform app — deciding what to build, naming features/menus/settings, weighing clarity vs brand, or responsibly adding AI features. Applies Apple's eight design principles (purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, delight) plus naming/UX-writing criteria. Complements `ios-hig` (the concrete HIG rules) with the why behind them.
+description: Use when making product/UX decisions for an Apple-platform app — deciding what to build, naming features/menus/settings, expressing brand identity without breaking the native feel, weighing clarity vs brand, or responsibly adding AI features. Applies Apple's eight design principles (purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, delight) plus naming/UX-writing and branding criteria. Complements `ios-hig` (the concrete HIG rules) with the why behind them.
 ---
 
 # Apple Design Principles
@@ -17,6 +17,7 @@ This skill is the *why*. For the concrete platform rules (accessibility, Dynamic
 |-----------|-----------|
 | **[Principles](references/principles.md)** | Deciding what to build, evaluating a design, resolving a UX trade-off — the eight principles in depth |
 | **[Naming & UX Writing](references/naming-and-ux-writing.md)** | Naming a feature, menu, tab, setting, or plan; choosing labels; weighing clarity vs brand; writing in-app copy |
+| **[Branding](references/branding.md)** | Expressing brand identity on iOS — where brand belongs (UI vs content layer), custom vs standard components, brand color/typography/iconography/logos, keeping the native feel |
 | **[Responsible AI Design](references/responsible-ai-design.md)** | Adding an AI / Foundation Models feature — privacy boundaries, safety, anticipating wrong/unsafe model output, safeguards, and when to cut a feature |
 
 ## The Eight Principles (at a glance)
@@ -40,6 +41,7 @@ This skill is the *why*. For the concrete platform rules (accessibility, Dynamic
 2. **While designing:** check the decision against the relevant principles (e.g., a destructive action → Agency/forgiveness; a permission prompt → Responsibility; a new control layout → Flexibility/personalization).
 3. **When adding intelligence:** load `responsible-ai-design.md` — anticipate that the model can produce something unexpected, inaccurate, or unsafe, and add safeguards. Measure quality with the **`evaluations`** skill.
 4. **When naming anything:** load `naming-and-ux-writing.md` and run the audience → think/feel/do exercise and the three naming criteria.
+5. **When expressing brand:** load `branding.md` — keep the UI/navigation layer native and put brand identity in the content layer; reserve custom components for high-impact areas and use brand color/typography/iconography with restraint.
 
 ## Connections to Other Skills
 
@@ -60,3 +62,7 @@ This skill is the *why*. For the concrete platform rules (accessibility, Dynamic
 5. **Shipping an AI feature without anticipating harm** — A model can suggest an allergen in a recipe app. "How could this be misused? Who is harmed? How do I prevent it?" If risk outweighs value, remove the feature. See `responsible-ai-design.md`.
 
 6. **Breaking familiarity for cleverness** — Reusing the trash-can icon for something other than delete, or inventing a delete icon, destroys instant recognition. Don't reinvent common metaphors.
+
+7. **Branding the UI layer instead of the content layer** — Heavily customizing navigation (custom tab bars, rebuilt context menus, solid-color toolbars) to express brand makes an app feel less native, even dated. Keep navigation native; put brand identity in the content layer, and move brand color into the scroll area. See `branding.md`.
+
+8. **Custom fonts that ignore Dynamic Type** — System fonts support Dynamic Type for free; a custom typeface requires you to build and test that support so text reflows (not truncates) at large sizes. Consider San Francisco variants (SF Pro/Compact/Mono/Rounded, New York) before reaching for a custom font.
