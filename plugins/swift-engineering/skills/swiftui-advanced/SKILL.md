@@ -14,7 +14,7 @@ Advanced SwiftUI patterns for gesture composition, adaptive layouts, architectur
 | Reference | Load When |
 |-----------|-----------|
 | **[Gestures](references/gestures.md)** | Composing multiple gestures, GestureState, custom recognizers |
-| **[Adaptive Layout](references/adaptive-layout.md)** | ViewThatFits, AnyLayout, size classes, iOS 26 free-form windows |
+| **[Adaptive Layout](references/adaptive-layout.md)** | ViewThatFits, AnyLayout, size classes, iOS 26 free-form windows (quick reference — deep available-space adaptation for iPhone fold, iPad multitasking & resizable windows lives in the dedicated `adaptive-ui` skill) |
 | **[Architecture](references/architecture.md)** | MVVM vs TCA decision, State-as-Bridge, property wrapper selection |
 | **[Performance](references/performance.md)** | Instruments 26, view body optimization, unnecessary updates |
 
