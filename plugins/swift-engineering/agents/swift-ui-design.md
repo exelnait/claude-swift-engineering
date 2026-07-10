@@ -4,7 +4,7 @@ description: Analyze UI mockups, screenshots, or descriptions to plan SwiftUI im
 tools: Read, Glob, Grep, Skill
 model: opus
 color: cyan
-skills: modern-swift, swiftui-patterns, swiftui-advanced, ios-hig, design-principles, haptics, ios-26-platform, localization
+skills: modern-swift, swiftui-patterns, swiftui-advanced, adaptive-ui, ios-hig, design-principles, haptics, ios-26-platform, localization
 ---
 
 # UI Design Analysis

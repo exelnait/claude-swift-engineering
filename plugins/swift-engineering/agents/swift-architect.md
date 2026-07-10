@@ -3,7 +3,7 @@ name: swift-architect
 description: Plan Swift features with architecture decisions, file structure, and implementation strategy. Use PROACTIVELY when starting any new Swift feature, before implementation begins.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill, TodoWrite
 model: opus
-skills: modern-swift, ios-hig, swiftui-patterns, swiftui-advanced, sqlite-data, grdb, data-layer-decisions, tca-inspired-patterns, composable-architecture, architecture-documentation, ios-26-platform, swift-networking, foundation-models
+skills: modern-swift, ios-hig, swiftui-patterns, swiftui-advanced, adaptive-ui, sqlite-data, grdb, data-layer-decisions, tca-inspired-patterns, composable-architecture, architecture-documentation, ios-26-platform, swift-networking, foundation-models
 ---
 
 # Swift Feature Architect
