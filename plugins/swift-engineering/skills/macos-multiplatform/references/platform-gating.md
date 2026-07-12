@@ -110,6 +110,38 @@ struct WebView: NSViewRepresentable {
 // Callers write `WebView(url:)` with no knowledge of the split.
 ```
 
+### Typealias + extension: bridge the *behavior*, not just the type
+
+A typealias collapses the type; an extension on it collapses the *behavior* difference too, so the call site is one clean cross-platform API. Jesse Squires' canonical example is the clipboard — `UIPasteboard` on iOS vs `NSPasteboard` on macOS, which even differ in how you set a string:
+
+```swift
+#if os(macOS)
+import AppKit
+typealias XPasteboard = NSPasteboard
+#else
+import UIKit
+typealias XPasteboard = UIPasteboard
+#endif
+
+extension XPasteboard {
+    func copyText(_ text: String) {
+        #if os(macOS)
+        clearContents()
+        setString(text, forType: .string)   // AppKit's two-step API
+        #else
+        string = text                        // UIKit's one-liner
+        #endif
+    }
+}
+```
+
+```swift
+// Call site — a single cross-platform API, no #if in sight:
+XPasteboard.general.copyText(someText)
+```
+
+The `#if` that reconciles the two frameworks lives once, inside `copyText`. Every caller stays clean. Apply the same shape to any "similar but not identical" AppKit/UIKit pair you keep reaching for.
+
 ## Bridge kind 2 — no-op custom view modifiers
 
 For "an iOS-only modifier that should simply do nothing on Mac," wrap it in a custom modifier that applies on iOS and returns the view unchanged on macOS. Call sites then use *your* modifier with zero `#if`, and it reads as a normal SwiftUI chain.
@@ -137,6 +169,64 @@ List { /* ... */ }
 
 Generalize this for any iOS-only styling: `.keyboardType`, `.textInputAutocapitalization`, `.listStyle(.insetGrouped)`, `.statusBarHidden` — each becomes one small no-op-on-Mac modifier. See **API Divergence Catalog** for the full list of which modifiers need this treatment and their exact signatures.
 
+## Bridge kind 3 — platform-value initializers (Jesse Squires)
+
+When only a *value* differs per platform — a padding, a width, a font size — don't wrap the whole modifier in `#if`. Add an initializer to the value's type that picks the right constant. This is Jesse Squires' pattern from *Improving multiplatform SwiftUI code*, and it turns ugly, hard-to-read `#if` ladders into a single legible call.
+
+```swift
+// The #if-riddled original — cognitive load, and Xcode formats #if hideously:
+var body: some View {
+    MyCustomView()
+    #if os(iOS)
+        .padding(10)
+    #elseif os(watchOS)
+        .padding(4)
+    #else // macOS
+        .padding(24)
+    #endif
+}
+```
+
+Add a value initializer once:
+
+```swift
+extension Double {
+    init(iOS: Self, watchOS: Self, macOS: Self) {
+        #if os(iOS)
+        self = iOS
+        #elseif os(watchOS)
+        self = watchOS
+        #else // macOS
+        self = macOS
+        #endif
+    }
+}
+```
+
+Now the call site reads cleanly — it's obvious the view always wants padding and that the amount is platform-specific:
+
+```swift
+var body: some View {
+    MyCustomView()
+        .padding(Double(iOS: 10, watchOS: 4, macOS: 24))
+}
+```
+
+Prefer to go one step further and lift the pattern into the **modifier** itself, so the `#if` disappears from the value too:
+
+```swift
+extension View {
+    func padding(iOS: CGFloat, watchOS: CGFloat, macOS: CGFloat) -> some View {
+        self.padding(Double(iOS: iOS, watchOS: watchOS, macOS: macOS))
+    }
+}
+
+// Call site — the cleanest form:
+MyCustomView().padding(iOS: 10, watchOS: 4, macOS: 24)
+```
+
+Use this for any purely-numeric or purely-value platform difference (padding, corner radius, frame sizes, font sizes, spacing). It complements the metrics-protocol approach in **Layered Architecture**: reach for a metrics value when many views share a coherent set of platform constants (sidebar width, toolbar height); reach for this initializer for one-off local values.
+
 ## Jesse Squires' rule: bridge small differences, split large ones
 
 *How much* the platforms differ decides your tool:
@@ -158,6 +248,24 @@ struct SettingsScreen: View {
 ```
 
 Put the two implementations in `MacSettingsView.swift` and `iOSSettingsView.swift` (see **Project Structure** for file-naming), each free of `#if` internally.
+
+If you'd rather keep both bodies in one type, Jesse Squires' structure isolates the split to a single `#if` in `body` that delegates to per-platform computed properties — still readable, no scattered branches:
+
+```swift
+struct MyPlatformSpecificView: View {
+    var body: some View {
+        #if os(iOS)
+        body_iOS
+        #else // macOS
+        body_macOS
+        #endif
+    }
+    private var body_iOS:   some View { /* the iOS-only body */ }
+    private var body_macOS: some View { /* the macOS-only body */ }
+}
+```
+
+Either shape is fine; the rule is the same — **one** `#if` chooses the whole body, and neither branch is polluted by the other's concerns.
 
 ## Excluding a capability (rung 4) — keep the Mac build whole
 

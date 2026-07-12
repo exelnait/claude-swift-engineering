@@ -52,6 +52,45 @@ Guidance distilled from Apple's SwiftUI structure guidance and the multiplatform
 - **One `Platform.swift`** for all the `Platform*` typealiases — the app's platform-type vocabulary in a single reviewable file (see **Platform Gating**).
 - **Use "New Group with Folder"** in Xcode so the Project navigator and the on-disk folders stay in sync; otherwise the navigator looks tidy while Finder is chaos.
 
+### Two conventions for platform-specific views
+
+Both are fine — pick one and be consistent:
+
+- **Feature-local platform files** (shown above): the platform variants live *inside* the feature folder (`MacSettingsView.swift` / `iOSSettingsView.swift`). Keeps a feature's whole story in one place; good when only a few views diverge.
+- **A dedicated `Platform/` tree** (per Sébastien Lato's architecture): a top-level `Platform/{iOS,macOS,visionOS}/` holding *all* the wrappers, metrics implementations, containers, and platform-unique views, while `Features/` stays purely shared behavior:
+
+  ```
+  Features/            # shared upper layers only — models, state, business logic
+  ├── Home/
+  └── Settings/
+  Platform/            # specialized lower layers — adapters & platform views
+  ├── iOS/             #   iOSMetrics, iOS containers
+  ├── macOS/           #   macOSMetrics, split-view shells, menu commands
+  └── visionOS/        #   spatial containers
+  ```
+
+  This makes the shared/specialized boundary physically visible and is the natural home for the `PlatformMetrics` and `PlatformContainer` patterns in **Layered Architecture**. Prefer it as the app grows or once you target three-plus platforms.
+
+### Apple's sample-app shape
+
+Apple's own multiplatform samples — **Food Truck** and **Backyard Birds** — are the canonical reference and worth mirroring:
+
+- A `Multiplatform/` (shared) area holding `MyApp.swift`, `Navigation/`, `Features/`, and `Assets.xcassets`.
+- A reusable **Swift package** for the non-UI and shared-UI layers (`FoodTruckKit`; `BackyardBirdsData` + `BackyardBirdsUI`), so business logic and components are a module the app targets depend on.
+- Separate targets for extensions (`Widgets/`, `WatchApp/`).
+
+This is target strategy **B** (shared package + thin app targets) in practice, and it enforces the layer boundary at the module level — the package literally cannot import your iOS app's UIKit code.
+
+### Scenes: App / Scene / View
+
+Apple's structure rests on three protocols; know which scene type each platform needs:
+
+- **`App`** — the `@main` entry point that owns the scenes.
+- **`Scene`** — a distinct region of UI. **`WindowGroup`** for standard content (the default), **`DocumentGroup`** for document-based apps, **`Settings`** for the macOS preferences window (see **macOS Adaptation**), **`MenuBarExtra`** for a menu-bar utility.
+- **`View`** — the composable building blocks.
+
+Follow Apple's **Model-View (MV)** default: views observe `@Observable` models directly (this plugin's `swiftui-patterns` house style), no ceremony-only ViewModel layer. Whatever the pattern, that model layer stays platform-blind (**Layered Architecture**).
+
 ## Naming platform-specific files
 
 Two conventions, both fine — be consistent:

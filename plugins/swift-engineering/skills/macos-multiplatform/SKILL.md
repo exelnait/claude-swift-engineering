@@ -14,6 +14,26 @@ SwiftUI lets one codebase target iPhone, iPad, **and Mac** — but only if you t
 2. **Maximum — adapt to macOS idioms where it matters.** Sidebars over bottom tab bars, real menu-bar commands and keyboard shortcuts, hover and right-click, resizable windows, a `Settings` scene. Not every feature reaches the top rung, but you always know where it sits.
 3. **Default — architect new features with macOS in mind.** Reach for cross-platform APIs first, isolate platform differences behind shared seams, and never let an iOS assumption ossify into shared code. Retrofitting Mac support later costs far more than designing for it now.
 
+Grounded in Sébastien Lato's *SwiftUI Multi-Platform Architecture*, Jesus Perez Mojica's *Building Once, Running Everywhere*, Jesse Squires' *Sharing / Improving multiplatform SwiftUI code*, and Apple's multiplatform guidance (Food Truck & Backyard Birds samples). See the reference files for the specifics from each.
+
+## Share behavior, specialize presentation
+
+Multiplatform SwiftUI is an **architecture** problem, not a UI problem — and the architectural rule is one sentence: **share behavior, specialize presentation.** Your code describes *intent* once; each platform *adapts the execution* to its own strengths. You never force platforms to run identical UI (that is the old cross-platform trap — apps that "work everywhere but feel native nowhere"); you express what a feature does and let each platform present it natively.
+
+That means every feature is a layered stack with a fixed, high line between shared and specialized:
+
+```
+Business Logic     ─┐  SHARED — zero platform code, ever
+State Management    ─┘  (@Observable models; no #if, no UIKit, no UIScreen)
+────────────────────
+Navigation Model    ─┐
+Layout System        │  per platform — the ONLY layers that specialize
+Input Model          │  (stack/split/sidebar/spatial · metrics · touch/pointer/keyboard)
+Presentation        ─┘
+```
+
+**The cardinal rule: nothing platform-specific lives above the presentation layers.** No `#if os()`, no `UIKit`/`AppKit` import, no `UIScreen`/`UIDevice`, no platform check inside a model, ViewModel, or service. A ViewModel that knows which platform it is on is two ViewModels wearing a trenchcoat. When a difference leaks upward, push it *down* into a shared seam — a platform-metrics value injected via the Environment, a `PlatformContainer` that picks the navigation shell, or named model actions that each platform's UI wires to its own affordances. The full patterns are in **[Layered Architecture](references/layered-architecture.md)**; the divergence ladder below governs each individual specialization within the lower layers.
+
 ## The divergence ladder
 
 When iOS and macOS differ, climb to the **highest rung that works**. The rung you land on is a deliberate choice, not an accident.
@@ -57,7 +77,8 @@ Corollary: **compiling for iOS proves nothing about the Mac.** The only proof th
 
 | Reference | Load When |
 |-----------|-----------|
-| **[Platform Gating](references/platform-gating.md)** | Writing any `#if`, deciding `canImport` vs `os()`, choosing where the `#if` goes, or building bridges — `PlatformColor`/`PlatformImage`/`PlatformFont`/`PlatformViewRepresentable` typealiases and no-op custom view modifiers that keep call sites platform-free |
+| **[Layered Architecture](references/layered-architecture.md)** | Designing any new feature — the "share behavior, specialize presentation" layer model, the rule that business logic/ViewModels carry zero platform code, and the structural patterns that keep it that way: platform-metrics protocol + Environment injection, `PlatformContainer` navigation shells, and actions-as-the-shared-seam for divergent input models |
+| **[Platform Gating](references/platform-gating.md)** | Writing any `#if`, deciding `canImport` vs `os()`, choosing where the `#if` goes, or building bridges — `PlatformColor`/`PlatformImage`/`PlatformFont`/`PlatformViewRepresentable` typealiases, the `Double(iOS:macOS:)` value-initializer / `.padding(iOS:macOS:)` modifier pattern, and no-op custom view modifiers that keep call sites platform-free |
 | **[API Divergence Catalog](references/api-divergence.md)** | Reaching for any iOS-flavored SwiftUI/UIKit API — the concrete list of what breaks the macOS build (`.navigationBarTitleDisplayMode`, `.listStyle(.insetGrouped)`, `.keyboardType`, `.fullScreenCover`, `EditButton`, `UIScreen`/`UIApplication`/`UIPasteboard`, toolbar placements) and the cross-platform or macOS-native replacement for each |
 | **[macOS Adaptation](references/macos-adaptation.md)** | Climbing to the top rung — scenes (`WindowGroup`/`Settings`/`MenuBarExtra`), `.commands` + keyboard shortcuts, `NavigationSplitView`, the pointer/hover/right-click/focus input model, window sizing & resizability, sandbox & entitlements, file access, and `NSApplicationDelegateAdaptor` lifecycle |
 | **[Project Structure](references/project-structure.md)** | Setting up or reorganizing targets — single multiplatform target vs. shared package + thin platform apps, feature-folder layout, platform file-naming (`Foo+iOS.swift`), keeping `Shared` small, deployment targets, and the CI discipline that keeps the Mac build from rotting |
@@ -130,3 +151,7 @@ NEVER: an #if os() inside a view body around a single call site you could have b
 9. **Hardcoding phone dimensions.** Fixed `.frame(width: 390)` or `UIScreen.main.bounds` assumes a canvas the Mac doesn't have — Mac windows are large and resizable. Lay out against measured available space (the `adaptive-ui` skill) and express `minWidth`/`idealWidth`, not fixed sizes.
 
 10. **`#if os(macOS)` that references an excluded symbol elsewhere.** Gating the definition but leaving another unguarded reference to it re-breaks the build. When you exclude a symbol, make sure *every* use of it is behind the same guard.
+
+11. **Platform code above the presentation layer.** A `#if os()`, a `UIScreen` read, a `UIKit` import, or any platform check inside a model, ViewModel, or service is the cardinal architectural sin — it forks your shared layer and metastasizes. Business logic and state must be 100% platform-blind. When a model seems to *need* a platform value, that value belongs in the platform-metrics layer (injected via the Environment), not branched on inside the model. Verify with `rg '#if os\(|import (UIKit|AppKit)|UIScreen' Features/**/*Model.swift Services/` — it should return nothing. See **[Layered Architecture](references/layered-architecture.md)**.
+
+12. **Forcing one platform's shell or UI onto another.** A fake bottom tab bar on Mac, a push stack where a sidebar belongs, or pixel-identical UI across platforms means one platform is wearing another's clothes. Give each platform its native navigation model through a `PlatformContainer`; aim for the same product *identity*, not the same pixels. If it feels forced, it is.

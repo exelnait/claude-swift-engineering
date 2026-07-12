@@ -233,7 +233,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `composable-architecture` | TCA framework — opt-in for complex state |
 | `swiftui-advanced` | Advanced gestures, adaptive layout, architecture decisions |
 | `adaptive-ui` | Available-space adaptation for iPhone fold, iPad multitasking & resizable windows — geometry breakpoints, Tab↔Sidebar morphing, scene geometry, and why `horizontalSizeClass`/idiom/orientation aren't width sensors |
-| `macos-multiplatform` | Build for Mac by default — keep the macOS target always compiling (minimum) and natively adapted (maximum). Divergence ladder (unify→bridge→adapt→exclude), conditional compilation done right, the catalog of iOS-only APIs that break the Mac build + fixes, macOS scenes/menus/pointer, and multiplatform project structure |
+| `macos-multiplatform` | Build for Mac by default — keep the macOS target always compiling (minimum) and natively adapted (maximum). Layered architecture (share behavior, specialize presentation; platform-blind models), the divergence ladder (unify→bridge→adapt→exclude), conditional compilation done right, the catalog of iOS-only APIs that break the Mac build + fixes, macOS scenes/menus/pointer, and multiplatform project structure |
 | `modern-swift` | Swift 6.2 concurrency (async/await, actors, @MainActor, Sendable) |
 | `architecture-documentation` | "Trace + why" architecture docs with Mermaid diagrams |
 

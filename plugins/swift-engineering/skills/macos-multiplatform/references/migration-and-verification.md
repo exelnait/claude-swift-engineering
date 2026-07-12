@@ -65,6 +65,19 @@ Do the cheap universal wins (context menu, semantic toolbar, hover) for *every* 
 
 If a `verify`-style skill or project verification exists, run it against the **macOS** destination too, not only iOS.
 
+## Test multiplatform correctness — most bugs are state bugs
+
+The surprising lesson from shipping multiplatform SwiftUI (per Sébastien Lato's architecture write-up): **most multi-platform bugs are state bugs, not UI bugs.** The view renders fine; it's window lifecycle, navigation state, and focus that break — precisely the per-platform layers. A feature that looks correct in a single iPhone window can still be broken on Mac in ways only these checks surface:
+
+- **Window creation** — opening a second `WindowGroup`/`Window` instance; does state initialize correctly, or does the new window share/corrupt the first's state?
+- **Multi-window restore** — quit and relaunch with multiple windows open; does each restore its own state?
+- **Deep linking per platform** — the same link should route correctly into a push stack (iOS) and a sidebar+detail (Mac); test both.
+- **Keyboard navigation** — Tab/arrow traversal, and every `.keyboardShortcut` you wired actually fires.
+- **Focus behavior** — `@FocusState` moves correctly; menu commands act on the *focused* window/selection (`@FocusedValue`), not a stale one.
+- **Split-view state** — sidebar selection ↔ detail stay consistent as the window resizes or the selection changes.
+
+Design multi-window features so a second window cannot corrupt the first (see **macOS Adaptation**), and put these scenarios in your test plan explicitly — the compiler and a single-window smoke test will not catch them.
+
 ## Pre-commit / pre-merge checklist
 
 Run through this before committing any feature change:
@@ -72,7 +85,9 @@ Run through this before committing any feature change:
 - [ ] macOS target **builds** (`xcodebuild -destination 'platform=macOS'` / `swift build`) — the minimum contract.
 - [ ] macOS app **launches** and the changed feature works.
 - [ ] **No unguarded** `UIKit`/`AppKit`/iOS-only symbol in shared code (re-run the Step 1 greps on your diff).
-- [ ] Platform differences sit at **one seam each** (typealias / modifier / single top-level `#if`), not scattered across call sites.
+- [ ] **No platform code above presentation** — models, ViewModels, and services carry zero `#if os()` / `UIKit` / `UIScreen` (`rg '#if os\(|import (UIKit|AppKit)|UIScreen' Features/**/*Model.swift Services/` is empty). The cardinal rule.
+- [ ] Platform differences sit at **one seam each** (typealias / modifier / metrics value / `PlatformContainer` / single top-level `#if`), not scattered across call sites.
+- [ ] For window-creating features: a **second window** doesn't corrupt the first, and multi-window restore works (state bugs, not UI bugs).
 - [ ] Excluded (rung-4) capabilities are gated **including their UI entry points**; the Mac build stays coherent.
 - [ ] Toolbar items use **semantic** placements, not `.navigationBarTrailing`/`.bottomBar`.
 - [ ] Interactive elements have `.contextMenu` and (where apt) `.onHover` / `.keyboardShortcut`.
