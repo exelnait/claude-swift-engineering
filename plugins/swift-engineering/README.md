@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.7.0
+**Version:** 0.8.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **25 comprehensive skills** — Architecture patterns, adaptive UI, persistence decisions, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **26 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, persistence decisions, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -233,6 +233,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `composable-architecture` | TCA framework — opt-in for complex state |
 | `swiftui-advanced` | Advanced gestures, adaptive layout, architecture decisions |
 | `adaptive-ui` | Available-space adaptation for iPhone fold, iPad multitasking & resizable windows — geometry breakpoints, Tab↔Sidebar morphing, scene geometry, and why `horizontalSizeClass`/idiom/orientation aren't width sensors |
+| `macos-multiplatform` | Build for Mac by default — keep the macOS target always compiling (minimum) and natively adapted (maximum). Layered architecture (share behavior, specialize presentation; platform-blind models), the divergence ladder (unify→bridge→adapt→exclude), conditional compilation done right, the catalog of iOS-only APIs that break the Mac build + fixes, macOS scenes/menus/pointer, and multiplatform project structure |
 | `modern-swift` | Swift 6.2 concurrency (async/await, actors, @MainActor, Sendable) |
 | `architecture-documentation` | "Trace + why" architecture docs with Mermaid diagrams |
 
