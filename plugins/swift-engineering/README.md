@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.8.0
+**Version:** 0.9.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **26 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, persistence decisions, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **27 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -240,6 +240,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 ### Persistence
 | Skill | Purpose |
 |-------|---------|
+| `swiftdata` | The default entity store — `@Model` schema, `@Query`/`#Predicate`, `ModelContainer`/`ModelContext`, relationships & delete rules, `@ModelActor` background work, versioned migrations, CloudKit sync, and in-memory testing/previews |
 | `data-layer-decisions` | When to use SwiftData vs GRDB, hybrid patterns, decision trees |
 | `sqlite-data` | SQLiteData library (@Table, migrations, CloudKit sync) |
 | `grdb` | GRDB direct SQLite access (complex queries, FTS5, performance) |
