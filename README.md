@@ -15,7 +15,7 @@ The **swift-engineering plugin** is a production-ready toolkit for professional 
 - **Modern Swift 6.2** — iOS 26+ with strict concurrency, async/await, actors, Sendable
 - **Code Quality** — Integrated code review, accessibility compliance, and performance checks
 - **AI Feature Quality** — Measure Foundation Models / language-model features with the Evaluations framework, across every supported language
-- **Knowledge Skills** — 25 specialized knowledge bases covering architecture patterns, adaptive UI, frameworks, AI-feature evaluation, design principles, accessibility, performance monitoring, and development tools
+- **Knowledge Skills** — 26 specialized knowledge bases covering architecture patterns, adaptive UI, macOS multiplatform, frameworks, AI-feature evaluation, design principles, accessibility, performance monitoring, and development tools
 
 ## Quick Start
 
@@ -76,9 +76,9 @@ See [plugins/swift-engineering/README.md](plugins/swift-engineering/README.md) f
 | **Implementation** | @feature-engineer, @tca-engineer, @swiftui-specialist, @accessibility-specialist, @swift-test-creator, @evaluation-engineer, @architecture-keeper, @swift-code-reviewer, @swift-modernizer | Code creation, accessibility, AI-feature evaluation, and review (Inherit) |
 | **Utilities** | @swift-documenter, @search | API documentation and code search (Haiku) |
 
-### 25 Knowledge Skills
+### 26 Knowledge Skills
 
-Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), adaptive UI (available-space layout for iPhone fold, iPad multitasking & resizable windows), frameworks (SQLite, GRDB, StoreKit, networking, Foundation Models — on-device + Private Cloud Compute, vision, agentic dynamic profiles), AI-feature evaluation (the Evaluations framework — datasets, metrics, model judges, judge alignment, evaluation-driven development, every supported language), design (eight design principles, naming/UX writing, responsible AI), accessibility (VoiceOver, Dynamic Type, reading, captions, Nutrition Labels readiness), platform design (iOS 26, HIG, localization, haptics), performance monitoring (MetricKit metrics, diagnostics, state reporting), and development tools (testing, style, diagnostics). Each skill provides deep guidance on modern patterns and best practices.
+Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), adaptive UI (available-space layout for iPhone fold, iPad multitasking & resizable windows), macOS multiplatform (keep the Mac target always buildable and natively adapted — platform gating, iOS-only API fixes, macOS scenes/menus/pointer), frameworks (SQLite, GRDB, StoreKit, networking, Foundation Models — on-device + Private Cloud Compute, vision, agentic dynamic profiles), AI-feature evaluation (the Evaluations framework — datasets, metrics, model judges, judge alignment, evaluation-driven development, every supported language), design (eight design principles, naming/UX writing, responsible AI), accessibility (VoiceOver, Dynamic Type, reading, captions, Nutrition Labels readiness), platform design (iOS 26, HIG, localization, haptics), performance monitoring (MetricKit metrics, diagnostics, state reporting), and development tools (testing, style, diagnostics). Each skill provides deep guidance on modern patterns and best practices.
 
 ## For Contributors
 
@@ -92,7 +92,7 @@ claude-swift-engineering/
 ├── plugins/
 │   └── swift-engineering/                  # Main plugin
 │       ├── agents/                         # 15 specialized agents
-│       ├── skills/                         # 25 comprehensive skills
+│       ├── skills/                         # 26 comprehensive skills
 │       ├── hooks-scripts/                  # Hooks system
 │       ├── scripts/                        # Helper utilities
 │       ├── rules/                          # Development rules
