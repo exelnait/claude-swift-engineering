@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.10.0
+**Version:** 0.11.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **29 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, App Intents/widgets, networking, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **31 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, App Intents/widgets, networking, animations, charts, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -232,6 +232,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `tca-inspired-patterns` | TCA patterns (reducer thinking, explicit actions, cancellation) without the framework |
 | `composable-architecture` | TCA framework — opt-in for complex state |
 | `swiftui-advanced` | Advanced gestures, adaptive layout, architecture decisions |
+| `swiftui-animations` | Motion — implicit/explicit animation & spring curves, transitions & `matchedGeometryEffect`/zoom navigation, `phaseAnimator`/`keyframeAnimator`, `contentTransition`/symbol effects, performance & Reduce Motion |
 | `adaptive-ui` | Available-space adaptation for iPhone fold, iPad multitasking & resizable windows — geometry breakpoints, Tab↔Sidebar morphing, scene geometry, and why `horizontalSizeClass`/idiom/orientation aren't width sensors |
 | `macos-multiplatform` | Build for Mac by default — keep the macOS target always compiling (minimum) and natively adapted (maximum). Layered architecture (share behavior, specialize presentation; platform-blind models), the divergence ladder (unify→bridge→adapt→exclude), conditional compilation done right, the catalog of iOS-only APIs that break the Mac build + fixes, macOS scenes/windows/menus/pointer and native controls (Table, Inspector, split views, window chrome, AppKit interop, focus), and multiplatform project structure |
 | `modern-swift` | Swift 6.2 concurrency (async/await, actors, @MainActor, Sendable) |
@@ -253,6 +254,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `evaluations` | Measure quality of AI/Foundation Models features (datasets, metrics, model judges, evaluation-driven development) — every supported language |
 | `app-intents-widgets` | App Intents + WidgetKit surface — widgets & timeline providers, interactive widgets, Live Activities & the Dynamic Island, Control Center controls, and App Shortcuts/Siri/Spotlight exposure |
 | `networking` | Application-level HTTP — `URLSession` + async/await, `Codable` REST client, typed errors, retries/backoff, auth & single-flight token refresh, streaming (SSE), and `URLProtocol` testing |
+| `swift-charts` | Data visualization — bar/line/point/area/rule/sector marks, `.value` encoding & series, axes/scales/legends, selection & scrolling interaction, and chart accessibility (Audio Graphs) |
 | `swift-networking` | Network.framework — low-level TCP/UDP, custom protocols, TLS, Bonjour (not HTTP) |
 
 ### Platform & Design
