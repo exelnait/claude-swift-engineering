@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.12.0
+**Version:** 0.13.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **33 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, App Intents/widgets, networking, animations, charts, security, observability, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **35 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, App Intents/widgets, networking, animations, charts, security, observability, performance profiling, release/CI-CD, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -280,6 +280,8 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `swift-diagnostics` | Systematic debugging (navigation, build issues, memory) |
 | `metrickit` | Collect real-world performance metrics & diagnostics (MetricKit `MetricManager`, state reporting, crash/hang/memory) |
 | `observability` | Unified logging (`Logger`/`OSLog`), levels, privacy redaction in logs, and `OSSignposter` tracing/Points of Interest for Instruments |
+| `performance-profiling` | Instruments & `xctrace` — Time Profiler call trees, hangs vs animation hitches, SwiftUI update lanes/cause-and-effect, memory generations; the interactive/scriptable profiling loop |
+| `release-cicd` | Ship the app — code signing & provisioning, Xcode Cloud & fastlane pipelines, TestFlight, App Store submission (versioning, metadata, phased release), App Store Connect API |
 | `generating-swift-package-docs` | Generate API docs for Swift package dependencies |
 
 ## Advanced Features
