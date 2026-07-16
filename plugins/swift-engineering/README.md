@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.9.0
+**Version:** 0.10.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **27 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **29 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, App Intents/widgets, networking, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -251,7 +251,9 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `storekit` | StoreKit 2 in-app purchases and subscriptions |
 | `foundation-models` | Apple AI: on-device + Private Cloud Compute, vision, agentic dynamic profiles, system tools, best practices |
 | `evaluations` | Measure quality of AI/Foundation Models features (datasets, metrics, model judges, evaluation-driven development) — every supported language |
-| `swift-networking` | Network.framework (TCP/UDP, custom protocols) |
+| `app-intents-widgets` | App Intents + WidgetKit surface — widgets & timeline providers, interactive widgets, Live Activities & the Dynamic Island, Control Center controls, and App Shortcuts/Siri/Spotlight exposure |
+| `networking` | Application-level HTTP — `URLSession` + async/await, `Codable` REST client, typed errors, retries/backoff, auth & single-flight token refresh, streaming (SSE), and `URLProtocol` testing |
+| `swift-networking` | Network.framework — low-level TCP/UDP, custom protocols, TLS, Bonjour (not HTTP) |
 
 ### Platform & Design
 | Skill | Purpose |
