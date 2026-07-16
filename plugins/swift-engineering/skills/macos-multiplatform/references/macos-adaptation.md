@@ -2,6 +2,8 @@
 
 Compiling on Mac is the floor (the minimum contract). This file is about the ceiling: making the feature feel like it was *made* for the Mac — the difference between a resized iPad app and a real Mac app. Everything here is rung 3 (Adapt) work. Apply it deliberately; note when you skip it.
 
+> This file is the **strategy** — which adaptations matter and how far up the ladder to climb. For the **concrete API catalog** — the full scene types (`Window`, `UtilityWindow`, `DocumentGroup`), window-chrome modifiers (`.windowStyle`, `.windowToolbarStyle`, `.menuBarExtraStyle`), macOS-native controls (`Table`, `Inspector`, `HSplitView`), security-scoped file access, AppKit interop with coordinators, and deep focus — see **[macOS-Native APIs](macos-native-apis.md)**.
+
 ## Scenes: the app's window structure
 
 An iOS app is essentially one full-screen scene. A Mac app is a composition of scenes, and SwiftUI gives you the pieces declaratively in the `App` body. Add them for Mac without harming iOS.

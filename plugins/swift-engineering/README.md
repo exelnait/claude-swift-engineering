@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.8.0
+**Version:** 0.13.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **26 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, persistence decisions, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **35 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, App Intents/widgets, networking, animations, charts, security, observability, performance profiling, release/CI-CD, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -232,14 +232,16 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `tca-inspired-patterns` | TCA patterns (reducer thinking, explicit actions, cancellation) without the framework |
 | `composable-architecture` | TCA framework — opt-in for complex state |
 | `swiftui-advanced` | Advanced gestures, adaptive layout, architecture decisions |
+| `swiftui-animations` | Motion — implicit/explicit animation & spring curves, transitions & `matchedGeometryEffect`/zoom navigation, `phaseAnimator`/`keyframeAnimator`, `contentTransition`/symbol effects, performance & Reduce Motion |
 | `adaptive-ui` | Available-space adaptation for iPhone fold, iPad multitasking & resizable windows — geometry breakpoints, Tab↔Sidebar morphing, scene geometry, and why `horizontalSizeClass`/idiom/orientation aren't width sensors |
-| `macos-multiplatform` | Build for Mac by default — keep the macOS target always compiling (minimum) and natively adapted (maximum). Layered architecture (share behavior, specialize presentation; platform-blind models), the divergence ladder (unify→bridge→adapt→exclude), conditional compilation done right, the catalog of iOS-only APIs that break the Mac build + fixes, macOS scenes/menus/pointer, and multiplatform project structure |
+| `macos-multiplatform` | Build for Mac by default — keep the macOS target always compiling (minimum) and natively adapted (maximum). Layered architecture (share behavior, specialize presentation; platform-blind models), the divergence ladder (unify→bridge→adapt→exclude), conditional compilation done right, the catalog of iOS-only APIs that break the Mac build + fixes, macOS scenes/windows/menus/pointer and native controls (Table, Inspector, split views, window chrome, AppKit interop, focus), and multiplatform project structure |
 | `modern-swift` | Swift 6.2 concurrency (async/await, actors, @MainActor, Sendable) |
 | `architecture-documentation` | "Trace + why" architecture docs with Mermaid diagrams |
 
 ### Persistence
 | Skill | Purpose |
 |-------|---------|
+| `swiftdata` | The default entity store — `@Model` schema, `@Query`/`#Predicate`, `ModelContainer`/`ModelContext`, relationships & delete rules, `@ModelActor` background work, versioned migrations, CloudKit sync, and in-memory testing/previews |
 | `data-layer-decisions` | When to use SwiftData vs GRDB, hybrid patterns, decision trees |
 | `sqlite-data` | SQLiteData library (@Table, migrations, CloudKit sync) |
 | `grdb` | GRDB direct SQLite access (complex queries, FTS5, performance) |
@@ -250,7 +252,10 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `storekit` | StoreKit 2 in-app purchases and subscriptions |
 | `foundation-models` | Apple AI: on-device + Private Cloud Compute, vision, agentic dynamic profiles, system tools, best practices |
 | `evaluations` | Measure quality of AI/Foundation Models features (datasets, metrics, model judges, evaluation-driven development) — every supported language |
-| `swift-networking` | Network.framework (TCP/UDP, custom protocols) |
+| `app-intents-widgets` | App Intents + WidgetKit surface — widgets & timeline providers, interactive widgets, Live Activities & the Dynamic Island, Control Center controls, and App Shortcuts/Siri/Spotlight exposure |
+| `networking` | Application-level HTTP — `URLSession` + async/await, `Codable` REST client, typed errors, retries/backoff, auth & single-flight token refresh, streaming (SSE), and `URLProtocol` testing |
+| `swift-charts` | Data visualization — bar/line/point/area/rule/sector marks, `.value` encoding & series, axes/scales/legends, selection & scrolling interaction, and chart accessibility (Audio Graphs) |
+| `swift-networking` | Network.framework — low-level TCP/UDP, custom protocols, TLS, Bonjour (not HTTP) |
 
 ### Platform & Design
 | Skill | Purpose |
@@ -260,6 +265,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `ios-26-platform` | iOS 26 features (Liquid Glass, new APIs) |
 | `haptics` | Haptic feedback (UIFeedbackGenerator, Core Haptics, AHAP patterns) |
 | `localization` | Internationalization (String Catalogs, pluralization, RTL) |
+| `security` | Keychain (accessibility & `SecAccessControl`), Face/Touch ID (`LocalAuthentication`), privacy permissions & the `PrivacyInfo.xcprivacy` manifest, Data Protection + CryptoKit/Secure Enclave, App Transport Security |
 
 ### Accessibility
 | Skill | Purpose |
@@ -273,6 +279,9 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `swift-style` | Code style conventions (naming, golden path, organization) |
 | `swift-diagnostics` | Systematic debugging (navigation, build issues, memory) |
 | `metrickit` | Collect real-world performance metrics & diagnostics (MetricKit `MetricManager`, state reporting, crash/hang/memory) |
+| `observability` | Unified logging (`Logger`/`OSLog`), levels, privacy redaction in logs, and `OSSignposter` tracing/Points of Interest for Instruments |
+| `performance-profiling` | Instruments & `xctrace` — Time Profiler call trees, hangs vs animation hitches, SwiftUI update lanes/cause-and-effect, memory generations; the interactive/scriptable profiling loop |
+| `release-cicd` | Ship the app — code signing & provisioning, Xcode Cloud & fastlane pipelines, TestFlight, App Store submission (versioning, metadata, phased release), App Store Connect API |
 | `generating-swift-package-docs` | Generate API docs for Swift package dependencies |
 
 ## Advanced Features
