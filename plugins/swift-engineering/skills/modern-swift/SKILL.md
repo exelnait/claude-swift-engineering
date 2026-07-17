@@ -1,6 +1,6 @@
 ---
 name: modern-swift
-description: Use when writing async/await code, enabling strict concurrency, fixing Sendable errors, migrating from completion handlers, managing shared state with actors, or using Task/TaskGroup for concurrency.
+description: Use when writing async/await code, enabling strict concurrency, fixing Sendable errors, migrating from completion handlers, managing shared state with actors, using Task/TaskGroup for concurrency, or adopting everyday Swift 6.4 language features (scoped warning control, `anyAppleOS`, `await` in `defer`, better type-check diagnostics).
 ---
 
 # Modern Swift (6.2+)
@@ -43,6 +43,7 @@ When writing async Swift code:
 | **[Strict Concurrency](references/strict-concurrency.md)** | Enabling Swift 6 strict mode or fixing Sendable errors |
 | **[Macros](references/macros.md)** | Using or understanding Swift macros like `@Observable` |
 | **[Modern Attributes](references/modern-attributes.md)** | Migrating legacy code or using `@preconcurrency`, `@backDeployed` |
+| **[Swift 6.4](references/swift-6.4.md)** | Everyday Swift 6.4 features — scoped warning control (suppress / promote-to-error), the `anyAppleOS` availability shorthand, `await` inside `defer`, and improved "unable to type-check in reasonable time" diagnostics |
 
 ## Common Mistakes
 

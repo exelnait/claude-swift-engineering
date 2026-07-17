@@ -1,6 +1,6 @@
 ---
 name: swiftui-advanced
-description: Use when implementing gesture composition (simultaneous, sequenced, exclusive), adaptive layouts (ViewThatFits, AnyLayout, size classes), or choosing architecture patterns (MVVM vs TCA vs vanilla, State-as-Bridge). Covers advanced SwiftUI patterns beyond basic views.
+description: Use when implementing gesture composition (simultaneous, sequenced, exclusive), adaptive layouts (ViewThatFits, AnyLayout, size classes), GPU visual effects (Metal shaders — colorEffect/distortionEffect/layerEffect, TimelineView-driven animation, alignment-guide attachments), lazy-stack & scrolling performance, or choosing architecture patterns (MVVM vs TCA vs vanilla, State-as-Bridge). Covers advanced SwiftUI patterns beyond basic views.
 ---
 
 # SwiftUI Advanced
@@ -16,7 +16,8 @@ Advanced SwiftUI patterns for gesture composition, adaptive layouts, architectur
 | **[Gestures](references/gestures.md)** | Composing multiple gestures, GestureState, custom recognizers |
 | **[Adaptive Layout](references/adaptive-layout.md)** | ViewThatFits, AnyLayout, size classes, iOS 26 free-form windows (quick reference — deep available-space adaptation for iPhone fold, iPad multitasking & resizable windows lives in the dedicated `adaptive-ui` skill) |
 | **[Architecture](references/architecture.md)** | MVVM vs TCA decision, State-as-Bridge, property wrapper selection |
-| **[Performance](references/performance.md)** | Instruments 26, view body optimization, unnecessary updates |
+| **[Performance](references/performance.md)** | Instruments 26, view body optimization, unnecessary updates, lazy stacks & scrolling internals (prefetching, estimated sizes, dynamic-subview pitfalls) |
+| **[Visual Effects](references/visual-effects.md)** | Metal shaders from SwiftUI (`colorEffect`/`distortionEffect`/`layerEffect`), `TimelineView`-driven shader animation, effect composition, and alignment-guide floating attachments |
 
 ## Core Workflow
 

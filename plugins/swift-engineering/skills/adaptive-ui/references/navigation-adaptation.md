@@ -176,3 +176,107 @@ Morphing must feel continuous — the user was mid-task when the window changed:
 - Prefer `AnyLayout`/preserved identities over `if/else` that rebuilds subtrees, so in-progress input and scroll position survive (see `geometry-driven-layout.md`).
 - Animate the transition (`.animation(.snappy, value: isWide)`) so the change reads as one interface reflowing, not two interfaces swapping.
 - Don't reset the navigation stack on width change — a `NavigationStack`'s `path` should live in the router and persist through the morph.
+
+## The tab/sidebar building blocks (iPadOS 18)
+
+The adaptations above morph between *presentations*; this is the model they present. iPadOS 18 builds the whole tab-bar/sidebar story from one small set of primitives — the same objects feed the compact tab bar, the wide sidebar, and every morph between them.
+
+**SwiftUI — `Tab` and `TabSection`.** A `Tab` takes a title, an image, and its content view, plus an optional `value:` for programmatic selection (all tabs share one selection type, matching the `TabView`). `Tab(role: .search)` is special: the system gives it a default title and magnifying-glass image and *pins* it to the **trailing edge** of the tab bar. (This talk describes only that default identity and pinned placement — it does not say the search tab expands into a search field, so treat that behavior as unconfirmed here.) `TabSection` wraps child tabs into a named **sidebar group**; individual tabs keep their declared order in the tab bar, and in the sidebar all sections sort *after* the loose tabs.
+
+```swift
+TabView {
+    Tab("Home", systemImage: "house") { HomeRoot() }
+
+    Tab(role: .search) { SearchRoot() }          // system title + glyph, pinned to the trailing edge
+
+    TabSection("Library") {                       // a named group → a sidebar section
+        Tab("Recently Added", systemImage: "clock") { … }
+        Tab("Artists", systemImage: "music.mic") { … }
+    }
+}
+.tabViewStyle(.sidebarAdaptable)                  // one hierarchy → tab bar or sidebar
+// add `value:` to each Tab (as in the examples above) for programmatic selection
+```
+
+**UIKit — `UITab`, `UITabGroup`, `UISearchTab`.** Create a `UITab` per top-level section and assign them to `tabBarController.tabs`; mutating a `UITab` updates its display immediately. `UITabGroup` is the analogue of `TabSection` (update its `children` directly for dynamic content) and `UISearchTab` is the search-role tab. Set the controller's `mode` to `.tabSidebar` to present the bar as an adaptable sidebar — the UIKit counterpart of `.sidebarAdaptable`.
+
+```swift
+tabBarController.tabs = [homeTab, searchTab, libraryGroup]   // UITab, UISearchTab, UITabGroup
+tabBarController.mode = .tabSidebar                           // present as an adaptable sidebar
+```
+
+**Filled vs. outlined glyphs.** Tab bars prefer **filled** SF Symbols; sidebars prefer **outlined**. Provide the **outline** symbol only — the system substitutes the filled variant automatically in the tab bar (e.g. Music's Browse tab ships `square.grid.2x2` and shows filled in the bar). No second image, no per-presentation branching.
+
+## User customization
+
+With the hierarchy modeled, iPadOS 18 lets *people* reshape it — hiding non-essential tabs, reordering groups, and dragging tabs between the sidebar and the tab bar. **Order and visibility persist automatically.**
+
+**The three tab-bar sections.**
+- **Fixed** — essential destinations; appear first, cannot be customized.
+- **Customizable** — can be rearranged; users drag tabs in from the sidebar or off the bar.
+- **Pinned** — always at the trailing edge (e.g. search).
+
+**SwiftUI.** Attach a `TabViewCustomization` to the `TabView` to opt its tabs into customization, and back it with `@AppStorage` (via an identifier) so choices persist across launches; read from it if other UI must mirror the current arrangement. Then, per tab:
+- `customizationID(_:)` — lets a tab participate in customization (required for customizable tabs; tabs that can't be customized don't need one).
+- `customizationBehavior(_:for:)` — disable customization for essential tabs, per `.sidebar` and/or `.tabBar`, to keep them fixed.
+- `defaultVisibility(_:for:)` — hide a tab from the sidebar or tab bar by default.
+- `sidebarOnly` placement — a tab that can never be dragged into the tab bar; reachable only from the sidebar.
+
+```swift
+@AppStorage("tabs") private var customization = TabViewCustomization()
+
+TabView(selection: $router.selection) {
+    Tab(Section.home.title, systemImage: Section.home.symbol, value: Section.home) {
+        SectionRoot(section: .home)
+    }
+    .customizationBehavior(.disabled, for: .sidebar, .tabBar)   // essential → fixed
+
+    Tab(Section.library.title, systemImage: Section.library.symbol, value: Section.library) {
+        SectionRoot(section: .library)
+    }
+    .customizationID("tab.library")
+
+    Tab(Section.settings.title, systemImage: Section.settings.symbol, value: Section.settings) {
+        SectionRoot(section: .settings)
+    }
+    .customizationID("tab.settings")
+    .defaultVisibility(.hidden, for: .tabBar)                   // in the sidebar, hidden from the bar until added
+}
+.tabViewStyle(.sidebarAdaptable)
+.tabViewCustomization($customization)
+```
+
+**UIKit.** Customization is per-`UITab`, and stored customizations are re-applied automatically when tabs are assigned to the controller:
+- `allowsHiding` — permit a non-essential tab to be hidden; read back the current state from `isHidden`.
+- `preferredPlacement` — control a tab's customization behavior and tab-bar visibility (the analogue of fixed / `sidebarOnly` placement).
+- `allowsReordering` — permit reordering within a group; read the resulting order from `displayOrderIdentifiers`.
+- Two `UITabBarControllerDelegate` callbacks fire when customization completes, reporting the new visibility and order.
+
+## Tabs as drop destinations
+
+A tab — in either the tab bar or the sidebar — can accept drag-and-drop, e.g. dropping a photo onto a collection to add it.
+
+**SwiftUI:** the `dropDestination` modifier on the `Tab`, typed by the receiver:
+
+```swift
+Tab("Library", systemImage: "books.vertical", value: Section.library) {
+    SectionRoot(section: .library)
+}
+.dropDestination(for: Photo.self) { photos in
+    library.add(photos)
+    return true
+}
+```
+
+(The talk names the modifier and its receiver type but not the exact closure signature — confirm the parameters against the SDK.)
+
+**UIKit:** implement two `UITabBarControllerDelegate` methods — one that returns a valid drop operation when the drop can be accepted (the talk's `operationForAcceptingItemsFromDropSession`) and one that loads the data from the session (`acceptItemsFromDropSession`). Those are the talk's shortened names; the real selectors are the `tabBarController(_:…)` delegate forms.
+
+## Cross-platform presentation
+
+The same `Tab` / `UITab` hierarchy renders in each platform's native chrome — model once, present everywhere:
+- **macOS Sequoia** — if the `TabView` / `UITabBarController` supports a sidebar, it adopts the **standard Mac sidebar**, with drag-to-reorder like iPad. (Consistent with this file's macOS guidance to navigate via the sidebar directly.)
+- **visionOS 2** — root tabs appear in an **ornament on the window's leading edge**, and the system still picks filled symbol variants. A `TabSection` / `UITabGroup` additionally gets a **sidebar** alongside the group's content for secondary navigation within the group.
+- **tvOS 18** — SwiftUI `TabView` + `TabSection` adopt the new **collapsible sidebar**.
+
+These are the primitives the available-space adaptation earlier in this file morphs between: define the hierarchy once with `Tab` / `TabSection` (or `UITab` / `UITabGroup`), and the tab bar, sidebar, split view, and each platform's chrome all become presentations of it.
