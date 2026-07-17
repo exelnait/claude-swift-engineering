@@ -119,3 +119,54 @@ The app writes + `reloadTimelines`; the provider reads the shared store. Keep pr
 - **Heavy provider work** → the extension is killed for exceeding memory/time; move sync to the app.
 - **Assuming live updates** → widgets are timelines; budget-limited. Use `.after`/`reloadTimelines`, or a Live Activity for seconds-level freshness.
 - **No App Group** → widget shows stale/empty data because it can't reach app state.
+
+## Extra-large portrait family (iOS 27 / macOS 27)
+
+A tall, poster-shaped system family. Introduced on visionOS 26, now available on **iOS, iPadOS, and macOS 27**. It gives content room to breathe — e.g. a reading schedule showing several days at once — so support it where a bigger canvas earns its place.
+
+```swift
+.supportedFamilies([.systemMedium, .systemExtraLargePortrait])
+// .systemExtraLargePortrait — confirm exact API against current Apple documentation
+```
+
+Adding it is cheap: **reuse the same widget and the same timeline provider**, and add one `case` to the entry view that lays the existing entry data out for the larger shape. Handle it in the `widgetFamily` switch next to the other families — no new provider, no new data model.
+
+## Tinted & clear rendering (glass + accented mode)
+
+On iOS people can tint the Home Screen with a color or switch it to **clear**. In either mode the system renders your widget through a **glass material** — tinting your content and swapping your background for an adaptive glass effect — so the whole screen feels cohesive. This is exactly what `.containerBackground(for: .widget)` buys you: it marks the view the system replaces with glass.
+
+SwiftUI does most of the work, but **test all three renderings**: full color, tinted, and clear. A common failure is an image that collapses into a **solid white rectangle** in accented mode — the system can't derive an accent for a full-color asset (a book cover, artwork, a logo). Force it to keep its real colors:
+
+```swift
+BookCoverImage(book: entry.book)
+    .widgetAccentedRenderingMode(.fullColor)   // render in full color instead of a flat accent shape
+```
+
+Use `.fullColor` only on assets whose identity *is* their color; let everything else accent normally. (Read the active mode inside the view with `.widgetRenderingMode`, above.)
+
+## Reach across the system
+
+One iOS widget shows up in more than one place:
+
+- **Remote widgets on macOS** — your iOS widget appears on the Mac with no separate target.
+- **CarPlay** — the same widget surfaces there too.
+
+The same archived views and App Intents run in these contexts, so **test that interactions still feel right from a Mac** — deep links, buttons, and toggles — not just on iPhone.
+
+## Testing workflow
+
+- **SwiftUI Previews / Xcode canvas** — iterate on families, color schemes, and rendering modes without leaving Xcode. Preview each supported family (including `.systemExtraLargePortrait`) and the accented/tinted look to catch layout and asset problems early.
+
+```swift
+#Preview(as: .systemExtraLargePortrait) {
+    TripWidget()
+} timeline: {
+    TripEntry.sample
+}
+// #Preview(as:) widget form — confirm exact API against current Apple documentation
+```
+
+- **WidgetKit developer mode** — turn it on while iterating to **lift constraints like the reload budget**, so timeline refreshes aren't throttled during testing.
+- **On device** — tinted/clear glass only renders correctly on real hardware; finish by customizing your Home Screen and checking full color / tinted / clear.
+
+For content that is genuinely ephemeral (a live score, an ETA) don't fight the reload budget with a fast-refreshing widget — reach for a Live Activity instead (see `live-activities.md`).

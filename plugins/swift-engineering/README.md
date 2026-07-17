@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.13.0
+**Version:** 0.14.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -19,7 +19,7 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 ## Features at a Glance
 
 - **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **35 comprehensive skills** — Architecture patterns, adaptive UI, macOS multiplatform, SwiftData & persistence, App Intents/widgets, networking, animations, charts, security, observability, performance profiling, release/CI-CD, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **41 comprehensive skills** — Architecture patterns, adaptive UI (incl. adaptive toolbars), macOS multiplatform, SwiftData & persistence, App Intents/widgets & Live Activities, media & the now-playing experience, networking, animations, GPU visual effects, charts, security & app integrity (App Attest), Vision, Visual Intelligence, TextKit, on-device AI (Foundation Models, Core AI), observability, performance profiling, release/CI-CD, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -250,9 +250,14 @@ Each agent will automatically read the plan, update it with their work, and add 
 | Skill | Purpose |
 |-------|---------|
 | `storekit` | StoreKit 2 in-app purchases and subscriptions |
-| `foundation-models` | Apple AI: on-device + Private Cloud Compute, vision, agentic dynamic profiles, system tools, best practices |
+| `foundation-models` | Apple AI: on-device + Private Cloud Compute, vision, agentic dynamic profiles, system tools, Spotlight RAG (`SpotlightSearchTool`), best practices |
+| `core-ai` | Bring & run your OWN custom model on-device (memory-safe Swift API, PyTorch→Core AI conversion); choosing Core AI vs Foundation Models vs MLX |
+| `vision-framework` | Apple's Vision framework — tap-to-segment, image feature prints & similarity, saliency cropping, detection/classification, on watchOS; combining Vision with Foundation Models image tools |
+| `visual-intelligence` | Integrate with Visual Intelligence — Image Search via App Intents entities + `IntentValueQuery` + `SemanticContentDescriptor`, `UnionValue`, and receiving data via EventKit/Contacts/HealthKit |
+| `now-playing` | Surface media in the system now-playing experience (Lock Screen, Control Center, Dynamic Island, CarPlay, Watch) — `MediaSessionRepresentable`, remote media sessions, Media Sharing Extensions |
+| `textkit` | Custom & extended text experiences — the four-layer TextKit architecture, custom text views, viewport rendering-surface APIs, and extending UITextView/NSTextView (line numbers, collapsible sections, attachment reuse) |
 | `evaluations` | Measure quality of AI/Foundation Models features (datasets, metrics, model judges, evaluation-driven development) — every supported language |
-| `app-intents-widgets` | App Intents + WidgetKit surface — widgets & timeline providers, interactive widgets, Live Activities & the Dynamic Island, Control Center controls, and App Shortcuts/Siri/Spotlight exposure |
+| `app-intents-widgets` | App Intents + WidgetKit surface — widgets & timeline providers, interactive widgets, Live Activities & the Dynamic Island, Control Center controls, App Shortcuts (automations, Use Model action, Storage), and Siri/Spotlight schemas + View Annotations |
 | `networking` | Application-level HTTP — `URLSession` + async/await, `Codable` REST client, typed errors, retries/backoff, auth & single-flight token refresh, streaming (SSE), and `URLProtocol` testing |
 | `swift-charts` | Data visualization — bar/line/point/area/rule/sector marks, `.value` encoding & series, axes/scales/legends, selection & scrolling interaction, and chart accessibility (Audio Graphs) |
 | `swift-networking` | Network.framework — low-level TCP/UDP, custom protocols, TLS, Bonjour (not HTTP) |
@@ -266,6 +271,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `haptics` | Haptic feedback (UIFeedbackGenerator, Core Haptics, AHAP patterns) |
 | `localization` | Internationalization (String Catalogs, pluralization, RTL) |
 | `security` | Keychain (accessibility & `SecAccessControl`), Face/Touch ID (`LocalAuthentication`), privacy permissions & the `PrivacyInfo.xcprivacy` manifest, Data Protection + CryptoKit/Secure Enclave, App Transport Security |
+| `app-attest` | Prove app integrity to your server — App Attest attestation & assertions, Secure Enclave keys, server-side validation, and the fraud metric (anti-fraud/anti-abuse for modified-app copies) |
 
 ### Accessibility
 | Skill | Purpose |

@@ -27,6 +27,7 @@ Foundation Models enable intelligent text processing directly on device without 
 | **[Model Selection](references/model-selection.md)** | Choosing on-device vs Private Cloud Compute vs third-party (`LanguageModel` protocol), reasoning levels, usage/cost, key security |
 | **[Agentic Profiles](references/agentic-profiles.md)** | Multi-model/agentic sessions — `DynamicProfile`, `DynamicInstructions`, transcript management, orchestration (baton-pass / phone-a-friend), tool calling mode |
 | **[Vision & System Tools](references/vision-and-system-tools.md)** | Image attachments (on-device vision), `OCRTool`, `BarcodeReaderTool`, Spotlight local RAG |
+| **[Spotlight Search](references/spotlight-search.md)** | `SpotlightSearchTool` in depth — private on-device RAG over your Core Spotlight index; guidance profiles, reference resolution, custom pipeline stages, and displaying results |
 | **[Troubleshooting](references/troubleshooting.md)** | Context overflow, guardrails, errors, anti-patterns |
 
 ## Core Workflow
