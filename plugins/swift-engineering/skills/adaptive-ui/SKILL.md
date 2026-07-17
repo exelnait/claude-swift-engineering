@@ -28,6 +28,7 @@ If your layout query answers "how much room do I have right now?", it must read 
 | **[Available-Space Principles](references/available-space-principles.md)** | Understanding *why* traits are unreliable, the WWDC 26 contract, the 2014→2026 evolution, and the "express preferences, not control" mental model |
 | **[Geometry-Driven Layout](references/geometry-driven-layout.md)** | Building breakpoints with `onGeometryChange`, `containerRelativeFrame`, `ViewThatFits`, `AnyLayout`, custom `Layout`, or a constrained `GeometryReader` — the practical SwiftUI toolkit |
 | **[Navigation Adaptation](references/navigation-adaptation.md)** | Morphing Tab Bar ↔ Sidebar ↔ split columns as space changes; the custom-sidebar strategy; `NavigationSplitView`, `.tabViewStyle(.sidebarAdaptable)`, iPhone fold / iPad / macOS behavior |
+| **[Toolbar Adaptation](references/toolbar-adaptation.md)** | Reflowing a toolbar across a dynamic size range — rank items with `visibilityPriority`, collapse secondary actions into the overflow "⋯" menu, pin with `topBarPinnedTrailing`, and the prominent `tabRole` (WWDC 26 resizability toolbar story) |
 | **[Scene Geometry](references/scene-geometry.md)** | Scene/window APIs: `windowResizability`, effective geometry, `onInteractiveResizeChange`, `isInteractivelyResizing`, orientation & size-restriction preferences, injecting a size class, `UIRequiresFullScreen`/`UIScreen.main` deprecation |
 | **[Migration & Testing](references/migration-and-testing.md)** | Auditing an existing app for unreliable inputs, the migration checklist, Info.plist cleanup, and how to test iPhone fold / iPad multitasking / resizable iPhone in Xcode 27 previews and Device Hub |
 
@@ -54,6 +55,11 @@ AMOUNT OF SPACE (my own breakpoint) ── measure geometry
 SYSTEM CONTAINER SEMANTICS ── trait is still correct
   ├─ Should a system menu/toolbar collapse? → horizontalSizeClass
   └─ Offer a system Sidebar/Tab morph?      → horizontalSizeClass / .sidebarAdaptable
+
+TOOLBAR RUNNING OUT OF ROOM ── rank + overflow, don't measure width (see toolbar-adaptation.md)
+  ├─ Keep a primary action visible longest?  → .visibilityPriority(.high)
+  ├─ Tuck secondary actions away when tight?  → toolbar overflow "⋯" menu container
+  └─ Anchor one action to the trailing edge?  → .topBarPinnedTrailing
 
 NEVER drive layout from:
   UIScreen.main.bounds · userInterfaceIdiom · UIDevice.orientation · a hardcoded device check

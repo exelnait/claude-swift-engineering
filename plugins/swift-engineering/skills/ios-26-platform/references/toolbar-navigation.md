@@ -2,6 +2,8 @@
 
 **iOS 26+**
 
+> **Adapting a toolbar to a dynamic range of window sizes** (resizable iPhone, iPad multitasking, Mac mirroring) — ranking items with `visibilityPriority`, collapsing secondary actions into the overflow "⋯" menu, pinning with `topBarPinnedTrailing`, and the prominent `tabRole` — is covered in `adaptive-ui/references/toolbar-adaptation.md`. This file covers the base iOS 26 toolbar APIs those build on.
+
 ## Toolbar Spacer API
 
 ### Separate Button Groups
