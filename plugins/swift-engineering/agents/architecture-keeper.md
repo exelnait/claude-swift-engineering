@@ -2,7 +2,7 @@
 name: architecture-keeper
 description: Capture and maintain architecture knowledge — decision rationale, performance trade-offs, non-goals, and trace-through-code documentation. Use when adding/changing a feature, NOT for API documentation. Replaces the older "documentation-generator" agent.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
-model: inherit
+model: sonnet
 color: cyan
 skills: architecture-documentation, modern-swift, swiftui-patterns
 ---

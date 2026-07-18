@@ -2,7 +2,7 @@
 name: swift-modernizer
 description: Modernize legacy Swift patterns within an iOS 26+ codebase — completion handlers → async/await, ObservableObject → @Observable, UIKit interop → SwiftUI. Use when refactoring older patterns that still compile on iOS 26. Does NOT support backward compatibility — modernization is one-way.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill, TodoWrite
-model: inherit
+model: sonnet
 color: pink
 skills: modern-swift, swiftui-patterns, ios-26-platform, swift-diagnostics
 ---

@@ -2,7 +2,7 @@
 name: evaluation-engineer
 description: Create, update, and run Evaluations (quality measurement) for intelligent features powered by Foundation Models / language models, using Apple's Evaluations framework + Swift Testing. Use whenever an AI/FM feature is implemented OR changed (prompt, @Generable schema, model, or supported-language set). Builds/maintains varied datasets covering EVERY supported language, quantitative metrics, and model judges, then drives evaluation-driven (hill-climbing) development.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
-model: inherit
+model: opus
 color: green
 skills: evaluations, foundation-models, swift-testing, localization, modern-swift
 ---

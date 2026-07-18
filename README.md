@@ -10,7 +10,7 @@ A specialized AI toolkit for building professional iOS/macOS features with moder
 
 The **swift-engineering plugin** is a production-ready toolkit for professional Swift development:
 
-- **15 Ultra-Specialized Agents** — Planning (Opus), implementation (Inherit), utilities (Haiku) with clear handoffs
+- **15 Ultra-Specialized Agents** — Planning (Opus 4.8), implementation (Sonnet 5), utilities (Haiku) with clear handoffs
 - **TCA Support** — Full workflow from architecture design to testing for The Composable Architecture
 - **Modern Swift 6.2** — iOS 26+ with strict concurrency, async/await, actors, Sendable
 - **Code Quality** — Integrated code review, accessibility compliance, and performance checks
@@ -73,7 +73,7 @@ See [plugins/swift-engineering/README.md](plugins/swift-engineering/README.md) f
 | Type | Agents | Responsibility |
 |------|--------|-----------------|
 | **Planning** | @swift-ui-design, @swift-architect, @tca-architect | Architecture decisions (Opus, read-only) |
-| **Implementation** | @feature-engineer, @tca-engineer, @swiftui-specialist, @accessibility-specialist, @swift-test-creator, @evaluation-engineer, @architecture-keeper, @swift-code-reviewer, @swift-modernizer | Code creation, accessibility, AI-feature evaluation, and review (Inherit) |
+| **Implementation** | @feature-engineer, @tca-engineer, @swiftui-specialist, @accessibility-specialist, @swift-test-creator, @evaluation-engineer, @architecture-keeper, @swift-code-reviewer, @swift-modernizer | Code creation, accessibility, tests, docs (Sonnet 5); code review & AI-feature evaluation (Opus 4.8) |
 | **Utilities** | @swift-documenter, @search | API documentation and code search (Haiku) |
 
 ### 41 Knowledge Skills
@@ -134,7 +134,7 @@ This updates version numbers across plugin.json, marketplace.json, and other met
 The plugin implements several key principles:
 
 - **Ultra-Specialization** — Each agent has one clear responsibility with defined handoffs
-- **Model Stratification** — Opus for architecture (best reasoning), Inherit for implementation (cost-effective), Haiku for utilities (fast)
+- **Model Stratification** — Opus 4.8 for architecture, the code-review gate, and AI-feature evaluation (best reasoning); Sonnet 5 for the rest of implementation (strong coding at lower cost); Haiku for utilities (fast)
 - **Local-First** — Default to SQLite and UserDefaults, never SwiftData or Core Data
 - **Modern Swift Only** — Swift 6.2 with strict concurrency, no deprecated APIs
 - **Read-Only Planning** — Planning agents cannot modify code, ensuring clear separation

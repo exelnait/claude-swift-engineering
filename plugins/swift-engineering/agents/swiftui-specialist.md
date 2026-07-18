@@ -2,7 +2,7 @@
 name: swiftui-specialist
 description: Implement SwiftUI views following Apple HIG guidelines. Use after core/TCA implementation is complete.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
-model: inherit
+model: sonnet
 color: yellow
 skills: modern-swift, swiftui-patterns, swiftui-advanced, adaptive-ui, ios-hig, accessibility, design-principles, swift-style, haptics, ios-26-platform, localization
 ---
