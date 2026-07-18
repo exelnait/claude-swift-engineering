@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.14.0
+**Version:** 0.14.1
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -197,19 +197,19 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `@swift-architect` | Architecture decisions (4-axis: state, persistence, DI, docs) | Opus |
 | `@tca-architect` | TCA-specific design (state, actions, dependencies) — opt-in only | Opus |
 
-### Implementation Agents (Inherit)
+### Implementation Agents (Sonnet)
 
 | Agent | Purpose | Model |
 |-------|---------|-------|
-| `@feature-engineer` | @Observable + SwiftData implementation (default path) | Inherit |
-| `@tca-engineer` | TCA implementation (reducers, effects) — opt-in only | Inherit |
-| `@swiftui-specialist` | SwiftUI views (declarative only, no business logic) | Inherit |
-| `@accessibility-specialist` | Make UI accessible & audit it (VoiceOver, Dynamic Type, custom controls, reading, captions, inclusive design) | Inherit |
-| `@swift-test-creator` | Create tests using Swift Testing | Inherit |
-| `@evaluation-engineer` | Measure AI/Foundation Models feature quality with the Evaluations framework (datasets, metrics, model judges) — every supported language | Inherit |
-| `@architecture-keeper` | Create/update architecture docs with Mermaid diagrams | Inherit |
-| `@swift-code-reviewer` | Review code quality, security, performance | Inherit |
-| `@swift-modernizer` | Modernize legacy patterns to @Observable/async/await (iOS 26+ only, one-way) | Inherit |
+| `@feature-engineer` | @Observable + SwiftData implementation (default path) | Sonnet |
+| `@tca-engineer` | TCA implementation (reducers, effects) — opt-in only | Sonnet |
+| `@swiftui-specialist` | SwiftUI views (declarative only, no business logic) | Sonnet |
+| `@accessibility-specialist` | Make UI accessible & audit it (VoiceOver, Dynamic Type, custom controls, reading, captions, inclusive design) | Sonnet |
+| `@swift-test-creator` | Create tests using Swift Testing | Sonnet |
+| `@evaluation-engineer` | Measure AI/Foundation Models feature quality with the Evaluations framework (datasets, metrics, model judges) — every supported language | Sonnet |
+| `@architecture-keeper` | Create/update architecture docs with Mermaid diagrams | Sonnet |
+| `@swift-code-reviewer` | Review code quality, security, performance | Sonnet |
+| `@swift-modernizer` | Modernize legacy patterns to @Observable/async/await (iOS 26+ only, one-way) | Sonnet |
 
 ### Documentation Agents
 
@@ -359,28 +359,28 @@ UI description/mockup? ──yes──► @swift-ui-design (Opus)
         │   - DI: constructor (default) vs @Dependency (when justified)
         │   - Docs: which architecture docs to create/update
         │
-        ├── TCA chosen ──► @tca-architect (Opus) ──► @tca-engineer (Inherit)
+        ├── TCA chosen ──► @tca-architect (Opus) ──► @tca-engineer (Sonnet)
         │                                                    │
-        └── @Observable chosen ──────────────► @feature-engineer (Inherit)
+        └── @Observable chosen ──────────────► @feature-engineer (Sonnet)
                                                     │
                                                     ▼
-                                          @swiftui-specialist (Inherit)
+                                          @swiftui-specialist (Sonnet)
                                                     │
                                                     ▼
-                                         @swift-test-creator (Inherit)
+                                         @swift-test-creator (Sonnet)
                                                     │
                                   AI/Foundation Models feature?
                                                     │
-                                       ┌── yes ──► @evaluation-engineer (Inherit)
+                                       ┌── yes ──► @evaluation-engineer (Sonnet)
                                        │           (datasets + metrics + model judges,
                                        │            every supported language; hill-climb)
                                        │                    │
                                        └── no ──────────────┤
                                                     ▼
-                                       @swift-code-reviewer (Inherit)
+                                       @swift-code-reviewer (Sonnet)
                                                     │
                                                     ▼
-                                       @architecture-keeper (Inherit)
+                                       @architecture-keeper (Sonnet)
                                        (creates/updates docs/architecture/)
                                                     │
                                                     ▼
@@ -468,7 +468,7 @@ All agents share state via a plan file at `docs/plans/<feature-name>.md`:
 | Model | Agents | Rationale |
 |-------|--------|-----------|
 | Opus | @swift-architect, @swift-ui-design, @tca-architect | Best reasoning for architecture decisions |
-| Inherit | Implementation agents (feature-engineer, tca-engineer, swiftui-specialist, test, review, modernizer, architecture-keeper) | Balanced quality and cost (uses parent session model) |
+| Sonnet | Implementation agents (feature-engineer, swift-engineer, tca-engineer, swiftui-specialist, accessibility-specialist, swift-test-creator, evaluation-engineer, architecture-keeper, swift-code-reviewer, swift-modernizer) | Strong coding, testing, and review at lower cost than Opus — no longer silently inherits the (possibly Opus) session model |
 | Haiku | @search, @swift-documenter | Fast, efficient for mechanical tasks |
 
 ## Quality Assurance
@@ -479,7 +479,7 @@ When modifying agents or skills:
 
 - [ ] All agents have `name`, `description`, `tools`, `model` fields
 - [ ] Planning agents (`@swift-architect`, `@swift-ui-design`, `@tca-architect`) are Opus
-- [ ] Implementation agents use Inherit (allows cost-effective scaling with session model)
+- [ ] Implementation agents use Sonnet (explicit — strong coding at lower cost than Opus; not `inherit`, which silently ran on the session model)
 - [ ] Utility agents (`@search`, `@swift-documenter`) are Haiku
 - [ ] Planning agents have explicit no-modify constraints
 - [ ] All handoffs are documented in Agent Handoff Model

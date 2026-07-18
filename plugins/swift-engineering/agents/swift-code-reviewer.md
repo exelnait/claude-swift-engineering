@@ -2,7 +2,7 @@
 name: swift-code-reviewer
 description: Review Swift/iOS code for quality, security, performance, and HIG compliance. Use after implementation, before testing.
 tools: Read, Glob, Grep, Bash, Skill
-model: inherit
+model: sonnet
 color: orange
 skills: modern-swift, swiftui-patterns, swiftui-advanced, adaptive-ui, ios-hig, accessibility, swift-style, swift-diagnostics, swift-testing, composable-architecture
 ---

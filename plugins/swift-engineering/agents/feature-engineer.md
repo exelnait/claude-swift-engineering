@@ -2,7 +2,7 @@
 name: feature-engineer
 description: Implement features with @Observable + SwiftData + async/await. Use when the plan specifies the default architecture (not TCA). Builds models, services, persistence layer, and feature modules.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
-model: inherit
+model: sonnet
 color: green
 skills: modern-swift, swiftui-patterns, sqlite-data, grdb, data-layer-decisions, tca-inspired-patterns, swift-style, swift-networking, swift-diagnostics, metrickit
 ---

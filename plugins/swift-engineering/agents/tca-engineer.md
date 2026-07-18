@@ -2,7 +2,7 @@
 name: tca-engineer
 description: Implement TCA (The Composable Architecture) features — reducers, actions, state, dependencies. Use when the TCA design is complete and implementation is needed.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
-model: inherit
+model: sonnet
 color: green
 skills: modern-swift, composable-architecture, swift-style
 ---

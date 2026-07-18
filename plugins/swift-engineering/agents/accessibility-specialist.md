@@ -2,7 +2,7 @@
 name: accessibility-specialist
 description: Make iOS/macOS UI accessible and audit it — VoiceOver, Switch Control, Voice Control, Dynamic Type, custom-control accessibility, accessible reading/long-form text, media captions, and inclusive design. Use when adding accessibility to a feature or reviewing a feature for accessibility before testing.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
-model: inherit
+model: sonnet
 color: green
 skills: accessibility, ios-hig, swiftui-patterns, swift-testing, modern-swift, localization
 ---
