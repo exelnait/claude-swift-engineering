@@ -12,7 +12,7 @@
   },
   "repository": "https://github.com/johnrogers/",
   "license": "MIT",
-  "keywords": ["swift", "engineering", "mobile", "ios", "watchos", "software development", "software engineering", "tca"],
+  "keywords": ["swift", "engineering", "mobile", "ios", "watchos", "software development", "software engineering", "tca", "realitykit", "3d", "spatial", "usd", "arkit", "visionos"],
   "plugins": [
     {
       "name": "swift-engineering",
@@ -31,7 +31,13 @@
         "macos",
         "tvos",
         "visionos",
-        "watchos"
+        "watchos",
+        "realitykit",
+        "3d",
+        "spatial",
+        "usd",
+        "arkit",
+        "reality-composer-pro"
       ],
       "tags": [
         "swift",
@@ -41,7 +47,13 @@
         "macos",
         "tvos",
         "visionos",
-        "watchos"
+        "watchos",
+        "realitykit",
+        "3d",
+        "spatial",
+        "usd",
+        "arkit",
+        "reality-composer-pro"
       ],
       "strict": false
     }

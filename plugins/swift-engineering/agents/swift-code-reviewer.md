@@ -4,7 +4,7 @@ description: Review Swift/iOS code for quality, security, performance, and HIG c
 tools: Read, Glob, Grep, Bash, Skill
 model: opus
 color: orange
-skills: modern-swift, swiftui-patterns, swiftui-advanced, adaptive-ui, ios-hig, accessibility, swift-style, swift-diagnostics, swift-testing, composable-architecture
+skills: modern-swift, swiftui-patterns, swiftui-advanced, adaptive-ui, ios-hig, accessibility, swift-style, swift-diagnostics, swift-testing, composable-architecture, realitykit-core, 3d-asset-optimization, realitykit-debugging
 ---
 
 # Swift Code Reviewer
@@ -77,6 +77,18 @@ You are an expert Swift/iOS code reviewer.
 - [ ] No code duplication
 - [ ] Appropriate abstraction level
 - [ ] Complex logic documented
+
+### 7. RealityKit / 3D (if applicable)
+
+- [ ] ECS used correctly — behavior in **systems**, data in **components**; `Entity` not subclassed for behavior
+- [ ] Mutated components are **written back** (`entity.components.set(_:)`) — the #1 silent RealityKit bug
+- [ ] No rogue/inherited transforms (non-uniform ancestor scale distorting descendants); correct coordinate space (Y-up, −Z-forward)
+- [ ] Recurring logic lives in a `System` with an `EntityQuery`, not timers or the SwiftUI view body; frame-rate independent (`deltaTime`)
+- [ ] No SwiftUI `update` ↔ observation infinite loops (observed state not written in `update`)
+- [ ] Performance: within triangle budget, unlit/baked lighting where possible, `MeshInstancesComponent` over mass cloning, material instances, LOD/thermal for demanding scenes, minimal transparency/overdraw
+- [ ] Scene layout authored in Reality Composer Pro rather than hand-positioned in code where practical
+- [ ] Platform-specific APIs (SpatialTrackingSession, scene understanding, immersive audio, spatial accessories) gated with `#if os(...)`; no `@available(iOS <26)` guards
+- [ ] New 3D work uses RealityKit, not the deprecated SceneKit
 
 ## Review Severity Levels
 
