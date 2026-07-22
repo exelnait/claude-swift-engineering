@@ -10,12 +10,12 @@ A specialized AI toolkit for building professional iOS/macOS features with moder
 
 The **swift-engineering plugin** is a production-ready toolkit for professional Swift development:
 
-- **15 Ultra-Specialized Agents** — Planning (Opus 4.8), implementation (Sonnet 5), utilities (Haiku) with clear handoffs
+- **17 Ultra-Specialized Agents** — Planning (Opus 4.8), implementation incl. RealityKit/3D (Sonnet 5), utilities (Haiku) with clear handoffs
 - **TCA Support** — Full workflow from architecture design to testing for The Composable Architecture
 - **Modern Swift 6.2** — iOS 26+ with strict concurrency, async/await, actors, Sendable
 - **Code Quality** — Integrated code review, accessibility compliance, and performance checks
 - **AI Feature Quality** — Measure Foundation Models / language-model features with the Evaluations framework, across every supported language
-- **Knowledge Skills** — 41 specialized knowledge bases covering architecture patterns, adaptive UI (incl. adaptive toolbars), macOS multiplatform, SwiftData & persistence, App Intents/widgets, Live Activities, media & the now-playing experience, networking, animations, GPU visual effects, charts, security, app integrity (App Attest), Vision, Visual Intelligence, TextKit, on-device AI (Foundation Models, Core AI), observability, performance profiling, release/CI-CD, AI-feature evaluation, design principles, accessibility, performance monitoring, and development tools
+- **Knowledge Skills** — 51 specialized knowledge bases covering architecture patterns, adaptive UI (incl. adaptive toolbars), macOS multiplatform, SwiftData & persistence, App Intents/widgets, Live Activities, media & the now-playing experience, networking, animations, GPU visual effects, charts, security, app integrity (App Attest), Vision, Visual Intelligence, TextKit, on-device AI (Foundation Models, Core AI), RealityKit & 3D/spatial (ECS core, SwiftUI↔RealityKit, rendering, physics & interaction, 3D asset optimization, Reality Composer Pro, USD/USDKit, Object Capture, RealityKit debugging, AR/spatial), observability, performance profiling, release/CI-CD, AI-feature evaluation, design principles, accessibility, performance monitoring, and development tools
 
 ## Quick Start
 
@@ -68,17 +68,17 @@ See [plugins/swift-engineering/README.md](plugins/swift-engineering/README.md) f
 
 ## What's Included
 
-### 15 Specialized Agents
+### 17 Specialized Agents
 
 | Type | Agents | Responsibility |
 |------|--------|-----------------|
-| **Planning** | @swift-ui-design, @swift-architect, @tca-architect | Architecture decisions (Opus, read-only) |
-| **Implementation** | @feature-engineer, @tca-engineer, @swiftui-specialist, @accessibility-specialist, @swift-test-creator, @evaluation-engineer, @architecture-keeper, @swift-code-reviewer, @swift-modernizer | Code creation, accessibility, tests, docs (Sonnet 5); code review & AI-feature evaluation (Opus 4.8) |
+| **Planning** | @swift-ui-design, @swift-architect, @tca-architect, @spatial-experience-architect | Architecture decisions incl. 3D/spatial (Opus, read-only) |
+| **Implementation** | @feature-engineer, @tca-engineer, @swiftui-specialist, @realitykit-engineer, @accessibility-specialist, @swift-test-creator, @evaluation-engineer, @architecture-keeper, @swift-code-reviewer, @swift-modernizer | Code creation incl. RealityKit/3D, accessibility, tests, docs (Sonnet 5); code review & AI-feature evaluation (Opus 4.8) |
 | **Utilities** | @swift-documenter, @search | API documentation and code search (Haiku) |
 
-### 41 Knowledge Skills
+### 51 Knowledge Skills
 
-Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), adaptive UI (available-space layout for iPhone fold, iPad multitasking & resizable windows), macOS multiplatform (keep the Mac target always buildable and natively adapted — platform gating, iOS-only API fixes, macOS scenes/menus/pointer), persistence (SwiftData as the default entity store — schema, queries, migrations, @ModelActor, CloudKit — plus SQLite/GRDB alternatives), system surfaces (App Intents, widgets, Live Activities, controls) and application networking (URLSession/REST, auth, streaming), motion & data viz (SwiftUI animations, Swift Charts), security (Keychain, biometrics, privacy manifest, CryptoKit) and observability (unified logging, signposts), performance profiling (Instruments/xctrace, hangs & hitches, SwiftUI updates) and release/CI-CD (signing, Xcode Cloud/fastlane, TestFlight, App Store), frameworks (SQLite, GRDB, StoreKit, networking, Foundation Models — on-device + Private Cloud Compute, vision, agentic dynamic profiles, Spotlight RAG; Core AI custom on-device models; the Vision framework; Visual Intelligence; NowPlaying media sessions; App Attest app integrity; TextKit text engine), AI-feature evaluation (the Evaluations framework — datasets, metrics, model judges, judge alignment, evaluation-driven development, every supported language), design (eight design principles, naming/UX writing, responsible AI), accessibility (VoiceOver, Dynamic Type, reading, captions, Nutrition Labels readiness), platform design (iOS 26, HIG, localization, haptics), performance monitoring (MetricKit metrics, diagnostics, state reporting), and development tools (testing, style, diagnostics). Each skill provides deep guidance on modern patterns and best practices.
+Architecture patterns (TCA, SwiftUI, modern Swift, advanced gestures), adaptive UI (available-space layout for iPhone fold, iPad multitasking & resizable windows), macOS multiplatform (keep the Mac target always buildable and natively adapted — platform gating, iOS-only API fixes, macOS scenes/menus/pointer), persistence (SwiftData as the default entity store — schema, queries, migrations, @ModelActor, CloudKit — plus SQLite/GRDB alternatives), system surfaces (App Intents, widgets, Live Activities, controls) and application networking (URLSession/REST, auth, streaming), motion & data viz (SwiftUI animations, Swift Charts), security (Keychain, biometrics, privacy manifest, CryptoKit) and observability (unified logging, signposts), performance profiling (Instruments/xctrace, hangs & hitches, SwiftUI updates) and release/CI-CD (signing, Xcode Cloud/fastlane, TestFlight, App Store), frameworks (SQLite, GRDB, StoreKit, networking, Foundation Models — on-device + Private Cloud Compute, vision, agentic dynamic profiles, Spotlight RAG; Core AI custom on-device models; the Vision framework; Visual Intelligence; NowPlaying media sessions; App Attest app integrity; TextKit text engine), AI-feature evaluation (the Evaluations framework — datasets, metrics, model judges, judge alignment, evaluation-driven development, every supported language), design (eight design principles, naming/UX writing, responsible AI), accessibility (VoiceOver, Dynamic Type, reading, captions, Nutrition Labels readiness), platform design (iOS 26, HIG, localization, haptics), performance monitoring (MetricKit metrics, diagnostics, state reporting), and development tools (testing, style, diagnostics), RealityKit & 3D/spatial (the ECS core and RealityView, SwiftUI↔RealityKit bridging, materials/lighting/rendering, physics & interaction, 3D asset optimization, Reality Composer Pro authoring, USD/USDKit, Object Capture photogrammetry, the RealityKit debugger, and AR/spatial world integration — RealityKit is Apple's recommended 3D engine now that SceneKit is deprecated). Each skill provides deep guidance on modern patterns and best practices.
 
 ## For Contributors
 

@@ -1,6 +1,6 @@
 # Swift Engineering Plugin
 
-**Version:** 0.14.2
+**Version:** 0.15.0
 
 > ⚠️ **Experimental** — This plugin is actively developed. APIs, agents, and workflows may evolve.
 
@@ -18,8 +18,8 @@ Modern Swift/SwiftUI development toolkit for Claude Code. Provides specialized a
 
 ## Features at a Glance
 
-- **15 specialized agents** — Planning, architecture, implementation, accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
-- **41 comprehensive skills** — Architecture patterns, adaptive UI (incl. adaptive toolbars), macOS multiplatform, SwiftData & persistence, App Intents/widgets & Live Activities, media & the now-playing experience, networking, animations, GPU visual effects, charts, security & app integrity (App Attest), Vision, Visual Intelligence, TextKit, on-device AI (Foundation Models, Core AI), observability, performance profiling, release/CI-CD, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
+- **17 specialized agents** — Planning, architecture, implementation (incl. RealityKit/3D & spatial), accessibility, testing, AI-feature evaluation, documentation, and architecture knowledge preservation
+- **51 comprehensive skills** — Architecture patterns, adaptive UI (incl. adaptive toolbars), macOS multiplatform, SwiftData & persistence, App Intents/widgets & Live Activities, media & the now-playing experience, networking, animations, GPU visual effects, charts, security & app integrity (App Attest), Vision, Visual Intelligence, TextKit, on-device AI (Foundation Models, Core AI), **RealityKit & 3D/spatial** (ECS core, SwiftUI↔RealityKit, rendering, physics & interaction, 3D asset optimization, Reality Composer Pro, USD/USDKit, Object Capture, RealityKit debugging, AR/spatial), observability, performance profiling, release/CI-CD, design principles & naming, accessibility, AI-feature evaluation, performance monitoring, and development tools
 - **Ultra-modern Swift** — iOS 26+, Swift 6.2, strict concurrency, SwiftUI-only
 - **@Observable-first** — Default path is @Observable + SwiftData; TCA is escalation for complex state
 - **Production-ready** — Built-in code review, testing, and quality assurance workflows
@@ -161,6 +161,8 @@ Only use this path when `@swift-architect` has explicitly decided TCA is needed:
 | Implement TCA features | `@tca-engineer` | Implement the authentication reducer |
 | Implement @Observable features | `@feature-engineer` | Implement the Settings model and SwiftData persistence |
 | Build SwiftUI views | `@swiftui-specialist` | Create the authentication UI following the design |
+| Plan a 3D/spatial feature | `@spatial-experience-architect` | Plan a RealityKit product viewer with AR placement |
+| Build RealityKit/3D content | `@realitykit-engineer` | Implement the RealityView scene, materials, and gestures |
 | Create tests | `@swift-test-creator` | Write tests for the authentication flow |
 | Evaluate an AI/FM feature | `@evaluation-engineer` | Measure tag-generation quality across all supported languages |
 | Code review | `@swift-code-reviewer` | Review the authentication module for security and quality |
@@ -196,6 +198,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `@swift-ui-design` | Analyze mockups OR descriptions into UI specifications | Opus |
 | `@swift-architect` | Architecture decisions (4-axis: state, persistence, DI, docs) | Opus |
 | `@tca-architect` | TCA-specific design (state, actions, dependencies) — opt-in only | Opus |
+| `@spatial-experience-architect` | Plan RealityKit/3D & spatial features (presentation, ECS/scene design, asset pipeline, performance budget, platform strategy) | Opus |
 
 ### Implementation Agents (Sonnet — code review & AI-eval on Opus)
 
@@ -204,6 +207,7 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `@feature-engineer` | @Observable + SwiftData implementation (default path) | Sonnet |
 | `@tca-engineer` | TCA implementation (reducers, effects) — opt-in only | Sonnet |
 | `@swiftui-specialist` | SwiftUI views (declarative only, no business logic) | Sonnet |
+| `@realitykit-engineer` | RealityKit/3D & spatial implementation (ECS, RealityView, materials, physics, SwiftUI bridging, Reality Composer Pro) across iOS/iPadOS/macOS/tvOS/visionOS | Sonnet |
 | `@accessibility-specialist` | Make UI accessible & audit it (VoiceOver, Dynamic Type, custom controls, reading, captions, inclusive design) | Sonnet |
 | `@swift-test-creator` | Create tests using Swift Testing | Sonnet |
 | `@evaluation-engineer` | Measure AI/Foundation Models feature quality with the Evaluations framework (datasets, metrics, model judges) — every supported language | Opus |
@@ -261,6 +265,23 @@ Each agent will automatically read the plan, update it with their work, and add 
 | `networking` | Application-level HTTP — `URLSession` + async/await, `Codable` REST client, typed errors, retries/backoff, auth & single-flight token refresh, streaming (SSE), and `URLProtocol` testing |
 | `swift-charts` | Data visualization — bar/line/point/area/rule/sector marks, `.value` encoding & series, axes/scales/legends, selection & scrolling interaction, and chart accessibility (Audio Graphs) |
 | `swift-networking` | Network.framework — low-level TCP/UDP, custom protocols, TLS, Bonjour (not HTTP) |
+
+### 3D, Spatial & RealityKit
+
+RealityKit is Apple's recommended 3D engine across iOS/iPadOS/macOS/tvOS/visionOS (SceneKit is deprecated). Main focus is iOS 26+, with visionOS as a natural extension.
+
+| Skill | Purpose |
+|-------|---------|
+| `realitykit-core` | The foundation — Entity Component System (entities/components/systems), `RealityView` setup, loading entities & resources, transforms & the coordinate system, entity actions & animation playback, cross-platform deployment |
+| `realitykit-swiftui` | SwiftUI ↔ RealityKit — `Model3D` vs `RealityView`, `Model3DAsset`/`ConfigurationCatalog`, `realityViewLayoutBehavior`, view attachments/gestures/popovers, Object Manipulation, observable entities & two-way data flow, `CoordinateSpace3D`, SwiftUI-driven component animation |
+| `realitykit-rendering` | Visuals — PBR/unlit/Shader Graph materials, lights, soft shadows, lightmaps, image-based lighting & `EnvironmentRadiance`, projective textures & physical-space lighting, post-processing (bloom), particles, gaussian splats |
+| `realitykit-physics-interaction` | Physics & world interaction — `PhysicsBodyComponent` modes, collision & forces, hover effects & GroupIDs, navigation mesh pathfinding, cloth simulation |
+| `3d-asset-optimization` | Performance — triangle budgets, texture packing/compression & color spaces, material instances, `MeshInstancesComponent`, skydome/IBL sizing, AVIF & mesh compression, LOD & thermal adaptation |
+| `reality-composer-pro` | Authoring in Reality Composer Pro 3 — scene composition, prototypes/instancing, Shader/Script/Animation/Compute Graph, Behavior Trees, nav-mesh authoring, lightmap baking, live preview, the RCP Assistant, and editor plugins (custom components/systems/actions/nodes) |
+| `usd-usdkit` | USD/OpenUSD & the USDKit framework — layers/stages/prims/schemas, composition & references, USDA/USDC/USDZ, the USDKit Swift API, MaterialX/OpenPBR, mesh/texture compression, accessibility metadata, and the Safari `Model` tag |
+| `object-capture` | Photogrammetry — create a `PhotogrammetrySession` from photos, detail levels, the interactive bounding-box workflow, capture best practices, and producing USDZ assets |
+| `realitykit-debugging` | The RealityKit debugger — capture an entity-hierarchy snapshot, diagnose rogue transforms, misconfigured/missing components, and rendering pitfalls; build custom debug tooling; profile with RealityKit Trace |
+| `realitykit-spatial-ar` | Real-world integration (visionOS-leaning, + iOS ARKit) — anchoring with `SpatialTrackingSession`/`AnchorEntity`, scene understanding, environment blending, immersive audio & custom reverb, spatial photos/scenes & immersive video, spatial accessories, object tracking |
 
 ### Platform & Design
 | Skill | Purpose |
@@ -467,8 +488,8 @@ All agents share state via a plan file at `docs/plans/<feature-name>.md`:
 
 | Model | Agents | Rationale |
 |-------|--------|-----------|
-| Opus | @swift-architect, @swift-ui-design, @tca-architect, @swift-code-reviewer, @evaluation-engineer | Best reasoning for architecture decisions, the high-stakes final code-review gate, and AI-feature evaluation |
-| Sonnet | Implementation agents (feature-engineer, swift-engineer, tca-engineer, swiftui-specialist, accessibility-specialist, swift-test-creator, architecture-keeper, swift-modernizer) | Strong coding, testing, and docs at lower cost than Opus — no longer silently inherits the (possibly Opus) session model |
+| Opus | @swift-architect, @swift-ui-design, @tca-architect, @spatial-experience-architect, @swift-code-reviewer, @evaluation-engineer | Best reasoning for architecture decisions (incl. 3D/spatial), the high-stakes final code-review gate, and AI-feature evaluation |
+| Sonnet | Implementation agents (feature-engineer, swift-engineer, tca-engineer, swiftui-specialist, realitykit-engineer, accessibility-specialist, swift-test-creator, architecture-keeper, swift-modernizer) | Strong coding, testing, and docs at lower cost than Opus — no longer silently inherits the (possibly Opus) session model |
 | Haiku | @search, @swift-documenter | Fast, efficient for mechanical tasks |
 
 ## Quality Assurance
@@ -478,7 +499,7 @@ All agents share state via a plan file at `docs/plans/<feature-name>.md`:
 When modifying agents or skills:
 
 - [ ] All agents have `name`, `description`, `tools`, `model` fields
-- [ ] Opus agents: planning (`@swift-architect`, `@swift-ui-design`, `@tca-architect`) plus `@swift-code-reviewer` and `@evaluation-engineer`
+- [ ] Opus agents: planning (`@swift-architect`, `@swift-ui-design`, `@tca-architect`, `@spatial-experience-architect`) plus `@swift-code-reviewer` and `@evaluation-engineer`
 - [ ] Other implementation agents use Sonnet (explicit — strong coding at lower cost than Opus; not `inherit`, which silently ran on the session model)
 - [ ] Utility agents (`@search`, `@swift-documenter`) are Haiku
 - [ ] Planning agents have explicit no-modify constraints
