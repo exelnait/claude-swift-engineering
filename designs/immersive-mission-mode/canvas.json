@@ -3,18 +3,24 @@
     { "file": "Main.dc.html", "title": "Immersive Mission Mode", "x": 0, "y": 0, "w": 1160, "h": 620 },
     { "file": "Data.dc.html", "title": "Data · Bundled vs generated", "x": 1240, "y": -140, "w": 1240, "h": 900 },
     { "file": "Entry.dc.html", "title": "M1 · Lesson preview — mission entry", "x": 0, "y": 900, "w": 402, "h": 874 },
-    { "file": "Choose.dc.html", "title": "M2 · Act — the hint rises", "x": 502, "y": 900, "w": 402, "h": 874 },
-    { "file": "Typing.dc.html", "title": "M2b · Typing — keyboard up", "x": 1004, "y": 900, "w": 402, "h": 874 },
-    { "file": "RevealCorrect.dc.html", "title": "M3 · Reveal — it works", "x": 1506, "y": 900, "w": 402, "h": 874 },
-    { "file": "RevealWrong.dc.html", "title": "M4 · Reveal — not quite, both explained", "x": 2008, "y": 900, "w": 402, "h": 874 },
-    { "file": "WordPopup.dc.html", "title": "M5 · Word popup — capture mid-act", "x": 2510, "y": 900, "w": 402, "h": 874 },
-    { "file": "Resolved.dc.html", "title": "M6 · Resolved — your line joins the story", "x": 3012, "y": 900, "w": 402, "h": 874 },
-    { "file": "MissionSteps.dc.html", "title": "S1 · Mission sheet — steps & progress", "x": 0, "y": 2080, "w": 402, "h": 874 },
-    { "file": "Help.dc.html", "title": "S2 · Help — no wrong door", "x": 502, "y": 2080, "w": 402, "h": 874 },
-    { "file": "Phrases.dc.html", "title": "S3 · Phrases you could use", "x": 1004, "y": 2080, "w": 402, "h": 874 },
-    { "file": "Unavailable.dc.html", "title": "M7 · Mission absent — offline", "x": 1506, "y": 2080, "w": 402, "h": 874 },
-    { "file": "MissionComplete.dc.html", "title": "M8 · Mission recap", "x": 2008, "y": 2080, "w": 402, "h": 874 },
-    { "file": "Motion.dc.html", "title": "Motion & haptics of an act", "x": 2510, "y": 2080, "w": 940, "h": 820 }
+    { "file": "FirstAct.dc.html", "title": "M2a · First act at A1 — coach mark", "x": 502, "y": 900, "w": 402, "h": 874 },
+    { "file": "Choose.dc.html", "title": "M2 · Act — the hint rises", "x": 1004, "y": 900, "w": 402, "h": 874 },
+    { "file": "Typing.dc.html", "title": "M2b · Typing — keyboard up", "x": 1506, "y": 900, "w": 402, "h": 874 },
+    { "file": "RevealCorrect.dc.html", "title": "M3 · Reveal — it works, peek the rest", "x": 2008, "y": 900, "w": 402, "h": 874 },
+    { "file": "RevealWrong.dc.html", "title": "M4 · Reveal — not quite, both explained", "x": 2510, "y": 900, "w": 402, "h": 874 },
+    { "file": "WordPopup.dc.html", "title": "M5 · Word popup — capture mid-act", "x": 3012, "y": 900, "w": 402, "h": 874 },
+    { "file": "Resolved.dc.html", "title": "M6 · Resolved — your line joins the story", "x": 3514, "y": 900, "w": 402, "h": 874 },
+    { "file": "Grading.dc.html", "title": "M2c · Sent — reading your message", "x": 0, "y": 2080, "w": 402, "h": 874 },
+    { "file": "TypedFeedback.dc.html", "title": "M2d · Typed reveal — worked, one polish", "x": 502, "y": 2080, "w": 402, "h": 874 },
+    { "file": "OffMission.dc.html", "title": "M2e · Off-mission — graceful redirect", "x": 1004, "y": 2080, "w": 402, "h": 874 },
+    { "file": "MissionSteps.dc.html", "title": "S1 · Mission sheet — steps & progress", "x": 1506, "y": 2080, "w": 402, "h": 874 },
+    { "file": "Help.dc.html", "title": "S2 · Help — no wrong door", "x": 2008, "y": 2080, "w": 402, "h": 874 },
+    { "file": "Phrases.dc.html", "title": "S3 · Phrases you could use", "x": 2510, "y": 2080, "w": 402, "h": 874 },
+    { "file": "Unavailable.dc.html", "title": "M7 · Mission absent — offline", "x": 0, "y": 3260, "w": 402, "h": 874 },
+    { "file": "MissionComplete.dc.html", "title": "M8 · Mission recap", "x": 502, "y": 3260, "w": 402, "h": 874 },
+    { "file": "Landscape.dc.html", "title": "W1 · iPhone landscape — side rail", "x": 1004, "y": 3260, "w": 874, "h": 402 },
+    { "file": "PadFold.dc.html", "title": "W2 · iPad & unfolded fold — two panes", "x": 1978, "y": 3260, "w": 1000, "h": 744 },
+    { "file": "Motion.dc.html", "title": "Motion & haptics of an act", "x": 3078, "y": 3260, "w": 940, "h": 820 }
   ],
   "annotations": [
     {
@@ -22,7 +28,7 @@
       "x": 0,
       "y": -310,
       "w": 340,
-      "text": "Read with Plans/immersive-story-mode.md and the teardown research. Middle row: the golden path M1→M6 (chat feed, hint rises from the bottom, composer always present). Bottom row: the support system (steps, help, phrases) + honest edges + motion.\n\nDrawn from shipped components: HalmOptionSelect cells, ReviewOptionSurface roles, GlassSurface, Theme tokens, AppAnimation springs, the word popup."
+      "text": "Read with Plans/immersive-story-mode.md and the teardown research. Row 2: the golden path M1→M6. Row 3: the typed tier's honest states + the support system. Row 4: edges, recap, wide layouts, motion.\n\nDrawn from shipped components: HalmOptionSelect cells, ReviewOptionSurface roles, GlassSurface, Theme tokens, AppAnimation springs, the word popup."
     },
     {
       "id": "note-data",
@@ -39,81 +45,123 @@
       "text": "M1 — §14.4: mode choice lives on the preview card, nowhere else (teardown: missions must never become their own tab). Framed as HOW to experience this story, not exercise types. Objectives previewed as speech acts. No AI branding — research: AI is a supporter, not a core."
     },
     {
-      "id": "note-choose",
+      "id": "note-firstact",
       "x": 502,
       "y": 640,
       "w": 300,
-      "text": "M2 — the story is a chat feed; the act arrives as a hint rising from the bottom: situation pinned, three vetted lines (the ONE option idiom — brand-wash idle cells, r18), and a real composer underneath. Tap a line OR write your own. Every word in every bubble and line is tappable (dotted affordance) — the popup-on-all-surfaces rule. The correct line is never marked before the tap."
+      "text": "M2a — first-act load management: at A1 the composer is folded into a visible door („from A2” pill — the unlock is shown, never punitive), and a one-time TipKit coach mark says the one thing that matters: tap a line; the lightbulb helps and never counts against you. Removes the which-input-is-the-input ambiguity."
+    },
+    {
+      "id": "note-choose",
+      "x": 1004,
+      "y": 640,
+      "w": 300,
+      "text": "M2 (A2+) — the story is a chat feed; the act rises from the bottom: situation pinned, three vetted lines, composer underneath. Every bubble replays via its speaker (results-screen pattern); every word is tappable. Send appears once there's text; the mic waits for the speech epic — a dead mic is expectation debt. The correct line is never marked before the tap."
     },
     {
       "id": "note-typing",
-      "x": 1004,
+      "x": 1506,
       "y": 640,
       "w": 300,
-      "text": "M2b — composer focused: options fold into one quiet door, situation stays pinned, ä ö ü ß bar sits above the system keyboard's honest space (never painted). Typed lines are the gated §8 tier — PCC-graded with redaction and a char cap; at A1–A2 the three lines stay the default path (research: choice, not free input)."
+      "text": "M2b — composer focused: options fold into one quiet door, situation stays pinned, sentence starters („Ich hätte …”) keep momentum without a full phrase round-trip, ä ö ü ß above the system keyboard's honest space (never painted). Typed lines are the gated §8 tier — PCC-graded with redaction and a char cap."
     },
     {
       "id": "note-reveal",
-      "x": 1506,
+      "x": 2008,
       "y": 640,
       "w": 300,
-      "text": "M3 — §7 rule 2: tap → rationale, synchronously (isCorrect is stored; no model at tap time). Focus collapse: siblings recede 0.35 / 0.96. Rationale = the eyebrow-over-body panel, compact and in-frame — never a half-screen takeover. Plain-words why (register), never „Grammatik: Akkusativ“. Tell me more → the existing explanation ladder."
+      "text": "M3 — tap → rationale, synchronously (isCorrect is stored; no model at tap time). Focus collapse: siblings recede 0.35 / 0.96 — and stay tappable: the third line is peeked here, its „why it's weaker” unfolding from data already on the device. Curiosity never dead-ends. Say-it-back: the working line auto-plays once (settings + voice-quality gated)."
     },
     {
       "id": "note-wrong",
-      "x": 2008,
-      "y": 640,
-      "w": 300,
-      "text": "M4 — §7.1 (owner-confirmed): wrong pick shows BOTH rationales in the same frame, correct line marked, no retry — two movements either way. Diff-view teaching: why yours fails + the line that works, with one identical rationale string wherever it appears. Wrong picks never touch FSRS."
-    },
-    {
-      "id": "note-popup",
       "x": 2510,
       "y": 640,
       "w": 300,
-      "text": "M5 — the word cycle's encounter surface, unchanged: the shipped compact popover (320pt, system chrome + arrow, anchored to the word rect; opens above a word in the lower half). Headword SF bold; serif is reserved for the teal translation line. Keep (bookmark) is the only FSRS entry. Needs real TappedWordContext so separable verbs resolve."
+      "text": "M4 — §7.1 (owner-confirmed): wrong pick shows BOTH rationales in the same frame, correct line marked, no retry — two movements either way. Diff-view teaching: why yours fails + the line that works, one identical rationale string everywhere. Wrong picks never touch FSRS."
     },
     {
-      "id": "note-resolved",
+      "id": "note-popup",
       "x": 3012,
       "y": 640,
       "w": 300,
-      "text": "M6 — the payoff: your line renders as YOUR bubble in the feed (alignment is the speaker cue; the freshest turn carries the brand stroke), then the authored story resumes — the pick never branches the plot. Objective ticks in the banner (counts, never percents); audio + karaoke pick up where the scene stopped."
+      "text": "M5 — the word cycle's encounter surface, unchanged: the shipped compact popover (320pt, system chrome + arrow, anchored to the word rect). Headword SF bold; serif is reserved for the teal translation line. Keep (bookmark) is the only FSRS entry. Needs real TappedWordContext so separable verbs resolve."
     },
     {
-      "id": "note-steps",
+      "id": "note-resolved",
+      "x": 3514,
+      "y": 640,
+      "w": 300,
+      "text": "M6 — the payoff: your line renders as YOUR bubble in the feed (alignment is the speaker cue; the freshest turn carries the brand stroke), every bubble replayable, then the authored story resumes — the pick never branches the plot. Objective ticks in the banner; counts, never percents."
+    },
+    {
+      "id": "note-grading",
       "x": 0,
       "y": 1810,
       "w": 300,
-      "text": "S1 — easy access to steps & progress: the mission banner is a button; this sheet is one tap away at any moment. Objectives are speech acts with deliberately vague hints („Ich hätte gern …“, Karte · bar) — orientation, not answers. Current step marked; done steps struck through; 1 of 3 done as a count."
+      "text": "M2c — the typed tier's wait, designed: composer locks, a quiet „Reading your message …” card with skeleton lines (the tap path still never waits — this state exists only for typed sends). Hard timeout returns the text to the field untouched; offline, the composer door simply isn't offered. Typed text is never lost to a failed call."
     },
     {
-      "id": "note-help",
+      "id": "note-typedfeedback",
       "x": 502,
       "y": 1810,
       "w": 300,
-      "text": "S2 — no wrong door, from the lightbulb in the banner: phrases with audio, translate her last message (shown quietly under the bubble), or „Wie bitte?“ to make her repeat more simply. Asking for help never counts against you — no dead ends, no leaving the app to cheat (the #1 trust-killer in the research)."
+      "text": "M2d — grade the speech act first, polish second: a green „it worked — she understood” before any correction, then ONE diff-style polish (hatte → hätte) with tap-for-why — never a wall of red. Typos don't fail a mission; perfection anxiety is the documented abandonment driver for free input."
     },
     {
-      "id": "note-phrases",
+      "id": "note-offmission",
       "x": 1004,
       "y": 1810,
       "w": 300,
-      "text": "S3 — ready-made lines with audio, pack-authored per situation (deterministic — no FM). Tapping a phrase puts it in the composer, editable before sending, so using help still ends in the learner sending the line themselves. Every German word stays tappable."
+      "text": "M2e — off-errand input gets amber, never red: „Good German — different errand.” The mission line re-pins, the three lines re-offer themselves, and the typed text returns to the composer for editing. Correct German off the goal is not an error and grades nothing."
     },
     {
-      "id": "note-unavailable",
+      "id": "note-steps",
       "x": 1506,
       "y": 1810,
       "w": 300,
-      "text": "M7 — §3: when PCC is unusable (offline / quota / cloud off in Settings) the mission is ABSENT with one quiet line why — the PCCQuotaBanner voice. Never present-and-failing, never a disabled dead control. Decided once at lesson start; mid-lesson a missed prefetch degrades that round to plain Listen, silently."
+      "text": "S1 — easy access to steps & progress: the mission banner is a button; this sheet is one tap away at any moment. Objectives are speech acts with deliberately vague hints („Ich hätte gern …”, Karte · bar) — orientation, not answers. Current step marked; done steps struck through; counts, never percents."
     },
     {
-      "id": "note-complete",
+      "id": "note-help",
       "x": 2008,
       "y": 1810,
       "w": 300,
-      "text": "M8 — mirrors the shipped lesson recap so the exit is one language: eyebrow + serif headline + the flame count (words learned — the hero owns this number), YOU CAN NOW as the mission's can-do, lines-that-worked as a routed count, Words to review with dashed-suggest / solid-kept chips and one solid-brand Keep button (deliberate, never auto), and a simple next-story hand-off — same situation, carries your words — no recommendation engine. Sparkles on arrival, Reduce-Motion gated; the still frame is the reward."
+      "text": "S2 — no wrong door, from the lightbulb in the banner: phrases with audio, translate her last message (shown quietly under the bubble), or „Wie bitte?” to make her repeat more simply. Asking for help never counts against you — no dead ends, no leaving the app to cheat (the #1 trust-killer in the research)."
+    },
+    {
+      "id": "note-phrases",
+      "x": 2510,
+      "y": 1810,
+      "w": 300,
+      "text": "S3 — ready-made lines with audio, pack-authored per situation (deterministic — no FM). Tapping a phrase puts it in the composer, editable before sending, so using help still ends with the learner sending the line themselves. Every German word stays tappable."
+    },
+    {
+      "id": "note-unavailable",
+      "x": 0,
+      "y": 2990,
+      "w": 300,
+      "text": "M7 — §3: when PCC is unusable (offline / quota / cloud off in Settings) the mission is ABSENT with one quiet line why — the PCCQuotaBanner voice. Never present-and-failing. Decided once at lesson start; mid-lesson a missed prefetch degrades that round to plain Listen, silently."
+    },
+    {
+      "id": "note-complete",
+      "x": 502,
+      "y": 2990,
+      "w": 300,
+      "text": "M8 — mirrors the shipped lesson recap: eyebrow + serif headline + the flame count (words learned), YOU CAN NOW as the mission's can-do, lines-that-worked as a routed count, Words to review with dashed-suggest / solid-kept chips and one solid-brand Keep button (deliberate, never auto), and the engine-less next-story hand-off."
+    },
+    {
+      "id": "note-landscape",
+      "x": 1004,
+      "y": 2990,
+      "w": 300,
+      "text": "W1 — iPhone landscape (and the folded phone's cover screen in landscape): when height is scarce the bottom hint becomes a trailing act rail — same components, 44pt targets kept, feed keeps reading on the left. Nothing is a new component; it's the same panel re-laid."
+    },
+    {
+      "id": "note-wide",
+      "x": 1978,
+      "y": 2990,
+      "w": 320,
+      "text": "W2 — regular width (iPad, unfolded fold): two panes — feed capped at the app's 700pt readable column, act rail standing beside it, so scene + situation + lines share one glance with no sheet at all. On regular width the steps/help/phrases sheets present as popovers anchored to their buttons (the app's existing sheet-on-compact / popover-on-regular convention, same as the word popup)."
     }
   ],
   "launch": { "view": "canvas" }

@@ -45,66 +45,45 @@
     </div>
   </div>
 
-  <!-- Feed: the last turn stays visible above the keyboard -->
-  <div style="margin: 12px 24px 0; display: flex; flex-direction: column; gap: 4px; flex: 1; min-height: 0;">
-    <div style="display: flex; align-items: center; gap: 6px;">
-      <span style="font-size: 12px; font-weight: 600; color: #5C5C66;">B&auml;ckerin</span>
-      <svg width="13" height="12" viewBox="0 0 20 18" fill="none" stroke="#0F859E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5v5h3l4 3.5V3L6 6.5H3z" fill="#0F859E" stroke="none"></path><path d="M13 6a4.2 4.2 0 010 6"></path></svg>
-    </div>
-    <div style="padding: 10px 14px; border-radius: 18px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); align-self: flex-start; max-width: 320px;">
-      <div style="font-size: 20px; line-height: 1.35; color: #111114;"><span class="tw">Guten</span> <span class="tw">Morgen</span>! <span class="tw">Was</span> <span class="tw">darf</span> <span class="tw">es</span> <span class="tw">sein</span>?</div>
+  <!-- Feed: the off-errand line -->
+  <div style="margin: 14px 24px 0; display: flex; flex-direction: column; gap: 4px; align-items: flex-end; flex: 1; min-height: 0;">
+    <div style="font-size: 12px; font-weight: 600; color: #5C5C66;">You</div>
+    <div style="padding: 10px 14px; border-radius: 18px; background: rgba(255,255,255,0.9); border: 2px solid #0F859E; max-width: 300px;">
+      <div style="font-size: 20px; line-height: 1.35; color: #111114;"><span class="tw">Ich</span> <span class="tw">m&ouml;chte</span> <span class="tw">einen</span> <span class="tw">Kaffee</span>, <span class="tw">bitte</span>.</div>
     </div>
   </div>
 
-  <!-- Composer zone, keyboard up -->
-  <div style="border-radius: 28px 28px 0 0; background: #FBFBFD; border: 1px solid rgba(82,82,82,0.16); border-bottom: none; box-shadow: 0 -8px 28px rgba(20,20,19,0.08); padding: 12px 16px 0; display: flex; flex-direction: column; gap: 8px;">
+  <!-- Graceful redirect: amber, never red — good German, different errand -->
+  <div style="border-radius: 28px 28px 0 0; background: #FBFBFD; border: 1px solid rgba(82,82,82,0.16); border-bottom: none; box-shadow: 0 -8px 28px rgba(20,20,19,0.08); padding: 14px 16px 26px; display: flex; flex-direction: column; gap: 8px;">
 
-    <!-- Situation stays pinned while typing -->
-    <div style="display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 14px; background: #F7F0E0;">
+    <div style="box-sizing: border-box; border-radius: 18px; background: #FFF6E8; border: 1px solid rgba(242,168,51,0.45); padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;">
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#96650F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 8.5v-3a2 2 0 00-2-2H3.8M6 1l-3 2.5L6 6M2.5 8.5v3a2 2 0 002 2h7.7"></path></svg>
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.05em; color: #96650F;">GOOD GERMAN &mdash; DIFFERENT ERRAND</div>
+      </div>
+      <div style="font-size: 16px; line-height: 1.4; color: #111114;">A fine sentence &mdash; but the baker&rsquo;s waiting to hear about the rolls. Try again, or lean on a hint.</div>
+    </div>
+
+    <!-- The mission line re-pins itself -->
+    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 14px; background: #F7F0E0;">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#96650F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M8 2.2c-2.9 0-5.2 2.2-5.2 5 0 1.7.9 3.2 2.2 4.1v1.9c0 .5.4.9.9.9h4.2c.5 0 .9-.4.9-.9v-1.9c1.3-.9 2.2-2.4 2.2-4.1 0-2.8-2.3-5-5.2-5z"></path></svg>
-      <div style="font-size: 14px; font-weight: 500; line-height: 1.3; color: #3D3526;">Your turn &mdash; you&rsquo;d like two bread rolls.</div>
+      <div style="font-size: 15px; font-weight: 500; line-height: 1.3; color: #3D3526;">Your turn &mdash; you&rsquo;d like two bread rolls.</div>
     </div>
 
-    <!-- Options fold away into one quiet door while the keyboard owns the space -->
-    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 32px;">
-      <div style="display: flex; align-items: center; gap: 5px;">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#5C5C66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5h8M2 6h8M2 8.5h5"></path></svg>
-        <span style="font-size: 13px; font-weight: 600; color: #5C5C66;">Show the three lines</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 4px;">
-        <span style="font-size: 13px; font-weight: 600; color: #0F859E;">Need a phrase?</span>
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#0F859E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 1.5L7 5 3 8.5"></path></svg>
-      </div>
+    <!-- Doors back in -->
+    <div style="min-height: 48px; box-sizing: border-box; border-radius: 18px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); padding: 12px 16px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="#0A667D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5h8M2 6h8M2 8.5h5"></path></svg>
+      <span style="font-size: 15px; font-weight: 600; color: #0A667D;">Show the three lines</span>
     </div>
 
-    <!-- Composer with draft + send -->
+    <!-- Your text comes back, editable — never lost, never red-penned -->
     <div style="display: flex; align-items: center; gap: 8px;">
       <div style="flex: 1; min-height: 44px; box-sizing: border-box; border-radius: 22px; background: #FFFFFF; border: 1.5px solid rgba(15,133,158,0.45); padding: 12px 16px; display: flex; align-items: center;">
-        <span style="font-size: 17px; color: #111114;">Ich h&auml;tte gern zwei Br&ouml;tchen, bitte</span><span style="display: inline-block; width: 2px; height: 20px; background: #0F859E; margin-left: 2px; border-radius: 1px;"></span>
+        <span style="font-size: 17px; color: #111114;">Ich m&ouml;chte einen Kaffee, bitte.</span><span style="display: inline-block; width: 2px; height: 20px; background: #0F859E; margin-left: 2px; border-radius: 1px;"></span>
       </div>
       <div style="width: 44px; height: 44px; border-radius: 22px; background: linear-gradient(180deg, #1491AC 0%, #0F859E 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"></path></svg>
       </div>
-    </div>
-
-    <!-- Sentence starters: momentum without a full phrase round-trip -->
-    <div style="display: flex; gap: 6px;">
-      <div style="padding: 7px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(15,133,158,0.35); font-size: 14px; font-weight: 500; color: #0A667D;">Ich h&auml;tte &hellip;</div>
-      <div style="padding: 7px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(15,133,158,0.35); font-size: 14px; font-weight: 500; color: #0A667D;">Was kostet &hellip;</div>
-      <div style="padding: 7px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(15,133,158,0.35); font-size: 14px; font-weight: 500; color: #0A667D;">&hellip;, bitte.</div>
-    </div>
-
-    <!-- ä ö ü ß bar sits directly above the system keyboard -->
-    <div style="display: flex; gap: 6px; padding-bottom: 8px;">
-      <div style="flex: 1; height: 36px; border-radius: 10px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; font-size: 16px;">&auml;</div>
-      <div style="flex: 1; height: 36px; border-radius: 10px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; font-size: 16px;">&ouml;</div>
-      <div style="flex: 1; height: 36px; border-radius: 10px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; font-size: 16px;">&uuml;</div>
-      <div style="flex: 1; height: 36px; border-radius: 10px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; font-size: 16px;">&szlig;</div>
-    </div>
-
-    <!-- Honest space: the system keyboard renders here, never a painted fake -->
-    <div style="height: 234px; margin: 0 -16px; border-top: 1px solid rgba(82,82,82,0.14); background: rgba(116,116,128,0.06); display: flex; align-items: center; justify-content: center;">
-      <span style="font-size: 12px; color: #999AA3; letter-spacing: 0.04em;">SYSTEM KEYBOARD</span>
     </div>
   </div>
 </div>
