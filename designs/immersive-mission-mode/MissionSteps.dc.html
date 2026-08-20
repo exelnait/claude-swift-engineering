@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; }
+    a { color: #0F859E; } a:hover { color: #0A667D; }
+    .tw { border-bottom: 2px dotted rgba(92,92,102,0.45); padding-bottom: 1px; }
+  </style>
+</helmet>
+<div style="width: 402px; height: 874px; box-sizing: border-box; background: #FFFFFF; color: #111114; display: flex; flex-direction: column; overflow: hidden; position: relative;">
+
+  <!-- Dimmed chat behind the sheet -->
+  <div style="position: absolute; inset: 0; display: flex; flex-direction: column;">
+    <div style="margin-top: 62px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="#111114" stroke-width="1.9" stroke-linecap="round"><path d="M2.5 2.5l10 10M12.5 2.5l-10 10"></path></svg>
+      </div>
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <div style="width: 12px; height: 5px; border-radius: 2.5px; background: #0F859E;"></div>
+        <div style="width: 18px; height: 5px; border-radius: 2.5px; background: #0F859E;"></div>
+        <div style="width: 12px; height: 5px; border-radius: 2.5px; background: rgba(82,82,82,0.20);"></div>
+      </div>
+      <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center;">
+        <svg width="16" height="14" viewBox="0 0 16 14" fill="#5C5C66"><path d="M1.5 2.2v9.6c0 .5.55.8.97.53l7.03-4.53c.4-.26.4-.84 0-1.1L2.47 2.17c-.42-.27-.97.03-.97.53z"></path><rect x="12.2" y="1.8" width="2.2" height="10.4" rx="1.1"></rect></svg>
+      </div>
+    </div>
+    <div style="margin: 12px 24px 0; padding: 8px 8px 8px 16px; border-radius: 16px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#0F859E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M8.5 1.6l1.5 1.2 1.9-.3.7 1.8 1.8.7-.3 1.9 1.2 1.5-1.2 1.5.3 1.9-1.8.7-.7 1.8-1.9-.3-1.5 1.2-1.5-1.2-1.9.3-.7-1.8-1.8-.7.3-1.9L1.7 8.4l1.2-1.5-.3-1.9 1.8-.7.7-1.8 1.9.3z"></path><path d="M6 8.6l1.7 1.7 3.3-3.4"></path></svg>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 1px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 15px; font-weight: 500; color: #111114;">Order at the bakery</span>
+          <svg width="9" height="6" viewBox="0 0 10 6" fill="none" stroke="#737378" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5l4-4 4 4"></path></svg>
+        </div>
+        <span style="font-size: 12px; color: #737378;">Act 2 of 3 &middot; Greet done</span>
+      </div>
+      <div style="width: 40px; height: 40px; border-radius: 20px; background: #F7F0E0; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#96650F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8c-2.7 0-4.8 2.1-4.8 4.7 0 1.6.8 3 2 3.8v1.6c0 .5.4.9.9.9h3.8c.5 0 .9-.4.9-.9v-1.6c1.2-.8 2-2.2 2-3.8 0-2.6-2.1-4.7-4.8-4.7z"></path><path d="M6.4 15h3.2"></path></svg>
+      </div>
+    </div>
+    <div style="margin: 14px 24px 0; display: flex; flex-direction: column; gap: 4px;">
+      <div style="font-size: 12px; font-weight: 600; color: #5C5C66;">B&auml;ckerin</div>
+      <div style="padding: 10px 14px; border-radius: 18px; background: rgba(255,255,255,0.9); border: 2px solid #0F859E; align-self: flex-start; max-width: 320px;">
+        <div style="font-size: 20px; line-height: 1.35; color: #111114;"><span class="tw">Guten</span> <span class="tw">Morgen</span>! <span class="tw">Was</span> <span class="tw">darf</span> <span class="tw">es</span> <span class="tw">sein</span>?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet scrim -->
+  <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25);"></div>
+
+  <!-- Mission sheet: steps & progress, one tap from the banner -->
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; border-radius: 28px 28px 0 0; background: #FBFBFD; box-shadow: 0 -12px 40px rgba(0,0,0,0.22); padding: 8px 24px 34px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="width: 36px; height: 5px; border-radius: 2.5px; background: rgba(92,92,102,0.35); align-self: center; margin-top: 4px;"></div>
+
+    <div style="display: flex; align-items: baseline; gap: 10px;">
+      <div style="font-family: ui-serif, 'New York', Georgia, serif; font-size: 22px; font-weight: 600; flex: 1;">Your mission</div>
+      <div style="font-size: 15px; font-weight: 600; color: #5C5C66; font-variant-numeric: tabular-nums;">1 of 3 done</div>
+    </div>
+    <div style="font-size: 15px; color: #5C5C66; margin-top: -8px;">Order at the bakery &mdash; politely, in German.</div>
+
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; gap: 12px; min-height: 52px;">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#2EA86B"></circle><path d="M6.2 10.4l2.5 2.5 5.1-5.2" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font-size: 17px; color: #5C5C66; text-decoration: line-through; text-decoration-color: rgba(92,92,102,0.5); flex: 1;">Greet the baker</span>
+        <span style="font-size: 13px; font-style: italic; color: #737378;">&bdquo;Guten Morgen&ldquo;</span>
+      </div>
+      <div style="height: 1px; background: rgba(15,12,8,0.08);"></div>
+      <div style="display: flex; align-items: center; gap: 12px; min-height: 52px;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.4" stroke="#0F859E" stroke-width="1.8"></circle><circle cx="10" cy="10" r="3.4" fill="#0F859E"></circle></svg>
+        <span style="font-size: 17px; font-weight: 600; color: #111114; flex: 1;">Order what you need</span>
+        <span style="font-size: 13px; font-style: italic; color: #0F859E;">&bdquo;Ich h&auml;tte gern &hellip;&ldquo;</span>
+      </div>
+      <div style="height: 1px; background: rgba(15,12,8,0.08);"></div>
+      <div style="display: flex; align-items: center; gap: 12px; min-height: 52px;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.4" stroke="#737378" stroke-width="1.8"></circle></svg>
+        <span style="font-size: 17px; color: #111114; flex: 1;">Pay and wrap up</span>
+        <span style="font-size: 13px; font-style: italic; color: #737378;">Karte &middot; bar</span>
+      </div>
+    </div>
+
+    <div style="font-size: 12px; color: #737378; text-align: center;">Each step is a moment you speak. The hints stay this vague on purpose.</div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

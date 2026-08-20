@@ -20,7 +20,7 @@
 
   <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
     <div style="font-family: ui-serif, 'New York', Georgia, serif; font-size: 28px; font-weight: 700;">Where the words come from</div>
-    <div style="font-size: 13px; color: #5C5C66;">Three tiers &mdash; every act always has a floor, and no model ever runs at answer time.</div>
+    <div style="font-size: 13px; color: #5C5C66;">Three tiers &mdash; every act always has a floor, and tapping a line never waits on a model.</div>
   </div>
 
   <!-- Three-lane tier map -->
@@ -85,6 +85,7 @@
         <div style="display: flex; gap: 8px;"><span style="color: #96650F; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">PCC unusable at start</b> (offline &middot; quota &middot; cloud turned off) &rarr; the mission entry is absent from the preview, with one quiet line why. The story still plays as Listen.</span></div>
         <div style="display: flex; gap: 8px;"><span style="color: #96650F; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">One act&rsquo;s prefetch missed</b> &rarr; that round plays as plain Listen; the mission goes on. No spinner mid-story, ever.</span></div>
         <div style="display: flex; gap: 8px;"><span style="color: #96650F; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">On-device tier (later, W5)</b>: FM writes shorter lines with the lexicon tool only; the rationale becomes a reason <i>category</i> the pack renders as a sentence &mdash; classification, not prose. Needs the &sect;9 owner call first.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #96650F; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">Typed lines (the composer)</b> are the gated &sect;8 tier: graded on the go by PCC with redaction and a hard char cap &mdash; the one act-time model call. The three vetted lines stay the offline floor.</span></div>
       </div>
       <div style="margin-top: auto; padding: 10px 12px; border-radius: 12px; background: #FBEAEA; font-size: 12px; line-height: 1.4; color: #6F1C2C;">
         <b>Never:</b> a present-and-failing mode, a retry that regenerates, or FM judging free text. Degrade by absence, not by breakage.
@@ -98,7 +99,7 @@
     <div style="display: flex; align-items: stretch; gap: 8px;">
       <div style="flex: 1.1; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #E8F3F5; border: 1px solid rgba(15,133,158,0.18);">
         <div style="font-size: 12px; font-weight: 700; color: #0A667D;">Loading</div>
-        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">plan &middot; rounds &middot; TTS render<br><b style="color: #0A667D;">+ act 1 authored (blocks here)</b></div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">plan &middot; rounds &middot; TTS render<br><b style="color: #0A667D;">+ act 1 generated (blocks here)</b></div>
       </div>
       <div style="flex: 1.4; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(15,12,8,0.10);">
         <div style="font-size: 12px; font-weight: 700;">Round 1 &middot; scene + words</div>
@@ -132,7 +133,7 @@
     <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border-radius: 22px; background: #172A2E; color: #E8F1F2;">
       <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #7FD1E0;">ONE CALL PER ACT &mdash; THE WHOLE PAYLOAD</div>
       <div style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; line-height: 1.55; white-space: pre; overflow-x: auto;">StoryActOptions
-  situation   "The baker asks what you'd like."   // native, 1 line
+  situation   "Your turn &mdash; you'd like two bread rolls."
   options[3]                                      // exactly three
     text        "Ich h&auml;tte gern zwei Br&ouml;tchen."     // German
     isCorrect   true                              // exactly one true
