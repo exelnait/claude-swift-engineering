@@ -17,19 +17,29 @@
 
   <!-- Dimmed chat behind the sheet -->
   <div style="position: absolute; inset: 0; display: flex; flex-direction: column;">
-    <div style="margin-top: 62px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between;">
-      <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center;">
+    <!-- One chrome row: close · mission pill (progress inside) · help -->
+    <div style="margin-top: 62px; padding: 0 16px; display: flex; align-items: center; gap: 8px;">
+      <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); box-shadow: 0 1px 3px rgba(20,20,19,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="#111114" stroke-width="1.9" stroke-linecap="round"><path d="M2.5 2.5l10 10M12.5 2.5l-10 10"></path></svg>
       </div>
-      <div style="display: flex; align-items: center; gap: 5px;">
-        <div style="width: 12px; height: 5px; border-radius: 2.5px; background: #0F859E;"></div>
-        <div style="width: 18px; height: 5px; border-radius: 2.5px; background: #0F859E;"></div>
-        <div style="width: 12px; height: 5px; border-radius: 2.5px; background: rgba(82,82,82,0.20);"></div>
+      <div style="flex: 1; min-height: 48px; box-sizing: border-box; padding: 6px 14px; border-radius: 24px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); box-shadow: 0 1px 3px rgba(20,20,19,0.06); display: flex; align-items: center; gap: 10px;">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#0F859E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M8.5 1.6l1.5 1.2 1.9-.3.7 1.8 1.8.7-.3 1.9 1.2 1.5-1.2 1.5.3 1.9-1.8.7-.7 1.8-1.9-.3-1.5 1.2-1.5-1.2-1.9.3-.7-1.8-1.8-.7.3-1.9L1.7 8.4l1.2-1.5-.3-1.9 1.8-.7.7-1.8 1.9.3z"></path><path d="M6 8.6l1.7 1.7 3.3-3.4"></path></svg>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 14px; font-weight: 500; color: #111114; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Order at the bakery</span>
+            <svg width="9" height="6" viewBox="0 0 10 6" fill="none" stroke="#737378" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M1 1l4 4 4-4"></path></svg>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="display: flex; gap: 3px; align-items: center;"><span style="width: 10px; height: 4px; border-radius: 2px; background: #2EA86B;"></span><span style="width: 14px; height: 4px; border-radius: 2px; background: #0F859E;"></span><span style="width: 10px; height: 4px; border-radius: 2px; background: rgba(82,82,82,0.20);"></span></div>
+            <span style="font-size: 11px; color: #737378;">Act 2 of 3</span>
+          </div>
+        </div>
       </div>
-      <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center;">
-        <svg width="16" height="14" viewBox="0 0 16 14" fill="#5C5C66"><path d="M1.5 2.2v9.6c0 .5.55.8.97.53l7.03-4.53c.4-.26.4-.84 0-1.1L2.47 2.17c-.42-.27-.97.03-.97.53z"></path><rect x="12.2" y="1.8" width="2.2" height="10.4" rx="1.1"></rect></svg>
+      <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); box-shadow: 0 1px 3px rgba(20,20,19,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#96650F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8c-2.7 0-4.8 2.1-4.8 4.7 0 1.6.8 3 2 3.8v1.6c0 .5.4.9.9.9h3.8c.5 0 .9-.4.9-.9v-1.6c1.2-.8 2-2.2 2-3.8 0-2.6-2.1-4.7-4.8-4.7z"></path><path d="M6.4 15h3.2"></path></svg>
       </div>
     </div>
+
     <div style="margin: 14px 24px 0; display: flex; flex-direction: column; gap: 4px;">
       <div style="font-size: 12px; font-weight: 600; color: #5C5C66;">B&auml;ckerin</div>
       <div style="padding: 10px 14px; border-radius: 18px; background: rgba(255,255,255,0.9); border: 2px solid #0F859E; align-self: flex-start; max-width: 320px;">
@@ -53,7 +63,7 @@
     <div style="display: flex; flex-direction: column;">
       <div style="display: flex; align-items: center; gap: 12px; min-height: 64px;">
         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
-          <span style="font-size: 17px; font-weight: 500;"><span class="tw">Ich</span> <span class="tw">h&auml;tte</span> <span class="tw">gern</span> <span class="tw">zwei</span> <span class="tw">Br&ouml;tchen</span>, <span class="tw">bitte</span>.</span>
+          <span style="font-size: 17px; font-weight: 500;">Ich h&auml;tte gern zwei Br&ouml;tchen, bitte.</span>
           <span style="font-size: 13px; font-style: italic; color: #5C5C66;">I&rsquo;d like two bread rolls, please.</span>
         </div>
         <div style="width: 40px; height: 40px; border-radius: 20px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -63,7 +73,7 @@
       <div style="height: 1px; background: rgba(15,12,8,0.08);"></div>
       <div style="display: flex; align-items: center; gap: 12px; min-height: 64px;">
         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
-          <span style="font-size: 17px; font-weight: 500;"><span class="tw">Was</span> <span class="tw">kosten</span> <span class="tw">die</span> <span class="tw">Br&ouml;tchen</span>?</span>
+          <span style="font-size: 17px; font-weight: 500;">Was kosten die Br&ouml;tchen?</span>
           <span style="font-size: 13px; font-style: italic; color: #5C5C66;">How much are the rolls?</span>
         </div>
         <div style="width: 40px; height: 40px; border-radius: 20px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -73,7 +83,7 @@
       <div style="height: 1px; background: rgba(15,12,8,0.08);"></div>
       <div style="display: flex; align-items: center; gap: 12px; min-height: 64px;">
         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
-          <span style="font-size: 17px; font-weight: 500;"><span class="tw">Was</span> <span class="tw">k&ouml;nnen</span> <span class="tw">Sie</span> <span class="tw">empfehlen</span>?</span>
+          <span style="font-size: 17px; font-weight: 500;">Was k&ouml;nnen Sie empfehlen?</span>
           <span style="font-size: 13px; font-style: italic; color: #5C5C66;">What do you recommend?</span>
         </div>
         <div style="width: 40px; height: 40px; border-radius: 20px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -83,7 +93,7 @@
       <div style="height: 1px; background: rgba(15,12,8,0.08);"></div>
       <div style="display: flex; align-items: center; gap: 12px; min-height: 64px;">
         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
-          <span style="font-size: 17px; font-weight: 500;"><span class="tw">Wie</span> <span class="tw">bitte</span>?</span>
+          <span style="font-size: 17px; font-weight: 500;">Wie bitte?</span>
           <span style="font-size: 13px; font-style: italic; color: #5C5C66;">Sorry &mdash; what?</span>
         </div>
         <div style="width: 40px; height: 40px; border-radius: 20px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">

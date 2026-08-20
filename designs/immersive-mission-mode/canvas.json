@@ -1,26 +1,173 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "title": "Immersive Mission Mode", "x": 0, "y": 0, "w": 1160, "h": 620 },
-    { "file": "Data.dc.html", "title": "Data · Bundled vs generated", "x": 1240, "y": -140, "w": 1240, "h": 900 },
-    { "file": "Entry.dc.html", "title": "M1 · Lesson preview — mission entry", "x": 0, "y": 900, "w": 402, "h": 874 },
-    { "file": "FirstAct.dc.html", "title": "M2a · First act at A1 — coach mark", "x": 502, "y": 900, "w": 402, "h": 874 },
-    { "file": "Choose.dc.html", "title": "M2 · Act — the hint rises", "x": 1004, "y": 900, "w": 402, "h": 874 },
-    { "file": "Typing.dc.html", "title": "M2b · Typing — keyboard up", "x": 1506, "y": 900, "w": 402, "h": 874 },
-    { "file": "RevealCorrect.dc.html", "title": "M3 · Reveal — it works, peek the rest", "x": 2008, "y": 900, "w": 402, "h": 874 },
-    { "file": "RevealWrong.dc.html", "title": "M4 · Reveal — not quite, both explained", "x": 2510, "y": 900, "w": 402, "h": 874 },
-    { "file": "WordPopup.dc.html", "title": "M5 · Word popup — capture mid-act", "x": 3012, "y": 900, "w": 402, "h": 874 },
-    { "file": "Resolved.dc.html", "title": "M6 · Resolved — your line joins the story", "x": 3514, "y": 900, "w": 402, "h": 874 },
-    { "file": "Grading.dc.html", "title": "M2c · Sent — reading your message", "x": 0, "y": 2080, "w": 402, "h": 874 },
-    { "file": "TypedFeedback.dc.html", "title": "M2d · Typed reveal — worked, one polish", "x": 502, "y": 2080, "w": 402, "h": 874 },
-    { "file": "OffMission.dc.html", "title": "M2e · Off-mission — graceful redirect", "x": 1004, "y": 2080, "w": 402, "h": 874 },
-    { "file": "MissionSteps.dc.html", "title": "S1 · Mission sheet — steps & progress", "x": 1506, "y": 2080, "w": 402, "h": 874 },
-    { "file": "Help.dc.html", "title": "S2 · Help — no wrong door", "x": 2008, "y": 2080, "w": 402, "h": 874 },
-    { "file": "Phrases.dc.html", "title": "S3 · Phrases you could use", "x": 2510, "y": 2080, "w": 402, "h": 874 },
-    { "file": "Unavailable.dc.html", "title": "M7 · Mission absent — offline", "x": 0, "y": 3260, "w": 402, "h": 874 },
-    { "file": "MissionComplete.dc.html", "title": "M8 · Mission recap", "x": 502, "y": 3260, "w": 402, "h": 874 },
-    { "file": "Landscape.dc.html", "title": "W1 · iPhone landscape — side rail", "x": 1004, "y": 3260, "w": 874, "h": 402 },
-    { "file": "PadFold.dc.html", "title": "W2 · iPad & unfolded fold — two panes", "x": 1978, "y": 3260, "w": 1000, "h": 744 },
-    { "file": "Motion.dc.html", "title": "Motion & haptics of an act", "x": 3078, "y": 3260, "w": 940, "h": 820 }
+    {
+      "file": "Main.dc.html",
+      "title": "Immersive Mission Mode",
+      "x": 0,
+      "y": 0,
+      "w": 1160,
+      "h": 620
+    },
+    {
+      "file": "Data.dc.html",
+      "title": "Data · Bundled vs generated",
+      "x": 1240,
+      "y": -140,
+      "w": 1240,
+      "h": 900
+    },
+    {
+      "file": "Entry.dc.html",
+      "title": "M1 · Lesson preview — mission entry",
+      "x": 0,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "FirstAct.dc.html",
+      "title": "M2a · First act at A1 — coach mark",
+      "x": 502,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Choose.dc.html",
+      "title": "M2 · Act — the hint rises",
+      "x": 1004,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Typing.dc.html",
+      "title": "M2b · Typing — keyboard up",
+      "x": 1506,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "RevealCorrect.dc.html",
+      "title": "M3 · Reveal — it works, peek the rest",
+      "x": 2008,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "RevealWrong.dc.html",
+      "title": "M4 · Reveal — not quite, both explained",
+      "x": 2510,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "WordPopup.dc.html",
+      "title": "M5 · Word popup — capture mid-act",
+      "x": 3012,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Resolved.dc.html",
+      "title": "M6 · Resolved — your line joins the story",
+      "x": 3514,
+      "y": 900,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Grading.dc.html",
+      "title": "M2c · Sent — reading your message",
+      "x": 0,
+      "y": 2080,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "TypedFeedback.dc.html",
+      "title": "M2d · Typed reveal — worked, one polish",
+      "x": 502,
+      "y": 2080,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "OffMission.dc.html",
+      "title": "M2e · Off-mission — graceful redirect",
+      "x": 1004,
+      "y": 2080,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "MissionSteps.dc.html",
+      "title": "S1 · Mission sheet — steps & progress",
+      "x": 1506,
+      "y": 2080,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Help.dc.html",
+      "title": "S2 · Help — no wrong door",
+      "x": 2008,
+      "y": 2080,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Phrases.dc.html",
+      "title": "S3 · Phrases you could use",
+      "x": 2510,
+      "y": 2080,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Unavailable.dc.html",
+      "title": "M7 · Mission absent — offline",
+      "x": 0,
+      "y": 3260,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "MissionComplete.dc.html",
+      "title": "M8 · Mission recap",
+      "x": 502,
+      "y": 3260,
+      "w": 402,
+      "h": 874
+    },
+    {
+      "file": "Landscape.dc.html",
+      "title": "W1 · iPhone landscape — side rail",
+      "x": 1004,
+      "y": 3260,
+      "w": 874,
+      "h": 402
+    },
+    {
+      "file": "PadFold.dc.html",
+      "title": "W2 · iPad & unfolded fold — two panes",
+      "x": 1978,
+      "y": 3260,
+      "w": 1000,
+      "h": 744
+    },
+    {
+      "file": "Motion.dc.html",
+      "title": "Motion & haptics of an act",
+      "x": 3078,
+      "y": 3260,
+      "w": 940,
+      "h": 820
+    }
   ],
   "annotations": [
     {
@@ -49,21 +196,21 @@
       "x": 502,
       "y": 640,
       "w": 300,
-      "text": "M2a — first-act load management: at A1 the composer is folded into a visible door („from A2” pill — the unlock is shown, never punitive), and a one-time TipKit coach mark says the one thing that matters: tap a line; the lightbulb helps and never counts against you. Removes the which-input-is-the-input ambiguity."
+      "text": "M2a — first-act load management: at A1 the composer is folded into a visible door („from A2” pill — the unlock is shown, never punitive), and a one-time TipKit coach mark says the one thing that matters: tap a line; the lightbulb in the top-right helps and never counts against you."
     },
     {
       "id": "note-choose",
       "x": 1004,
       "y": 640,
       "w": 300,
-      "text": "M2 (A2+) — the story is a chat feed; the act rises from the bottom: situation pinned, three vetted lines, composer underneath. Every bubble replays via its speaker (results-screen pattern); every word is tappable. Send appears once there's text; the mic waits for the speech epic — a dead mic is expectation debt. The correct line is never marked before the tap."
+      "text": "M2 (A2+), state 1 of 2 — the three lines are BUTTONS: one tap answers, so words are not individually tappable there; word taps live only in the chat bubbles (dotted affordance). One chrome row: close · mission pill (title, chevron, act dots + count) · help lightbulb — no separate round indicator, no skip. Composer present, but the ä ö ü ß bar exists only in the keyboard state. The correct line is never marked before the tap."
     },
     {
       "id": "note-typing",
       "x": 1506,
       "y": 640,
       "w": 300,
-      "text": "M2b — composer focused: options fold into one quiet door, situation stays pinned, sentence starters („Ich hätte …”) keep momentum without a full phrase round-trip, ä ö ü ß above the system keyboard's honest space (never painted). Typed lines are the gated §8 tier — PCC-graded with redaction and a char cap."
+      "text": "M2b, state 2 of 2 — focusing the composer swaps states in one motion: keyboard up, ä ö ü ß bar above it, sentence starters for momentum, and the three lines fold into one quiet door. Blurring swaps back. Two clean states instead of one crowded surface. Typed lines are the gated §8 tier — PCC-graded with redaction and a char cap."
     },
     {
       "id": "note-reveal",
@@ -84,7 +231,7 @@
       "x": 3012,
       "y": 640,
       "w": 300,
-      "text": "M5 — the word cycle's encounter surface, unchanged: the shipped compact popover (320pt, system chrome + arrow, anchored to the word rect). Headword SF bold; serif is reserved for the teal translation line. Keep (bookmark) is the only FSRS entry. Needs real TappedWordContext so separable verbs resolve."
+      "text": "M5 — word taps live in chat bubbles, so the popup anchors to a word in the Bäckerin's line (system popover chrome, arrow to the word rect; opens below a word in the upper half). Headword SF bold; serif is reserved for the teal translation line. Keep (bookmark) is the only FSRS entry. Needs real TappedWordContext so separable verbs resolve."
     },
     {
       "id": "note-resolved",
@@ -154,15 +301,17 @@
       "x": 1004,
       "y": 2990,
       "w": 300,
-      "text": "W1 — iPhone landscape (and the folded phone's cover screen in landscape): when height is scarce the bottom hint becomes a trailing act rail — same components, 44pt targets kept, feed keeps reading on the left. Nothing is a new component; it's the same panel re-laid."
+      "text": "W1 — iPhone landscape: when height is scarce the bottom hint becomes a trailing act rail — same components, 44pt targets kept, feed keeps reading on the left. The chrome row (close · mission pill · help) is the same one as portrait; no umlaut bar until the keyboard opens."
     },
     {
       "id": "note-wide",
       "x": 1978,
       "y": 2990,
       "w": 320,
-      "text": "W2 — regular width (iPad, unfolded fold): two panes — feed capped at the app's 700pt readable column, act rail standing beside it, so scene + situation + lines share one glance with no sheet at all. On regular width the steps/help/phrases sheets present as popovers anchored to their buttons (the app's existing sheet-on-compact / popover-on-regular convention, same as the word popup)."
+      "text": "W2 — regular width (iPad, unfolded fold): two panes — feed capped at the app's 700pt readable column, act rail beside it. Same chrome row: close · mission pill with act dots · help. On regular width the steps/help/phrases sheets present as popovers anchored to their buttons (the app's sheet-on-compact / popover-on-regular convention, same as the word popup)."
     }
   ],
-  "launch": { "view": "canvas" }
+  "launch": {
+    "view": "canvas"
+  }
 }
