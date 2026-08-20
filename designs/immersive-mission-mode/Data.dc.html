@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; }
+    a { color: #0F859E; } a:hover { color: #0A667D; }
+  </style>
+</helmet>
+<div style="width: 1240px; height: 900px; box-sizing: border-box; padding: 36px 40px; display: flex; flex-direction: column; gap: 20px; background:
+  radial-gradient(90% 70% at 12% 8%, #E6F5F7 0%, rgba(230,245,247,0) 60%),
+  radial-gradient(80% 60% at 88% 12%, #F5F2EB 0%, rgba(245,242,235,0) 55%),
+  radial-gradient(70% 60% at 80% 90%, #EDF5ED 0%, rgba(237,245,237,0) 60%),
+  #F0F6F6; color: rgba(0,0,0,0.92);">
+
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+    <div style="font-family: ui-serif, 'New York', Georgia, serif; font-size: 28px; font-weight: 700;">Where the words come from</div>
+    <div style="font-size: 13px; color: #5C5C66;">Three tiers &mdash; every act always has a floor, and no model ever runs at answer time.</div>
+  </div>
+
+  <!-- Three-lane tier map -->
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+
+    <!-- Lane 1: bundled -->
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 22px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08); box-shadow: 0 4px 20px rgba(20,20,19,0.04);">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 30px; height: 30px; border-radius: 9px; background: #D6F0F0; display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#0A667D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8l5.5 2.8v6.8L8 14.2l-5.5-2.8V4.6L8 1.8z"></path><path d="M2.5 4.6L8 7.4l5.5-2.8M8 7.4v6.8"></path></svg>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <div style="font-size: 15px; font-weight: 700;">1 &middot; Ships in the bundle</div>
+          <div style="font-size: 11.5px; color: #737378;">halm_data_pipeline &middot; built &amp; checked offline</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 12.5px; line-height: 1.4; color: #5C5C66;">
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">The whole story</b> &mdash; round texts, three-round arc, word pool, present lemmas. The pick never branches it.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">TTS audio + word timings</b>, pre-rendered per round &mdash; another reason the plot can&rsquo;t branch.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">Can-do line per story</b> (DialogueShape) &mdash; becomes the mission line and the derived act framing.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">acts[] (optional, W6)</b> &mdash; hand-authored situations for curated stories; override the derived floor, never required.</span></div>
+      </div>
+      <div style="margin-top: auto; padding: 10px 12px; border-radius: 12px; background: #F7F0E0; font-size: 12px; line-height: 1.4; color: #5C4A28;">
+        <b>The floor:</b> situation framing derives from can-do + word pool + round text &mdash; zero new data. A story with no authored acts still plays every act.
+      </div>
+    </div>
+
+    <!-- Lane 2: generated ahead -->
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 22px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08); box-shadow: 0 4px 20px rgba(20,20,19,0.04);">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 30px; height: 30px; border-radius: 9px; background: #D6F0F0; display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#0A667D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.5v-3M8 13.5V6.8M13.5 13.5V2.5"></path></svg>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <div style="font-size: 15px; font-weight: 700;">2 &middot; Generated ahead of play</div>
+          <div style="font-size: 11.5px; color: #737378;">PCC &middot; one structured call per act &middot; deep reasoning</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 12.5px; line-height: 1.4; color: #5C5C66;">
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">Act 1 rides the loading phase</b> &mdash; plan + rounds + TTS already run there; one extra call is absorbable.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">Acts 2&ndash;3 prefetch during round 1</b> in a background task. After they land the lesson is network-independent.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">Each call returns everything</b>: situation line (native), 3 lines (German), the marked correct one, 3 rationales (native, &le;160 chars).</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">Facts come from tools, not the model</b>: lexicon (article/plural/POS/CEFR) + case + conjugation resolvers &mdash; prose is formulated around verified facts.</span></div>
+      </div>
+      <div style="margin-top: auto; padding: 10px 12px; border-radius: 12px; background: #E1F2EA; font-size: 12px; line-height: 1.4; color: #1E5B3C;">
+        <b>Answer time is model-free:</b> the tap compares a stored boolean. Instant reveal, offline, no false-&ldquo;correct&rdquo; failure mode.
+      </div>
+    </div>
+
+    <!-- Lane 3: on the go / degraded -->
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 22px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08); box-shadow: 0 4px 20px rgba(20,20,19,0.04);">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 30px; height: 30px; border-radius: 9px; background: #F7F0E0; display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#96650F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.2v5.8l3.6 2.1"></path><circle cx="8" cy="8" r="6.2"></circle></svg>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <div style="font-size: 15px; font-weight: 700;">3 &middot; When the cloud can&rsquo;t help</div>
+          <div style="font-size: 11.5px; color: #737378;">decided once at lesson start &middot; never mid-beat</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 12.5px; line-height: 1.4; color: #5C5C66;">
+        <div style="display: flex; gap: 8px;"><span style="color: #96650F; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">PCC unusable at start</b> (offline &middot; quota &middot; cloud turned off) &rarr; the mission entry is absent from the preview, with one quiet line why. The story still plays as Listen.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #96650F; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">One act&rsquo;s prefetch missed</b> &rarr; that round plays as plain Listen; the mission goes on. No spinner mid-story, ever.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #96650F; font-weight: 700;">&#8226;</span><span><b style="color: rgba(0,0,0,0.85);">On-device tier (later, W5)</b>: FM writes shorter lines with the lexicon tool only; the rationale becomes a reason <i>category</i> the pack renders as a sentence &mdash; classification, not prose. Needs the &sect;9 owner call first.</span></div>
+      </div>
+      <div style="margin-top: auto; padding: 10px 12px; border-radius: 12px; background: #FBEAEA; font-size: 12px; line-height: 1.4; color: #6F1C2C;">
+        <b>Never:</b> a present-and-failing mode, a retry that regenerates, or FM judging free text. Degrade by absence, not by breakage.
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border-radius: 22px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08);">
+    <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #0A667D;">A LESSON&rsquo;S TIMELINE</div>
+    <div style="display: flex; align-items: stretch; gap: 8px;">
+      <div style="flex: 1.1; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #E8F3F5; border: 1px solid rgba(15,133,158,0.18);">
+        <div style="font-size: 12px; font-weight: 700; color: #0A667D;">Loading</div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">plan &middot; rounds &middot; TTS render<br><b style="color: #0A667D;">+ act 1 authored (blocks here)</b></div>
+      </div>
+      <div style="flex: 1.4; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(15,12,8,0.10);">
+        <div style="font-size: 12px; font-weight: 700;">Round 1 &middot; scene + words</div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">story plays, word selection as today<br><b style="color: #0A667D;">acts 2&ndash;3 prefetch in the background</b></div>
+      </div>
+      <div style="flex: 0.7; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #E1F2EA; border: 1px solid rgba(46,168,107,0.25);">
+        <div style="font-size: 12px; font-weight: 700; color: #1E5B3C;">Act 1</div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">choose &rarr; reveal<br>2 taps, offline</div>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(15,12,8,0.10);">
+        <div style="font-size: 12px; font-weight: 700;">Round 2</div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">already act-ready; no network needed from here on</div>
+      </div>
+      <div style="flex: 0.7; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #E1F2EA; border: 1px solid rgba(46,168,107,0.25);">
+        <div style="font-size: 12px; font-weight: 700; color: #1E5B3C;">Act 2</div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">choose &rarr; reveal</div>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #FFFFFF; border: 1px solid rgba(15,12,8,0.10);">
+        <div style="font-size: 12px; font-weight: 700;">Round 3 &middot; Act 3</div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">same beat rhythm; word-selection scoring stays the only FSRS path</div>
+      </div>
+      <div style="flex: 0.9; display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 14px; background: #FFF6E8; border: 1px solid rgba(242,168,51,0.35);">
+        <div style="font-size: 12px; font-weight: 700; color: #96650F;">Recap</div>
+        <div style="font-size: 11.5px; line-height: 1.35; color: #5C5C66;">acts as counts (2 of 3 worked), routed next steps &mdash; never a percent</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payload + rules row -->
+  <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px;">
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border-radius: 22px; background: #172A2E; color: #E8F1F2;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #7FD1E0;">ONE CALL PER ACT &mdash; THE WHOLE PAYLOAD</div>
+      <div style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; line-height: 1.55; white-space: pre; overflow-x: auto;">StoryActOptions
+  situation   "The baker asks what you'd like."   // native, 1 line
+  options[3]                                      // exactly three
+    text        "Ich h&auml;tte gern zwei Br&ouml;tchen."     // German
+    isCorrect   true                              // exactly one true
+    rationale   "&lsquo;h&auml;tte gern&rsquo; keeps it polite&hellip;"  // native, &le;160 chars</div>
+      <div style="font-size: 12px; line-height: 1.45; color: rgba(232,241,242,0.72);">Correctness is decided at generation time, checked at tap time by boolean compare. Tools attached to the call: lexicon lookup, case fact, conjugation fact &mdash; four max.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 9px; padding: 18px 20px; border-radius: 22px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #0A667D;">WHAT KEEPS THE OPTIONS HONEST</div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 12.5px; line-height: 1.42; color: #5C5C66;">
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span>Distractors wrong for a <b style="color: rgba(0,0,0,0.85);">teachable reason</b> &mdash; register, case, word order &mdash; never nonsense, never solvable by length or by being the only formal one (eval-locked).</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span>Rationales say <b style="color: rgba(0,0,0,0.85);">&ldquo;why <i>den</i>, not <i>der</i>&rdquo;</b> in plain words &mdash; never &ldquo;Grammatik: Akkusativ&rdquo;.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span>What leaves the device: scene text, framing, 3&ndash;5 constructions, CEFR, register, two language codes. <b style="color: rgba(0,0,0,0.85);">Never a name, profile or history.</b></span></div>
+        <div style="display: flex; gap: 8px;"><span style="color: #0A667D; font-weight: 700;">&#8226;</span><span>Nothing persists &mdash; options live for the session and are dropped on exit. Wrong picks <b style="color: rgba(0,0,0,0.85);">never touch FSRS</b>; Keep in the word popup stays the only way a word enters review.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

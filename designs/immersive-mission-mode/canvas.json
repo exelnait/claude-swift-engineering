@@ -1,0 +1,88 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Immersive Mission Mode", "x": 0, "y": 0, "w": 1160, "h": 620 },
+    { "file": "Data.dc.html", "title": "Data · Bundled vs generated", "x": 1240, "y": -140, "w": 1240, "h": 900 },
+    { "file": "Entry.dc.html", "title": "M1 · Lesson preview — mission entry", "x": 0, "y": 900, "w": 402, "h": 874 },
+    { "file": "Choose.dc.html", "title": "M2 · Act — choose your line", "x": 502, "y": 900, "w": 402, "h": 874 },
+    { "file": "RevealCorrect.dc.html", "title": "M3 · Reveal — it works", "x": 1004, "y": 900, "w": 402, "h": 874 },
+    { "file": "RevealWrong.dc.html", "title": "M4 · Reveal — not quite, both explained", "x": 1506, "y": 900, "w": 402, "h": 874 },
+    { "file": "WordPopup.dc.html", "title": "M5 · Word popup — capture mid-act", "x": 2008, "y": 900, "w": 402, "h": 874 },
+    { "file": "Resolved.dc.html", "title": "M6 · Resolved — your line joins the story", "x": 2510, "y": 900, "w": 402, "h": 874 },
+    { "file": "Unavailable.dc.html", "title": "M7 · Mission absent — offline", "x": 0, "y": 2050, "w": 402, "h": 874 },
+    { "file": "MissionComplete.dc.html", "title": "M8 · Mission recap", "x": 502, "y": 2050, "w": 402, "h": 874 },
+    { "file": "Motion.dc.html", "title": "Motion & haptics of an act", "x": 1030, "y": 2050, "w": 940, "h": 820 }
+  ],
+  "annotations": [
+    {
+      "id": "note-main",
+      "x": 0,
+      "y": -160,
+      "w": 320,
+      "text": "Read with Plans/immersive-story-mode.md (MVP re-scope) and the teardown docs. Top row: the golden path M1→M6. Bottom row: the honest edges (offline, recap) + motion.\n\nEverything is drawn from shipped components: HalmOptionSelect cells, ReviewOptionSurface roles, GlassSurface, Theme tokens, AppAnimation springs."
+    },
+    {
+      "id": "note-entry",
+      "x": 0,
+      "y": 780,
+      "w": 300,
+      "text": "M1 — §14.4: mode choice lives on the preview card, nowhere else (teardown: missions must not become their own tab). Framed as HOW to experience this story, not exercise types. Objectives preview = the acts as speech acts (Mishka ★3). No AI branding on the mode — research: AI is a supporter, not a core."
+    },
+    {
+      "id": "note-choose",
+      "x": 502,
+      "y": 780,
+      "w": 300,
+      "text": "M2 — §7 rules 1+3: scene, situation and all 3 lines in one glance; the mission line stays pinned. Options are the ONE option idiom (HalmOptionSelect: white cells, brand wash, r18, ≥60pt). One tap answers — no Check step. Every word is tappable (popup-on-all-surfaces is P1); correct line never revealed before the tap (Polinu)."
+    },
+    {
+      "id": "note-reveal",
+      "x": 1004,
+      "y": 780,
+      "w": 300,
+      "text": "M3 — §7 rule 2: tap → rationale, synchronously (isCorrect is stored; no model at answer time). Focus collapse: siblings recede 0.35/0.96. Rationale = the eyebrow-over-body panel, compact and in-frame (never a half-screen sheet). Plain-words why — register, not „Grammatik“. Tell me more → existing .sentenceExplanation ladder."
+    },
+    {
+      "id": "note-wrong",
+      "x": 1506,
+      "y": 780,
+      "w": 300,
+      "text": "M4 — §7.1 (owner-confirmed): wrong pick reveals BOTH rationales in the same frame, correct line marked, no retry — two movements either way. Diff-view teaching (Mishka ★5): why yours fails + the line that works. Wrong picks never touch FSRS. Haptics: error informational, never punishing copy."
+    },
+    {
+      "id": "note-popup",
+      "x": 2008,
+      "y": 780,
+      "w": 300,
+      "text": "M5 — the word cycle's encounter surface, unchanged: the shipped compact popover (320pt, system chrome + arrow, anchored to the word rect). Headword SF 28 bold, serif reserved for the translation line (brandText teal). Keep = the only FSRS entry — deliberate, never auto. Popup must receive real TappedWordContext so separable verbs resolve (§3.2 addendum)."
+    },
+    {
+      "id": "note-resolved",
+      "x": 2510,
+      "y": 780,
+      "w": 300,
+      "text": "M6 — the payoff: your line renders as YOUR bubble in the dialogue theatre (alignment = speaker cue, same glass bubbles), then the authored story resumes — the pick never branches the plot (§2.1). Objective ticks; counts, never percents. Audio + karaoke pick back up exactly where the scene stopped."
+    },
+    {
+      "id": "note-unavailable",
+      "x": 0,
+      "y": 1930,
+      "w": 300,
+      "text": "M7 — §3: when PCC is unusable (offline / quota / cloud turned off in Settings) the mode is ABSENT, with one quiet line why — the PCCQuotaBanner voice. Never present-and-failing, never a disabled dead control. Decided once at lesson start; mid-lesson a missed prefetch degrades that round to plain Listen silently."
+    },
+    {
+      "id": "note-complete",
+      "x": 502,
+      "y": 1930,
+      "w": 300,
+      "text": "M8 — mirrors the lesson recap so the exit is one language: acts as counts that route (2 of 3 worked → the act to revisit), words met in the acts proposed for a deliberate Keep (never auto-saved), your kept words confirmed, and a simple next-story hand-off — same theme, „contains N of your words“ — no recommendation engine."
+    },
+    {
+      "id": "note-data",
+      "x": 1240,
+      "y": -300,
+      "w": 320,
+      "text": "The data story, per the owner's three cases: (1) bundle ships story+TTS+can-do+optional authored acts[]; a deterministic derived floor means acts always exist. (2) PCC writes options+rationales ahead of play — act 1 in loading, acts 2–3 prefetched in round 1. (3) Cloud can't help → absent mode / silent per-round fallback / later on-device tier (§9 owner call pending)."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

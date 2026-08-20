@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; }
+    a { color: #0F859E; } a:hover { color: #0A667D; }
+  </style>
+</helmet>
+<div style="width: 402px; height: 874px; box-sizing: border-box; background: #FFFFFF; color: #111114; display: flex; flex-direction: column; overflow: hidden; position: relative;">
+
+  <!-- Toolbar -->
+  <div style="margin-top: 62px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); box-shadow: 0 1px 3px rgba(20,20,19,0.06); display: flex; align-items: center; justify-content: center;">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="#111114" stroke-width="1.9" stroke-linecap="round"><path d="M2.5 2.5l10 10M12.5 2.5l-10 10"></path></svg>
+    </div>
+    <div style="display: flex; align-items: center; gap: 5px;">
+      <div style="width: 12px; height: 5px; border-radius: 2.5px; background: #0F859E;"></div>
+      <div style="width: 18px; height: 5px; border-radius: 2.5px; background: #0F859E;"></div>
+      <div style="width: 12px; height: 5px; border-radius: 2.5px; background: rgba(82,82,82,0.20);"></div>
+    </div>
+    <div style="width: 44px; height: 44px; border-radius: 22px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); box-shadow: 0 1px 3px rgba(20,20,19,0.06); display: flex; align-items: center; justify-content: center;">
+      <svg width="16" height="14" viewBox="0 0 16 14" fill="#5C5C66"><path d="M1.5 2.2v9.6c0 .5.55.8.97.53l7.03-4.53c.4-.26.4-.84 0-1.1L2.47 2.17c-.42-.27-.97.03-.97.53z"></path><rect x="12.2" y="1.8" width="2.2" height="10.4" rx="1.1"></rect></svg>
+    </div>
+  </div>
+
+  <!-- Mission banner -->
+  <div style="margin: 12px 24px 0; padding: 12px 16px; border-radius: 16px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); display: flex; flex-direction: column; gap: 9px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#0F859E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 1.6l1.5 1.2 1.9-.3.7 1.8 1.8.7-.3 1.9 1.2 1.5-1.2 1.5.3 1.9-1.8.7-.7 1.8-1.9-.3-1.5 1.2-1.5-1.2-1.9.3-.7-1.8-1.8-.7.3-1.9L1.7 8.4l1.2-1.5-.3-1.9 1.8-.7.7-1.8 1.9.3z"></path><path d="M6 8.6l1.7 1.7 3.3-3.4"></path></svg>
+      <div style="font-size: 15px; font-weight: 500; color: #5C5C66;">Order at the bakery</div>
+    </div>
+    <div style="display: flex; gap: 6px;">
+      <div style="display: flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 12px; background: #DEF1E7; border: 1px solid rgba(46,168,107,0.4);">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#1E7A4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.4l2.6 2.6L10 3.4"></path></svg>
+        <span style="font-size: 12px; font-weight: 600; color: #1E7A4B;">Greet</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 12px; background: #E3F0F3; border: 1px solid rgba(15,133,158,0.4);">
+        <div style="width: 7px; height: 7px; border-radius: 4px; background: #0F859E;"></div>
+        <span style="font-size: 12px; font-weight: 600; color: #0A667D;">Order</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 12px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20);">
+        <div style="width: 7px; height: 7px; border-radius: 4px; border: 1.4px solid #737378; box-sizing: border-box;"></div>
+        <span style="font-size: 12px; font-weight: 600; color: #737378;">Pay</span>
+      </div>
+      <div style="margin-left: auto; font-size: 12px; color: #737378; align-self: center;">Act 2 of 3</div>
+    </div>
+  </div>
+
+  <!-- Situation framing (stays pinned through the reveal) -->
+  <div style="margin: 14px 24px 0; padding: 12px 16px; border-radius: 18px; background: #F7F0E0; display: flex; align-items: center; gap: 8px;">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#96650F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M8 2.2c-2.9 0-5.2 2.2-5.2 5 0 1.7.9 3.2 2.2 4.1v1.9c0 .5.4.9.9.9h4.2c.5 0 .9-.4.9-.9v-1.9c1.3-.9 2.2-2.4 2.2-4.1 0-2.8-2.3-5-5.2-5z"></path></svg>
+    <div style="font-size: 15px; font-weight: 500; line-height: 1.3; color: #3D3526;">You&rsquo;d like two bread rolls. What do you say?</div>
+  </div>
+
+  <!-- Option board: picked correct, siblings receded -->
+  <div style="margin: 14px 24px 0; display: flex; flex-direction: column; gap: 8px;">
+    <div style="min-height: 60px; box-sizing: border-box; border-radius: 18px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); padding: 16px; display: flex; align-items: center; justify-content: center; opacity: 0.35; transform: scale(0.96);">
+      <div style="font-size: 17px; font-weight: 500; text-align: center; line-height: 1.3; color: #5C5C66;">Ich will zwei Br&ouml;tchen.</div>
+    </div>
+
+    <div style="position: relative; min-height: 60px; box-sizing: border-box; border-radius: 18px; background: #DEF1E7; border: 1px solid rgba(46,168,107,0.4); padding: 16px; display: flex; align-items: center; justify-content: center;">
+      <div style="font-size: 17px; font-weight: 500; text-align: center; line-height: 1.3;">Ich h&auml;tte gern zwei <span style="border-bottom: 2px dotted rgba(92,92,102,0.55); padding-bottom: 1px;">Br&ouml;tchen</span>.</div>
+      <div style="position: absolute; top: 7px; right: 7px;">
+        <svg width="17" height="17" viewBox="0 0 17 17"><circle cx="8.5" cy="8.5" r="7.6" fill="#2EA86B"></circle><path d="M5.3 8.8l2.1 2.1 4.3-4.4" fill="none" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+    </div>
+
+    <!-- Rationale panel: eyebrow-over-body, arrives with the reveal -->
+    <div style="box-sizing: border-box; border-radius: 18px; background: rgba(255,255,255,0.9); border: 1px solid rgba(82,82,82,0.20); padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="#2EA86B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.4l2.6 2.6L10 3.4"></path></svg>
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.05em; color: #5C5C66;">IT WORKS</div>
+        <div style="margin-left: auto; width: 44px; height: 30px; display: flex; align-items: center; justify-content: flex-end;">
+          <svg width="18" height="16" viewBox="0 0 20 18" fill="none" stroke="#0F859E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5v5h3l4 3.5V3L6 6.5H3z" fill="#0F859E" stroke="none"></path><path d="M13 6a4.2 4.2 0 010 6M15.5 4a7.4 7.4 0 010 10"></path></svg>
+        </div>
+      </div>
+      <div style="font-size: 17px; line-height: 1.4; color: #111114;"><b>&bdquo;h&auml;tte gern&ldquo;</b> is the polite ask &mdash; it&rsquo;s how you order from someone you don&rsquo;t know.</div>
+      <div style="display: flex; align-items: center; gap: 4px; min-height: 30px;">
+        <span style="font-size: 13px; font-weight: 600; color: #0F859E;">Tell me more</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#0F859E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 1.5L7 5 3 8.5"></path></svg>
+      </div>
+    </div>
+
+    <div style="min-height: 60px; box-sizing: border-box; border-radius: 18px; background: #FFFFFF; border: 1px solid rgba(82,82,82,0.20); padding: 16px; display: flex; align-items: center; justify-content: center; opacity: 0.35; transform: scale(0.96);">
+      <div style="font-size: 17px; font-weight: 500; text-align: center; line-height: 1.3; color: #5C5C66;">Geben Sie mir zwei Br&ouml;tchen.</div>
+    </div>
+  </div>
+
+  <!-- Continue CTA -->
+  <div style="margin-top: auto; padding: 0 24px 30px; display: flex; flex-direction: column; gap: 10px; align-items: center; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FFFFFF 55%);">
+    <div style="display: flex; align-items: center; gap: 6px; color: #5C5C66; font-size: 13px; opacity: 0;">
+      <span>placeholder</span>
+    </div>
+    <div style="height: 54px; width: 100%; border-radius: 27px; background: linear-gradient(180deg, #1491AC 0%, #0F859E 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center;">
+      <span style="font-size: 17px; font-weight: 600; color: #FFFFFF;">Continue</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

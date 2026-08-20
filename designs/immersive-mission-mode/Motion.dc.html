@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; }
+    a { color: #0F859E; } a:hover { color: #0A667D; }
+  </style>
+</helmet>
+<div style="width: 940px; height: 820px; box-sizing: border-box; padding: 36px 40px; display: flex; flex-direction: column; gap: 18px; background:
+  radial-gradient(90% 70% at 12% 8%, #E6F5F7 0%, rgba(230,245,247,0) 60%),
+  radial-gradient(80% 60% at 88% 12%, #F5F2EB 0%, rgba(245,242,235,0) 55%),
+  #F0F6F6; color: rgba(0,0,0,0.92);">
+
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px;">
+    <div style="font-family: ui-serif, 'New York', Georgia, serif; font-size: 28px; font-weight: 700;">Motion &amp; haptics of an act</div>
+    <div style="font-size: 13px; color: #5C5C66;">Only shipped AppAnimation tokens &mdash; no new curves.</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;">
+
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 24px; height: 24px; border-radius: 12px; background: #D6F0F0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #0A667D;">1</div>
+        <div style="font-size: 15px; font-weight: 700;">The act arrives</div>
+      </div>
+      <div style="font-size: 12.5px; line-height: 1.45; color: #5C5C66;">Audio pauses at the beat boundary. The situation card and the three lines assemble with <b style="color: rgba(0,0,0,0.85);">popupEntrance</b> (spring 0.5 / 0.82) and the popup&rsquo;s row stagger (60&thinsp;ms + 50&thinsp;ms per row) &mdash; the same soft rise-and-settle the word popup uses. No phase swap: the act is a beat inside the round, so toolbar and dots stay put.</div>
+      <div style="font-size: 12px; color: #737378;">Haptic: <b>impactSoft</b> on arrival &middot; the mission line never moves.</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 24px; height: 24px; border-radius: 12px; background: #D6F0F0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #0A667D;">2</div>
+        <div style="font-size: 15px; font-weight: 700;">The pick &mdash; focus collapse</div>
+      </div>
+      <div style="font-size: 12.5px; line-height: 1.45; color: #5C5C66;">The board&rsquo;s signature move, unchanged from every pick-one surface: the tapped cell resolves <b style="color: rgba(0,0,0,0.85);">in place</b> with <b style="color: rgba(0,0,0,0.85);">cardSpring</b> (0.35 / 0.8) while siblings recede to 0.35 opacity &middot; 0.96 scale. Verdict colour crossfades with <b style="color: rgba(0,0,0,0.85);">fadeQuick</b> after a 120&thinsp;ms hold; the check is a stored boolean, so nothing waits on a network.</div>
+      <div style="font-size: 12px; color: #737378;">Haptics: <b>selection</b> on tap &rarr; informational <b>success / error</b> with the verdict.</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 24px; height: 24px; border-radius: 12px; background: #D6F0F0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #0A667D;">3</div>
+        <div style="font-size: 15px; font-weight: 700;">The rationale unfolds</div>
+      </div>
+      <div style="font-size: 12.5px; line-height: 1.45; color: #5C5C66;">The eyebrow-over-body panel grows in under its cell with <b style="color: rgba(0,0,0,0.85);">asyncFieldReveal</b> (spring 0.4 / 0.85). On a wrong pick both panels land in the same frame &mdash; one motion, not two beats. VoiceOver focus moves to the reveal and reads the rationales in order; the a11y value speaks the verdict the instant the pick lands.</div>
+      <div style="font-size: 12px; color: #737378;">Speaker on the working line reads it aloud &mdash; same seam as the word popup&rsquo;s speaker.</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 24px; height: 24px; border-radius: 12px; background: #D6F0F0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #0A667D;">4</div>
+        <div style="font-size: 15px; font-weight: 700;">Continue &mdash; your line joins the story</div>
+      </div>
+      <div style="font-size: 12.5px; line-height: 1.45; color: #5C5C66;">The working line flies from its cell into the dialogue as your bubble via a <b style="color: rgba(0,0,0,0.85);">morphingID</b> flight riding <b style="color: rgba(0,0,0,0.85);">phaseMorph</b> (spring 0.38 / 0.9) &mdash; the lesson tunnel&rsquo;s one hero move. The objective chip ticks with cardSpring; the count rolls with <b style="color: rgba(0,0,0,0.85);">numberRoll</b>. Audio resumes; karaoke picks the story back up.</div>
+      <div style="font-size: 12px; color: #737378;">Wrong pick flies the <i>correct</i> line &mdash; the story always continues with the line that works.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 14px;">
+    <div style="flex: 1.4; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: #172A2E; color: #E8F1F2;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #7FD1E0;">REDUCE MOTION &middot; VOICEOVER</div>
+      <div style="font-size: 12.5px; line-height: 1.5; color: rgba(232,241,242,0.85);">Everything above collapses through the shipped seams &mdash; <b>motionAnimation</b> / <b>withMotion</b>, never a bare .animation. The act assembles at once (revealAll), no stagger, no scale; the sibling <b>opacity recede stays</b> (it is information, not decoration). The morph flight becomes a crossfade. VoiceOver: three real buttons &ge;44&thinsp;pt, verdict carried by accessibilityValue + glyph, never colour alone; focus lands on the reveal when it lands.</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #0A667D;">WHAT NEVER ANIMATES</div>
+      <div style="font-size: 12.5px; line-height: 1.5; color: #5C5C66;">No spinner at tap time &mdash; ever. No AI gradient on options or reveals (reserved for intelligence affordances). No confetti mid-story; the flame palette waits for the recap. The bottom bar never changes height &mdash; the hint swaps by opacity only.</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

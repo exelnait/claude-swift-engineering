@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; }
+    a { color: #0F859E; } a:hover { color: #0A667D; }
+  </style>
+</helmet>
+<div style="width: 1160px; height: 620px; box-sizing: border-box; padding: 44px 48px; display: flex; flex-direction: column; gap: 28px; background:
+  radial-gradient(90% 70% at 12% 8%, #E6F5F7 0%, rgba(230,245,247,0) 60%),
+  radial-gradient(80% 60% at 88% 12%, #F5F2EB 0%, rgba(245,242,235,0) 55%),
+  radial-gradient(70% 60% at 80% 90%, #EDF5ED 0%, rgba(237,245,237,0) 60%),
+  radial-gradient(80% 70% at 15% 92%, #F2EDF2 0%, rgba(242,237,242,0) 55%),
+  #F0F6F6; color: rgba(0,0,0,0.92);">
+
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px;">
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: #0A667D;">HALM · LISTEN LESSON · iOS 27</div>
+      <div style="font-family: ui-serif, 'New York', Georgia, serif; font-size: 44px; font-weight: 700; line-height: 1.08;">Immersive Mission Mode</div>
+      <div style="font-size: 16px; line-height: 1.45; color: #5C5C66;">The learner participates in the already-authored story. Same rounds, same arc, same word pool &mdash; but at 2&ndash;3 acts the scene stops, Halm frames the situation, and the learner picks one of three candidate lines. The tapped line explains itself instantly. Two taps per act, never a chat.</div>
+    </div>
+    <div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.72); border: 1px solid rgba(15,12,8,0.08); box-shadow: 0 4px 20px rgba(20,20,19,0.05); width: 300px;">
+      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #737378;">READ WITH</div>
+      <div style="font-size: 13px; line-height: 1.45; color: #5C5C66;">Plans/immersive-story-mode.md (2026-08-05 MVP re-scope) &mdash; &sect;7 UX rules, &sect;7.1 wrong pick, &sect;3 iOS 27 gate, &sect;4.2 prefetch. Drawn with the shipped Liquid Glass system: Theme.swift, GlassSurface, AppFont.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 14px;">
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.72); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="width: 26px; height: 26px; border-radius: 8px; background: #D6F0F0; display: flex; align-items: center; justify-content: center;">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#0A667D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.2"></circle><circle cx="8" cy="8" r="2.4"></circle></svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 600;">One glance, one goal</div>
+      <div style="font-size: 12.5px; line-height: 1.4; color: #5C5C66;">Scene, situation and all three lines are on screen together. The mission line stays pinned while choosing.</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.72); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="width: 26px; height: 26px; border-radius: 8px; background: #D6F0F0; display: flex; align-items: center; justify-content: center;">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#0A667D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"></path></svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 600;">Instant reveal</div>
+      <div style="font-size: 12.5px; line-height: 1.4; color: #5C5C66;">Rationales arrive with the options in one call. Tap &rarr; explanation, synchronously. No spinner, no network, no grading phase.</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.72); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="width: 26px; height: 26px; border-radius: 8px; background: #D6F0F0; display: flex; align-items: center; justify-content: center;">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#0A667D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9.5 4l4 4-4 4"></path></svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 600;">Two movements per act</div>
+      <div style="font-size: 12.5px; line-height: 1.4; color: #5C5C66;">One tap to answer, one to continue &mdash; right or wrong. Wrong pick reveals both rationales in the same frame; no retry loop.</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.72); border: 1px solid rgba(15,12,8,0.08);">
+      <div style="width: 26px; height: 26px; border-radius: 8px; background: #D6F0F0; display: flex; align-items: center; justify-content: center;">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#0A667D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="11" height="11" rx="3"></rect><path d="M5.5 8h5"></path></svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 600;">Not a chat</div>
+      <div style="font-size: 12.5px; line-height: 1.4; color: #5C5C66;">Exactly three visible next moves and a defined success state. No free text, no follow-up input &mdash; deeper &ldquo;why&rdquo; reuses the explanation ladder.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 0; padding: 18px 20px; border-radius: 22px; background: rgba(255,255,255,0.72); border: 1px solid rgba(15,12,8,0.08);">
+    <div style="display: flex; flex-direction: column; gap: 4px; width: 168px;">
+      <div style="font-size: 12px; font-weight: 700; color: #0A667D;">M1 &middot; Preview</div>
+      <div style="font-size: 12px; color: #5C5C66; line-height: 1.35;">Mission entry on the lesson preview card</div>
+    </div>
+    <svg width="28" height="12" viewBox="0 0 28 12" fill="none" stroke="#737378" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M2 6h22M20 2l4 4-4 4"></path></svg>
+    <div style="display: flex; flex-direction: column; gap: 4px; width: 168px; padding-left: 12px;">
+      <div style="font-size: 12px; font-weight: 700; color: #0A667D;">M2 &middot; Act</div>
+      <div style="font-size: 12px; color: #5C5C66; line-height: 1.35;">Scene stops &mdash; situation + three lines, one glance</div>
+    </div>
+    <svg width="28" height="12" viewBox="0 0 28 12" fill="none" stroke="#737378" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M2 6h22M20 2l4 4-4 4"></path></svg>
+    <div style="display: flex; flex-direction: column; gap: 4px; width: 190px; padding-left: 12px;">
+      <div style="font-size: 12px; font-weight: 700; color: #0A667D;">M3 / M4 &middot; Reveal</div>
+      <div style="font-size: 12px; color: #5C5C66; line-height: 1.35;">It works / it doesn&rsquo;t &mdash; rationale in the same frame</div>
+    </div>
+    <svg width="28" height="12" viewBox="0 0 28 12" fill="none" stroke="#737378" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M2 6h22M20 2l4 4-4 4"></path></svg>
+    <div style="display: flex; flex-direction: column; gap: 4px; width: 168px; padding-left: 12px;">
+      <div style="font-size: 12px; font-weight: 700; color: #0A667D;">M5 &middot; Word popup</div>
+      <div style="font-size: 12px; color: #5C5C66; line-height: 1.35;">Capture a word from the act without leaving it</div>
+    </div>
+    <svg width="28" height="12" viewBox="0 0 28 12" fill="none" stroke="#737378" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M2 6h22M20 2l4 4-4 4"></path></svg>
+    <div style="display: flex; flex-direction: column; gap: 4px; width: 168px; padding-left: 12px;">
+      <div style="font-size: 12px; font-weight: 700; color: #0A667D;">M6 &middot; Resolved</div>
+      <div style="font-size: 12px; color: #5C5C66; line-height: 1.35;">Your line joins the story; the beat plays on</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
