@@ -77,6 +77,27 @@ If you already have other hooks defined, just add the `UserPromptSubmit` entry a
 
 > **Important:** Unlike the `UserPromptSubmit` hook (which is `cat`-ed so its text is injected verbatim), the `PostToolUse` and `Stop` hooks are **executed scripts** that read a JSON payload on stdin — wire them with `bash <script>`, not `cat <script>`.
 
+### SubagentStop + Stop: derived-data-cleanup-hook.sh
+
+**Purpose:** Keep the disk from filling with abandoned DerivedData. The Halm workflow gives each device/simulator build its own `-derivedDataPath` under `/private/tmp/halm-*` (200 MB–1 GB each); across concurrent agent sessions they pile up until a build dies on *"No space left on device"* — a real incident left 35 trees ≈ 90 GB and silently corrupted an xcresult bundle mid-run.
+
+**What it does:**
+- Runs when a **subagent finishes** (`SubagentStop`) and at the **end of each turn** (`Stop`) — so agents clean up after themselves.
+- **Age-gated** sweep: removes only `halm-*` trees idle > `HALM_DD_MAX_AGE_MIN` minutes (default 90), so it **never** deletes a concurrent session's in-flight build (a just-finished tree is still fresh, so it is reclaimed later once idle, or reused). Never touches `~/Library/Developer/Xcode/DerivedData`. **Non-blocking** (always exits 0). An `mkdir`-lock keeps concurrent agents from all sweeping at once; aborts if `find -mmin` is unavailable rather than guess.
+- **Hardcoded** to the `halm-*` namespace on purpose (this is a personal fork). On any project that does *not* use `/private/tmp/halm-*` the sweep finds nothing and is a no-op, so it is safe to leave always-on.
+
+**Wiring: none needed.** Unlike the two evaluation hooks below, this one is **auto-registered** via the plugin's `hooks/hooks.json` — it activates the moment the plugin is enabled, with no `~/.claude/settings.json` edit and no symlink.
+
+**Manual run / knob:**
+```bash
+bash "$CLAUDE_PLUGIN_ROOT/hooks-scripts/SubagentStop/derived-data-cleanup-hook.sh" --verbose
+# force-remove ALL halm-* regardless of age (deliberate full sweep — not while other sessions build):
+HALM_DD_MAX_AGE_MIN=0 bash "$CLAUDE_PLUGIN_ROOT/hooks-scripts/SubagentStop/derived-data-cleanup-hook.sh"
+```
+
+> **Fallback** for an older Claude Code that doesn't auto-load plugin hooks: wire it by hand like the evaluation hooks — add under both `SubagentStop` and `Stop`:
+> `{ "type": "command", "command": "bash ~/.claude/hooks-scripts/SubagentStop/derived-data-cleanup-hook.sh" }`
+
 ### settings.json wiring for the evaluation hooks
 
 Add alongside any existing hooks:
